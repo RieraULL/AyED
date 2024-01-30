@@ -7,10 +7,10 @@
 #include <fstream>
 #include <iomanip>
 
+typedef double (*funtion_ptr)(double);
+
 namespace AyED
 {
-    typedef double (*funtion_ptr)(double);
-
     class function_evaluation
     {
     private:
@@ -24,12 +24,12 @@ namespace AyED
         double *y_;
 
     public:
-        function_evaluation(double left, double right, double tol = 1E-2);
+        function_evaluation(const double left, const double right, const double tol = 1E-2);
         ~function_evaluation(void);
 
-        void evaluate(funtion_ptr f);
+        void evaluate(const funtion_ptr f);
 
-        void set_limits(double left, double right, double tol = 1E-2);
+        void set_limits(const double left, const double right, const double tol = 1E-2);
 
         std::ostream &write(std::ostream &os) const;
 
@@ -38,7 +38,7 @@ namespace AyED
         void free_vectors(void);
     };
 
-    function_evaluation::function_evaluation(double left, double right, double tol) : left_limit_(left), right_limit_(right), tol_(tol), n_(0), x_(NULL), y_(NULL)
+    function_evaluation::function_evaluation(const double left, const double right, const double tol) : left_limit_(left), right_limit_(right), tol_(tol), n_(0), x_(NULL), y_(NULL)
     {
         assert(left_limit_ < right_limit_);
 
@@ -78,7 +78,7 @@ namespace AyED
         }
     }
 
-    void function_evaluation::set_limits(double left, double right, double tol)
+    void function_evaluation::set_limits(const double left, const double right, const double tol)
     {
         assert(left < right);
 
@@ -90,7 +90,7 @@ namespace AyED
         create_vectors();
     }
 
-    void function_evaluation::evaluate(funtion_ptr f)
+    void function_evaluation::evaluate(const funtion_ptr f)
     {
         assert(f != NULL);
 
@@ -115,6 +115,16 @@ namespace AyED
 
 }
 
+double cuadrado(double x)
+{
+    return x * x;
+}
+
+double absoluto(double x)
+{
+    return fabs(x);
+}
+
 int main(void)
 {
     AyED::function_evaluation f(-2 * M_1_PI, 2 * M_PI, 1E-3);
@@ -127,18 +137,18 @@ int main(void)
         output_file.close();
     }
  
-    f.evaluate(cos);
+    f.evaluate(cuadrado);
 
     {
-        std::ofstream output_file("cos.dat");
+        std::ofstream output_file("cua.dat");
         f.write(output_file);
         output_file.close();
     }    
 
-    f.evaluate(tan);
+    f.evaluate(absoluto);
 
     {
-        std::ofstream output_file("tan.dat");
+        std::ofstream output_file("abs.dat");
         f.write(output_file);
         output_file.close();
     }       
