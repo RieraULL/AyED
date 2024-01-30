@@ -1,3 +1,5 @@
+#include "function_eval.hpp"
+
 #include <cstdio>
 
 #include <cmath>
@@ -7,36 +9,8 @@
 #include <fstream>
 #include <iomanip>
 
-typedef double (*funtion_ptr)(double);
-
 namespace AyED
 {
-    class function_evaluation
-    {
-    private:
-        double left_limit_;
-        double right_limit_; 
-        double tol_;
-
-        int n_;
-   
-        double *x_;
-        double *y_;
-
-    public:
-        function_evaluation(const double left, const double right, const double tol = 1E-2);
-        ~function_evaluation(void);
-
-        void evaluate(const funtion_ptr f);
-
-        void set_limits(const double left, const double right, const double tol = 1E-2);
-
-        std::ostream &write(std::ostream &os) const;
-
-    private:
-        void create_vectors(void);
-        void free_vectors(void);
-    };
 
     function_evaluation::function_evaluation(const double left, const double right, const double tol) : left_limit_(left), right_limit_(right), tol_(tol), n_(0), x_(NULL), y_(NULL)
     {
@@ -113,45 +87,4 @@ namespace AyED
         return os;
     }
 
-}
-
-double cuadrado(double x)
-{
-    return x * x;
-}
-
-double absoluto(double x)
-{
-    return fabs(x);
-}
-
-int main(void)
-{
-    AyED::function_evaluation f(-2 * M_1_PI, 2 * M_PI, 1E-3);
-
-    f.evaluate(sin);
-
-    {
-        std::ofstream output_file("sin.dat");
-        f.write(output_file);
-        output_file.close();
-    }
- 
-    f.evaluate(cuadrado);
-
-    {
-        std::ofstream output_file("cua.dat");
-        f.write(output_file);
-        output_file.close();
-    }    
-
-    f.evaluate(absoluto);
-
-    {
-        std::ofstream output_file("abs.dat");
-        f.write(output_file);
-        output_file.close();
-    }       
-
-    return 0;
 }
