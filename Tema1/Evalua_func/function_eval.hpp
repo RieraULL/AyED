@@ -1,36 +1,33 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 typedef double (*funtion_ptr)(double);
+typedef std::vector<double> points_container;
 
 namespace AyED
 {
     class function_evaluation
     {
-    private:
-        double left_limit_;
-        double right_limit_;
-        double tol_;
-
-        int n_;
-
-        double *x_;
-        double *y_;
-
     public:
-        function_evaluation(const double left, const double right, const double tol = 1E-2);
+        function_evaluation(const double left, const double right, const double tol, const funtion_ptr f);
         ~function_evaluation(void);
-
-        void evaluate(const funtion_ptr f);
-
-        void set_limits(const double left, const double right, const double tol = 1E-2);
 
         std::ostream &write(std::ostream &os) const;
 
-    private:
-        void create_vectors(void);
-        void free_vectors(void);
-    };
+        double get_left_limit(void) const;
+        double get_right_limit(void) const;
+        double get_tolerance(void) const;
 
+    private:
+        void build_x(const double left, const double right, const double tol, points_container &x_points);
+        void evaluate_function(const points_container &x_points, points_container &y_points, const funtion_ptr f);
+
+    private:
+        points_container x_points_;
+        points_container y_points_;
+    };
 }
+
+std::ostream &operator<<(std::ostream &os, const AyED::function_evaluation &f);

@@ -1,90 +1,82 @@
 #include "function_eval.hpp"
 
-#include <cstdio>
-
 #include <cmath>
 #include <cassert>
 
 #include <iostream>
-#include <fstream>
 #include <iomanip>
 
 namespace AyED
 {
 
-    function_evaluation::function_evaluation(const double left, const double right, const double tol) : left_limit_(left), right_limit_(right), tol_(tol), n_(0), x_(NULL), y_(NULL)
+    function_evaluation::function_evaluation(const double left, const double right, const double tol, const funtion_ptr f) 
     {
-        assert(left_limit_ < right_limit_);
+        assert(right + tol > left);
 
-        create_vectors();
+        build_x(left, right, tol, x_points_);
+        evaluate_function(x_points_, y_points_, f);
     }
 
     function_evaluation::~function_evaluation(void)
     {
-        free_vectors();
     }
 
-    void function_evaluation::create_vectors(void)
+    
+    void function_evaluation::build_x(const double left, const double right, const double tol, points_container &x_points)
     {
-        free_vectors();
+        double point = left;
 
-        n_ = ceil((right_limit_ - left_limit_) / tol_);
-
-        x_ = new double[n_];
-        y_ = new double[n_];
-
-        assert(x_ != NULL);
-        assert(y_ != NULL);
-    }
-
-    void function_evaluation::free_vectors(void)
-    {
-        if (x_ != NULL)
+        while (point <= right)
         {
-            delete[] x_;
-            x_ = NULL;
+            x_points.push_back(point);
+            point += tol;
         }
 
-        if (y_ != NULL)
+        if (x_points.back() != right)
         {
-            delete[] y_;
-            y_ = NULL;
+            x_points.push_back(right);
         }
     }
 
-    void function_evaluation::set_limits(const double left, const double right, const double tol)
+    void function_evaluation::evaluate_function(const points_container &x_points, points_container &y_points, const funtion_ptr f)
     {
-        assert(left < right);
-
-        tol_ = tol;
-
-        left_limit_ = left;
-        right_limit_ = right;
-
-        create_vectors();
-    }
-
-    void function_evaluation::evaluate(const funtion_ptr f)
-    {
-        assert(f != NULL);
-
-        for (int i = 0; i < n_; i++)
+        for (auto x : x_points)
         {
-            x_[i] = left_limit_ + i * tol_;
-            y_[i] = f(x_[i]);
+            y_points.push_back(f(x));
         }
     }
 
     std::ostream &function_evaluation::write(std::ostream &os) const
     {
-        os << "#" << std::setw(11) << "x" << std::setw(11) << "y" << std::endl;
-
-        for (int i = 0; i < n_; i++)
+        os << "#" << std::setw(10) << "x" << std::setw(10) << "f(x)" << std::endl;
+        for (size_t i = 0; i < x_points_.size(); ++i)
         {
-            os << " " << std::setw(11) << std::fixed << std::setprecision(7) << x_[i] << std::setw(11) << std::fixed << std::setprecision(7) << y_[i] << std::endl;
+            os << " " << std::setw(10) << std::fixed << std::setprecision(3) << x_points_[i] << std::setw(10)  << std::fixed << std::setprecision(3) << y_points_[i] << std::endl;
         }
 
         return os;
     }
 
+    double function_evaluation::get_left_limit(void) const
+    {
+        return x_points_.front();
+    }
+
+    double function_evaluation::get_right_limit(void) const
+    {
+        return x_points_.back();
+    }
+
+    double function_evaluation::get_tolerance(void) const
+    {
+        assert(x_points_.size() > 1);
+
+        return x_points_[1] - x_points_[0];
+    }
+
+}
+
+std::ostream &operator<<(std::ostream &os, const AyED::function_evaluation &f)
+{
+    return f.write(os);
 }
