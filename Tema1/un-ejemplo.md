@@ -1,12 +1,12 @@
 # Un ejemplo de una clase compleja
 
-Ref. [code1a](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector1/vector_t.hpp)
-Ref. [code1b](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector1/vector_t.cpp)
-Ref. [code1c](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector1/main.cpp)
+Ref. [code1a](vector/vector1/vector_t.hpp)
+Ref. [code1b](vector/vector1/vector_t.cpp)
+Ref. [code1c](vector/vector1/main.cpp)
 
-Ref. [code2a](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector2/vector_t.hpp)
-Ref. [code2b](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector2/vector_t.cpp)
-Ref. [code2c](https://github.com/RieraULL/AED-ULL/blob/master/vector/vector2/main.cpp)
+Ref. [code2a](vector/vector2/vector_t.hpp)
+Ref. [code2b](vector/vector2/vector_t.cpp)
+Ref. [code2c](vector/vector2/main.cpp)
 
 A continuación se describe una clase que representa un tipo de dato algo más complejo de lo que hemos visto hasta el momento. Se trata de un clase que representa un vector cuyos elementos son de tipo `double`. En esta ocasión el código se presenta en tres ficheros. Un primer fichero `vector_t.hpp` en el que se incluye únicamente la declaración de la clase `vector_t`; un segundo fichero `vector_t.cpp` en el que se incluye la implementación de los métodos de la clase `vector_t`; y un último fichero `main.cpp` en el que se incluye el programa principal de nuestro sencillo programa. 
 

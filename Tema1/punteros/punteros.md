@@ -1,23 +1,23 @@
 # Punteros en C y C++
 
-Ref. [code1C](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer1.c)
-Ref. [code1CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer1.cpp)
+Ref. [code1C](code1/pointer1.c)
+Ref. [code1CPP](code1/pointer1.cpp)
 
-Ref. [code2C](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer2.c)
-Ref. [code2CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer2.cpp)
+Ref. [code2C](code1/pointer2.c)
+Ref. [code2CPP](code1/pointer2.cpp)
 
-Ref. [code3C](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer3.c)
-Ref. [code3CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer3.cpp)
+Ref. [code3C](code1/pointer3.c)
+Ref. [code3CPP](code1/pointer3.cpp)
 
-Ref. [code4C](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer4.c)
-Ref. [code4CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer4.cpp)
+Ref. [code4C](code1/pointer4.c)
+Ref. [code4CPP](code1/pointer4.cpp)
 
-Ref. [code5C](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer5.c)
-Ref. [code5CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/pointer5.cpp)
+Ref. [code5C](code1/pointer5.c)
+Ref. [code5CPP](/code1/pointer5.cpp)
 
-Ref. [code6CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/func1.cpp)
+Ref. [code6CPP](code1/func1.cpp)
 
-Ref. [code7CPP](https://github.com/RieraULL/AED-ULL/blob/master/code1/func2.cpp)
+Ref. [code7CPP](code1/func2.cpp)
 
 ## Introducción
 

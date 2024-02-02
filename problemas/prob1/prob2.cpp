@@ -3,18 +3,16 @@
 #include <cstdlib>
 #include <cmath>
 
-#define MAX_SZ  9
+#define MAX_SZ 9
 #define MAX_VAL 2
-
-using namespace std;
 
 int count_eq(double v[], int sz, double val, double tol)
 {
 	int count = 0;
 
-	for(int i = 0; i < sz; i ++)
+	for (int i = 0; i < sz; i++)
 		if (fabs(v[i] - val) < tol)
-			count ++;
+			count++;
 
 	return count;
 }
@@ -27,10 +25,9 @@ int main(void)
 	const int c2 = count_eq(v1, MAX_SZ, 1.0, 1E-3);
 	const int c3 = count_eq(v1, MAX_SZ, 1.0, 1E-2);
 	const int c4 = count_eq(v1, MAX_SZ, 1.0, 1E-1);
-	
-	cout << "Tolerancia 1E-4: " << setw(2) << c1 << endl;
-	cout << "Tolerancia 1E-3: " << setw(2) << c2 << endl;
-	cout << "Tolerancia 1E-2: " << setw(2) << c3 << endl;
-	cout << "Tolerancia 1E-1: " << setw(2) << c4 << endl;
-}
 
+	std::cout << "Tolerancia 1E-4: " << std::setw(2) << c1 << std::endl;
+	std::cout << "Tolerancia 1E-3: " << std::setw(2) << c2 << std::endl;
+	std::cout << "Tolerancia 1E-2: " << std::setw(2) << c3 << std::endl;
+	std::cout << "Tolerancia 1E-1: " << std::setw(2) << c4 << std::endl;
+}

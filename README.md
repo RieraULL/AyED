@@ -13,5 +13,15 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
 
 * Introducción a C++
   * [Problemas de repaso](problemas/Problemas1.md)
-  * [Punteros en C++](punteros.md)
-
+  * [Punteros en C++](Tema1/punteros/punteros.md)
+  * [Clases](Tema1/clases/clases.md)
+    * [Declarando una clase](Tema1/clases/definicion-de-clases.md)
+    * [Implementando una clase](Tema1/clases/implementacion-de-clases.md)
+    * [Declarando objetos](Tema1/clases/declarando-objetos.md)
+    * [Invocando métodos](Tema1/clases/invocando-metodos.md)
+    * [Objetos constantes](Tema1/clases/declarando-objetos-constantes.md)
+    * [Objetos dinámicos](Tema1/clases/objetos-dinamicos.md)
+    * [Paso de parámetros](Tema1/clases/paso-de-parametros.md)
+    * [Sobrecarga de operadores](Tema1/clases/sobrecarga-de-operadores.md)
+  * [Un ejemplo complejo](Tema1/clases/un-ejemplo.md)
+  * [Problemas sobre clases](Tema1/clases/Problemas2.md)	
