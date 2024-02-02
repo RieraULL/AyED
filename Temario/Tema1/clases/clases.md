@@ -1,6 +1,6 @@
 # Clases
 
-Ref. [code](/code/code0.c)
+Ref. [code](code/code0.c)
 
 Una case es, en esencia, la definición de un tipo de dato complejo. En ocasiones se implementa como una estructura que permite la descripción de las características \(atributos\) y comportamiento \(métodos\) de un conjunto de objetos. Las clases, como habíamos mencionado anteriormente pueden implementarse en casi cualquier lenguaje de programación.
 
