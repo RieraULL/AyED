@@ -9,11 +9,6 @@ El siguiente código
 ```cpp
 class complex_t {
 
-private:
-
-    double r_;
-    double i_;
-
 public:
 
     complex_t(double r,double i);
@@ -37,6 +32,11 @@ private:
 
     double get_mod(void) const;
     double get_phase(void) const;
+    
+ private:
+
+    double r_;
+    double i_;
 };
 ```
 
