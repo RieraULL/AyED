@@ -32,10 +32,10 @@ namespace AyED
 	{
 	public:
 		point_t(void) : x_(0),
-						y_(0) {}
+				y_(0) {}
 
 		point_t(double x, double y) : x_(x),
-									  y_(y) {}
+					      y_(y) {}
 
 		~point_t(void) {}
 
