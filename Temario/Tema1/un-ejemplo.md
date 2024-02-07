@@ -20,11 +20,6 @@ El siguiente fragmento de código recoge la declaración de la clase, así como 
 ~~~cpp
 class vector_t{
 
-  private:
-
-    double* base_;
-    size_t  sz_;
-
   public:
 
     vector_t(void);
@@ -47,6 +42,11 @@ class vector_t{
   private:
     void build(size_t sz);
     void destroy(void);
+
+  private:
+
+    double* base_;
+    size_t  sz_;
     
 };
 
