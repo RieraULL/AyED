@@ -206,6 +206,7 @@ Los siguiente métodos de entrada salida tienen como propósito la escritura y l
 ## Actividades propuestas
 
 1. Modifica la clase `vector_t` para que incluya, además de los constructores actuales, un constructor 
+
 ~~~cpp
 	vector_t(int a, int b);
 ~~~
