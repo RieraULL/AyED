@@ -20,5 +20,7 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
     * [Objetos dinámicos](Temario/Tema1/clases/objetos-dinamicos.md)
     * [Paso de parámetros](Temario/Tema1/clases/paso-de-parametros.md)
     * [Sobrecarga de operadores](Temario/Tema1/clases/sobrecarga-de-operadores.md)
+    * [Herencia](Temario/Tema1/clases/herencia.md)
+    * [Plantillas](Temario/Tema1/clases/plantillas.md)
   * [Un ejemplo complejo](Temario/Tema1/un-ejemplo.md) 
   * [Problemas sobre clases](problemas/Problemas2.md)	
