@@ -5,8 +5,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 int main(void){
 	
  	int    a;
@@ -21,9 +19,9 @@ int main(void){
 	a_ptr = &a; 
 	b_ptr = &b; 
 	
-	cout << setw(4) << a << setw(16) <<  a_ptr << endl; 
-	cout << setw(4) << fixed << setprecision(1) << b << setw(16) <<  b_ptr << endl; 
-	cout << setw(4) << a << setw(16) << *a_ptr << endl; 
+	std::cout << std::setw(4) << a << std::setw(16) <<  a_ptr << std::endl; 
+	std::cout << std::setw(4) << std::fixed << std::setprecision(1) << b << std::setw(16) <<  b_ptr << std::endl; 
+	std::cout << std::setw(4) << a << std::setw(16) << *a_ptr << std::endl; 
 
 	return 0;
 }

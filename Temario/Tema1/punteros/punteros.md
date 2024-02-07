@@ -56,9 +56,9 @@ int main(void){
 	a_ptr = &a; 
 	b_ptr = &b; 
 
-	cout << setw(4) << a << setw(16) <<  a_ptr << endl; 
-	cout << setw(4) << fixed << setprecision(1) << b << setw(16) <<  b_ptr << endl; 
-	cout << setw(4) << a << setw(16) << *a_ptr << endl;
+	std::cout << std::setw(4) << a << std::setw(16) <<  a_ptr << std::endl; 
+	std::cout << std::setw(4) << fixed << std::setprecision(1) << b << std::setw(16) <<  b_ptr << std::endl; 
+	std::cout << std::setw(4) << a << std::setw(16) << *a_ptr << std::endl;
 	
 	return 0;
 }
@@ -108,8 +108,8 @@ int main(void){
 
 	for(int i = 0; i < MAXIMO; i++)
 	{	
-		cout << setw(4) << a[i] << setw(4) << *(a_ptr + i) << endl; 
-		cout << setw(4) << a_ptr[i] << setw(4) << *(a + i) << endl; 
+		std::cout << std::setw(4) << a[i] << std::setw(4) << *(a_ptr + i) << std::endl; 
+		std::cout << std::setw(4) << a_ptr[i] << std::setw(4) << *(a + i) << std::endl; 
 	}
 
 	return 0;
@@ -139,7 +139,7 @@ int main(void){
 	p = numbers;     *(p+4) = 50;
 
 	for(int i = 0; i < MAXIMO; i++)
-		cout << setw(4) << numbers[i] << endl;				
+		std::cout << std::setw(4) << numbers[i] << std::endl;				
 }
 ~~~
 
@@ -165,10 +165,10 @@ int main(void)
 {
    const int a = 10, b = 5;
  
-   cout << opera(a, b, suma)  << endl;
-   cout << opera(a, b, rest)  << endl;
-   cout << opera(a, b, mult)  << endl;
-   cout << opera(a, b, div )  << endl;
+   std::cout << opera(a, b, suma)  << std::endl;
+   std::cout << opera(a, b, rest)  << std::endl;
+   std::cout << opera(a, b, mult)  << std::endl;
+   std::cout << opera(a, b, div )  << std::endl;
 }
 ~~~
 
@@ -195,7 +195,7 @@ int main(void)
    const int a = 10, b = 5;
 
    for(size_t i = 0; i < N_OP; i++)
-		cout << opera(a, b, opera_array[i]) << endl;
+		std::cout << opera(a, b, opera_array[i]) << std::endl;
 }
 ~~~
 
@@ -226,10 +226,10 @@ int main(void){
 	{
 		a[i] = i;
 		a_ptr[i] = i;
-		cout << setw(4) << a[i] << setw(4) << a_ptr[i] << endl;
+		std::cout << std::setw(4) << a[i] << std::setw(4) << a_ptr[i] << std::endl;
 	}
 
-	cout << setw(4) << *b_ptr << endl;
+	std::cout << std::setw(4) << *b_ptr << std::endl;
 			
 	delete [] a_ptr;	
 	a_ptr = NULL;

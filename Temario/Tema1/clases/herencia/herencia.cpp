@@ -3,135 +3,132 @@
 #include <cmath>
 #include <vector>
 
-using namespace std;
-
-class position_t {
-private:
-	int x_;
-	int y_;
-
-public:
-	position_t(int x, int y):
-	x_(x),
-	y_(y) {}
-
-	~position_t(void) {}
-
-	void set(int x, int y)
-	{
-		x_ = x;
-		y_ = y;
-	}
-
-	int get_x(void) {return x_;}
-	int get_t(void) {return y_;}
-
-	void write(ostream& os) {os << "(" << x_ << ", " << y_ << ")";}
-};
-
-class shape_t: public position_t {
-
-public:
-	shape_t(const position_t& p):
-	position_t(p) {}
-
-	virtual ~shape_t(void) {}
-
-	virtual double area(void) = 0;
-	virtual double perimeter(void) = 0;
-	virtual void write(ostream& os) = 0;
-};
-
-
-class trapecio_t: public shape_t 
+namespace AyED
 {
-private:
-	double base_;
-	double Base_;
-	double h_;
 
-public:
-	trapecio_t(const position_t& p, double base, double Base, double h):
-	shape_t(p),
-	base_(base),
-	Base_(Base),
-	h_(h) {} 
-
-	virtual ~trapecio_t(void) {}
-
-	virtual double area(void) {return (Base_ + base_) * h_ * 0.5;}
-
-	virtual double perimeter(void) {Base_ + base_ + 2 * sqrt(h_ * h_ + (Base_ - base_) * (Base_ - base_) * 0.25);}
-
-	virtual void write(ostream& os) 
+	class position
 	{
-		os << "Trapecio en posición: ";
-		position_t::write(os);
-	}	
-};
 
-class triangle_t: public trapecio_t
-{
-public:
-	triangle_t(const position_t& p, double Base, double h):
-	trapecio_t(p, 0, Base, h) {}
+	public:
+		position(int x, int y) : x_(x),
+								   y_(y) {}
 
-	virtual ~triangle_t(void) {}
+		~position(void) {}
 
-	virtual void write(ostream& os) 
+		void set(int x, int y)
+		{
+			x_ = x;
+			y_ = y;
+		}
+
+		int get_x(void) { return x_; }
+		int get_t(void) { return y_; }
+
+		void write(std::ostream &os) { os << "(" << x_ << ", " << y_ << ")"; }
+
+	private:
+		int x_;
+		int y_;
+	};
+
+	class shape : public position
 	{
-		os << "Triángulo en posición: ";
-		position_t::write(os);
-	}
-};
 
-class rectangle_t: public trapecio_t
-{
-public:
-	rectangle_t(const position_t& p, double Base, double h):
-	trapecio_t(p, Base, Base, h) {}
+	public:
+		shape(const position &p) : position(p) {}
 
-	virtual ~rectangle_t(void) {}
+		virtual ~shape(void) {}
 
-	virtual void write(ostream& os) 
+		virtual double area(void) = 0;
+		virtual double perimeter(void) = 0;
+		virtual void write(std::ostream &os) = 0;
+	};
+
+	class trapecio : public shape
 	{
-		os << "Rectángulo en posición: ";
-		position_t::write(os);
-	}
-};
+	public:
+		trapecio(const position &p, double base, double Base, double h) : shape(p),
+																			  base_(base),
+																			  Base_(Base),
+																			  h_(h) {}
 
-class square_t: public rectangle_t
-{
-public:
-	square_t(const position_t& p, double base):
-	rectangle_t(p, base, base) {}
+		virtual ~trapecio(void) {}
 
-	virtual ~square_t(void) {};
+		virtual double area(void) { return (Base_ + base_) * h_ * 0.5; }
 
-	virtual void write(ostream& os) 
+		virtual double perimeter(void) { Base_ + base_ + 2 * sqrt(h_ * h_ + (Base_ - base_) * (Base_ - base_) * 0.25); }
+
+		virtual void write(std::ostream &os)
+		{
+			os << "Trapecio en posición: ";
+			position::write(os);
+		}
+
+	private:
+		double base_;
+		double Base_;
+		double h_;
+	};
+
+	class triangle : public trapecio
 	{
-		os << "Cuadrado en posición: ";
-		position_t::write(os);
-	}
-};
+	public:
+		triangle(const position &p, double Base, double h) : trapecio(p, 0, Base, h) {}
 
+		virtual ~triangle(void) {}
+
+		virtual void write(std::ostream &os)
+		{
+			os << "Triángulo en posición: ";
+			position::write(os);
+		}
+	};
+
+	class rectangle : public trapecio
+	{
+	public:
+		rectangle(const position &p, double Base, double h) : trapecio(p, Base, Base, h) {}
+
+		virtual ~rectangle(void) {}
+
+		virtual void write(std::ostream &os)
+		{
+			os << "Rectángulo en posición: ";
+			position::write(os);
+		}
+	};
+
+	class square : public rectangle
+	{
+	public:
+		square(const position &p, double base) : rectangle(p, base, base) {}
+
+		virtual ~square(void){};
+
+		virtual void write(std::ostream &os)
+		{
+			os << "Cuadrado en posición: ";
+			position::write(os);
+		}
+	};
+}
 
 int main(void)
 {
-	vector<shape_t*> formas(4);
+	std::vector<AyED::shape *> formas(4);
 
-	formas[0] = new square_t(position_t(1,1), 5);
-	formas[1] = new rectangle_t(position_t(3,2), 4, 3);
-	formas[2] = new triangle_t(position_t(4,6), 2, 1);
-	formas[3] = new trapecio_t(position_t(1,1), 5, 4, 3);
+	formas[0] = new AyED::square(AyED::position(1, 1), 5);
+	formas[1] = new AyED::rectangle(AyED::position(3, 2), 4, 3);
+	formas[2] = new AyED::triangle(AyED::position(4, 6), 2, 1);
+	formas[3] = new AyED::trapecio(AyED::position(1, 1), 5, 4, 3);
 
-	for(int i = 0; i < 4; i ++)
+	for (int i = 0; i < 4; i++)
 	{
-		formas[i]->write(cout); cout << endl;
-		cout << "Area     : " << formas[i]->area() << endl;
-		cout << "Perímetro: " << formas[i]->perimeter() << endl;
+		formas[i]->write(std::cout);
+		std::cout << std::endl;
+		std::cout << "Area     : " << formas[i]->area() << std::endl;
+		std::cout << "Perímetro: " << formas[i]->perimeter() << std::endl;
 	}
-
 
 	return 0;
 }

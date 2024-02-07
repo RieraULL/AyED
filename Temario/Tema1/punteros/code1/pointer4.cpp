@@ -6,8 +6,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 #define MAXIMO 5
 
 int main(void){
@@ -23,5 +21,5 @@ int main(void){
 	p = numbers;     *(p+4) = 50;
 
 	for(int i = 0; i < MAXIMO; i++)
-		cout << setw(4) << numbers[i] << endl;			
+		std::cout << std::setw(4) << numbers[i] << std::endl;			
 }

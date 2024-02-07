@@ -2,16 +2,18 @@
 
 #include <iostream>
 
+
 namespace AyED
 {
-  class vector_t
+
+  class vector
   {
 
   public:
-    vector_t(void);
-    vector_t(size_t sz);
-    vector_t(const vector_t &v);
-    ~vector_t(void);
+    vector(void);
+    vector(size_t sz);
+    vector(const vector &v);
+    ~vector(void);
 
     void resize(size_t sz);
 
@@ -25,6 +27,9 @@ namespace AyED
     double &operator[](size_t i);
     double operator[](size_t i) const;
 
+    size_t ocurrencias(double d, double eps) const;
+    double scalprod(const vector &v) const;
+
   private:
     void build(size_t sz);
     void destroy(void);
@@ -33,7 +38,10 @@ namespace AyED
     double *base_;
     size_t sz_;
   };
+
 }
 
-std::ostream &operator<<(std::ostream &os, const AyED::vector_t &v);
-std::istream &operator>>(std::istream &is, AyED::vector_t &v);
+std::ostream &operator<<(std::ostream &os, const AyED::vector &v);
+std::istream &operator>>(std::istream &is, AyED::vector &v);
+
+double operator*(const AyED::vector &v, const AyED::vector &w);

@@ -1,9 +1,9 @@
-/* Compilar: g++ -g main.cpp vector_t.cpp -o vector */
+/* Compilar: g++ -g main.cpp vector.cpp -o vector */
 
 #include <iostream>
 #include <iomanip>
 
-#include "vector_t.hpp"
+#include "vector.hpp"
 
 #define VECTOR_SZ 10
 
@@ -11,8 +11,8 @@ int main(void)
 {
     const int sz = VECTOR_SZ;
     
-    AyED::vector_t v(sz);
-    AyED::vector_t w;
+    AyED::vector v(sz);
+    AyED::vector w;
     
     w.resize(sz);
     

@@ -1,4 +1,4 @@
-#include "vector_t.hpp"
+#include "vector.hpp"
 
 #include <cstdio>
 #include <iomanip>
@@ -7,19 +7,19 @@
 namespace AyED
 {
 
-    vector_t::vector_t(void) : base_(NULL),
-                               sz_(0)
+    vector::vector(void) : base_(NULL),
+                           sz_(0)
     {
     }
 
-    vector_t::vector_t(size_t sz) : base_(NULL),
-                                    sz_(sz)
+    vector::vector(size_t sz) : base_(NULL),
+                                sz_(sz)
     {
         build(sz_);
     }
 
-    vector_t::vector_t(const vector_t &v) : base_(NULL),
-                                            sz_(v.sz_)
+    vector::vector(const vector &v) : base_(NULL),
+                                      sz_(v.sz_)
     {
         build(sz_);
 
@@ -27,38 +27,38 @@ namespace AyED
             base_[i] = v.base_[i];
     }
 
-    vector_t::~vector_t(void)
+    vector::~vector(void)
     {
         destroy();
     }
 
-    void vector_t::resize(size_t sz)
+    void vector::resize(size_t sz)
     {
         destroy();
         sz_ = sz;
         build(sz_);
     }
 
-    size_t vector_t::size(void) const
+    size_t vector::size(void) const
     {
         return sz_;
     }
 
-    double &vector_t::at(size_t i)
+    double &vector::at(size_t i)
     {
         assert(i < sz_);
 
         return base_[i];
     }
 
-    double vector_t::at(size_t i) const
+    double vector::at(size_t i) const
     {
         assert(i < sz_);
 
         return base_[i];
     }
 
-    std::ostream &vector_t::write(std::ostream &os) const
+    std::ostream &vector::write(std::ostream &os) const
     {
         os << std::setw(8) << sz_ << std::endl;
 
@@ -68,7 +68,7 @@ namespace AyED
         os << std::endl;
     }
 
-    std::istream &vector_t::read(std::istream &is)
+    std::istream &vector::read(std::istream &is)
     {
         is >> sz_;
 
@@ -78,22 +78,22 @@ namespace AyED
             is >> base_[i];
     }
 
-    double &vector_t::operator[](size_t i)
+    double &vector::operator[](size_t i)
     {
         return at(i);
     }
 
-    double vector_t::operator[](size_t i) const
+    double vector::operator[](size_t i) const
     {
         return at(i);
     }
 
-    void vector_t::build(size_t sz)
+    void vector::build(size_t sz)
     {
         base_ = new double[sz];
     }
 
-    void vector_t::destroy(void)
+    void vector::destroy(void)
     {
         if (base_ != NULL)
         {
@@ -104,12 +104,12 @@ namespace AyED
 
 }
 
-std::ostream &operator<<(std::ostream &os, const AyED::vector_t &v)
+std::ostream &operator<<(std::ostream &os, const AyED::vector &v)
 {
     return v.write(os);
 }
 
-std::istream &operator>>(std::istream &is, AyED::vector_t &v)
+std::istream &operator>>(std::istream &is, AyED::vector &v)
 {
     return v.read(is);
 }

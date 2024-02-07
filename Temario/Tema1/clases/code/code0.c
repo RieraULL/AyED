@@ -5,65 +5,65 @@
 
 #define EPS 1E-3
 
-struct struct_complex_t {
+struct struct_complex {
 
 	double r_;
 	double i_;
 };
 
-typedef struct struct_complex_t complex_t; 
+typedef struct struct_complex complex; 
 
-void inicializa_complejo1(complex_t* c, double r, double i)
+void inicializa_complejo1(complex* c, double r, double i)
 {
 	c->r_ = r;
 	c->i_ = i;
 }
 
-void inicializa_complejo2(complex_t* c)
+void inicializa_complejo2(complex* c)
 {
 	c->r_ = 0;
 	c->i_ = 0;
 }
 
 
-void imprime_complejo(complex_t* c)
+void imprime_complejo(complex* c)
 {
 	printf(" %3.1lf + %3.1lfi", c->r_, c->i_);
 }
 
-void set_real(complex_t* c, double r)
+void set_real(complex* c, double r)
 {
 	c->r_ = r;
 }
 	
-void set_imag(complex_t* c, double i)
+void set_imag(complex* c, double i)
 {
 	c->i_ = i;
 }
 
-double get_real(complex_t* c)
+double get_real(complex* c)
 {
 	return c->r_;
 }
 
-double get_imag(complex_t* c)
+double get_imag(complex* c)
 {
 	return c->i_;
 }
 
-double get_modulo(complex_t* c)
+double get_modulo(complex* c)
 {
 	return sqrt(c->r_ * c->r_ + c->i_ * c->i_);	
 }
 
-double get_fase(complex_t* c)
+double get_fase(complex* c)
 {
 	return atan2(c->i_, c ->r_);	
 }
 
-complex_t suma(complex_t* c1,complex_t* c2)
+complex suma(complex* c1,complex* c2)
 {
-	complex_t aux;
+	complex aux;
 
 	aux.r_ = c1->r_ + c2->r_;
 	aux.i_ = c1->i_ + c2->i_;
@@ -71,9 +71,9 @@ complex_t suma(complex_t* c1,complex_t* c2)
 	return aux;
 }
 
-complex_t producto(complex_t* c1,complex_t* c2)
+complex producto(complex* c1,complex* c2)
 {
-	complex_t aux;
+	complex aux;
 
 	aux.r_ = c1->r_ * c2->r_ - c1->i_ * c2->i_;
 	aux.i_ = c1->r_ * c2->i_ + c2->r_ * c1->i_ ;
@@ -81,14 +81,14 @@ complex_t producto(complex_t* c1,complex_t* c2)
 	return aux;	
 }
 
-int iguales(complex_t* c1,complex_t* c2)
+int iguales(complex* c1,complex* c2)
 {
 	return ((fabs(c1->r_ - c2->r_) < EPS) && (fabs(c1->i_ - c2->i_) < EPS));
 }
 
 int main(void)
 {	
-	complex_t a,b,c,d;
+	complex a,b,c,d;
 	
 	inicializa_complejo1(&a, 1, 2);
 	inicializa_complejo1(&b, 2, 3);

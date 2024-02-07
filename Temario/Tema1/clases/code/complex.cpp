@@ -7,13 +7,13 @@ using namespace std;
 namespace AyED
 {
 
-	class complex_t
+	class complex
 	{
 	public:
-		complex_t(double r, double i);
-		complex_t(void);
+		complex(double r, double i);
+		complex(void);
 
-		~complex_t(void);
+		~complex(void);
 
 		void write_cartesian(std::ostream &os) const;
 		void write_polar(std::ostream &os) const;
@@ -24,8 +24,8 @@ namespace AyED
 		double get_real(void) const;
 		double get_imag(void) const;
 
-		void get(complex_t &c) const;
-		void set(const complex_t &c);
+		void get(complex &c) const;
+		void set(const complex &c);
 
 	private:
 		double get_mod(void) const;
@@ -36,18 +36,18 @@ namespace AyED
 		double i_;
 	};
 
-	complex_t::complex_t(double r, double i): r_(r), i_(i)
+	complex::complex(double r, double i): r_(r), i_(i)
 	{}
 
-	complex_t::complex_t(void): r_(0), i_(0)
+	complex::complex(void): r_(0), i_(0)
 	{}
 
-	complex_t::~complex_t(void)
+	complex::~complex(void)
 	{
 		std::cout << "-- Bye, bye, complex! --" << std::endl;
 	}
 
-	void complex_t::write_cartesian(std::ostream &os) const
+	void complex::write_cartesian(std::ostream &os) const
 	{
 		os << std::setw(3) << std::fixed << std::setprecision(1) << r_;
 		os << " + ";
@@ -55,7 +55,7 @@ namespace AyED
 		os << "i";
 	}
 
-	void complex_t::write_polar(std::ostream &os) const
+	void complex::write_polar(std::ostream &os) const
 	{
 		const double mod = get_mod();
 		const double pha = get_phase();
@@ -70,52 +70,52 @@ namespace AyED
 		os << ")";
 	}
 
-	void complex_t::get(complex_t &c) const
+	void complex::get(complex &c) const
 	{
 		c.r_ = r_;
 		c.i_ = i_;
 	}
 
-	void complex_t::set(const complex_t &c)
+	void complex::set(const complex &c)
 	{
 		r_ = c.r_;
 		i_ = c.i_;
 	}
 
-	void complex_t::set_imag(double i)
+	void complex::set_imag(double i)
 	{
 		i_ = i;
 	}
 
-	double complex_t::get_real(void) const
+	double complex::get_real(void) const
 	{
 		return r_;
 	}
 
-	double complex_t::get_imag(void) const
+	double complex::get_imag(void) const
 	{
 		return i_;
 	}
 
-	double complex_t::get_mod(void) const
+	double complex::get_mod(void) const
 	{
 		return sqrt(r_ * r_ + i_ * i_);
 	}
 
-	double complex_t::get_phase(void) const
+	double complex::get_phase(void) const
 	{
 		return atan2(i_, r_);
 	}
 
-	std::ostream &operator<<(std::ostream &os, const complex_t &c)
+	std::ostream &operator<<(std::ostream &os, const complex &c)
 	{
 		c.write_cartesian(os);
 		return os;
 	}
 
-	complex_t operator+(const complex_t &c1, const complex_t &c2)
+	complex operator+(const complex &c1, const complex &c2)
 	{
-		complex_t aux;
+		complex aux;
 
 		aux.set_real(c1.get_real() + c2.get_real());
 		aux.set_imag(c1.get_imag() + c2.get_imag());
@@ -123,9 +123,9 @@ namespace AyED
 		return aux;
 	}
 
-	complex_t operator*(const complex_t &c1, const complex_t &c2)
+	complex operator*(const complex &c1, const complex &c2)
 	{
-		complex_t aux;
+		complex aux;
 
 		aux.set_real(c1.get_real() * c2.get_real() - c1.get_imag() * c2.get_imag());
 		aux.set_imag(c1.get_real() * c2.get_imag() + c2.get_real() * c1.get_imag());
@@ -133,7 +133,7 @@ namespace AyED
 		return aux;
 	}
 
-	bool operator==(const complex_t &c1, const complex_t &c2)
+	bool operator==(const complex &c1, const complex &c2)
 	{
 		return (c1.get_real() == c2.get_real()) && (c1.get_imag() == c2.get_imag());
 	}
@@ -141,7 +141,7 @@ namespace AyED
 
 int main(void)
 {
-	AyED::complex_t a(1, 2), b(2, 3), c(3, 4), d;
+	AyED::complex a(1, 2), b(2, 3), c(3, 4), d;
 
 	std::cout << std::endl;
 	a.write_cartesian(std::cout);
@@ -176,7 +176,7 @@ int main(void)
 
 	std::cout << std::endl;
 
-	const AyED::complex_t aa(a), bb = b, cc(c), dd(d);
+	const AyED::complex aa(a), bb = b, cc(c), dd(d);
 
 	std::cout << std::endl;
 	aa.write_cartesian(std::cout);
@@ -194,11 +194,11 @@ int main(void)
 
 	std::cout << std::endl;
 
-	AyED::complex_t * ap, *bp, *cp, *dp;
+	AyED::complex * ap, *bp, *cp, *dp;
 
 	ap = &a;
-	bp = new AyED::complex_t(6, 7);
-	cp = new AyED::complex_t(bb);
+	bp = new AyED::complex(6, 7);
+	cp = new AyED::complex(bb);
 	dp = NULL;
 
 	std::cout << std::endl;
@@ -219,8 +219,8 @@ int main(void)
 	delete cp;
 	cp = NULL;
 
-	AyED::complex_t &ar(a), &br = a;
-	const AyED::complex_t &cr = a;
+	AyED::complex &ar(a), &br = a;
+	const AyED::complex &cr = a;
 
 	std::cout << std::endl;
 	ar.write_cartesian(std::cout);

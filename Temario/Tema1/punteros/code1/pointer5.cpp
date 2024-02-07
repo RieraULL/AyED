@@ -6,8 +6,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 #define MAXIMO 10
 
 int main(void){
@@ -26,10 +24,10 @@ int main(void){
 	{			
 		a[i] = i;
 		a_ptr[i] = i;
-		cout << setw(4) << a[i] << setw(4) << a_ptr[i] << endl;
+		std::cout << std::setw(4) << a[i] << std::setw(4) << a_ptr[i] << std::endl;
 	}
 
-	cout << setw(4) << *b_ptr << endl;
+	std::cout << std::setw(4) << *b_ptr << std::endl;
 			
 	delete [] a_ptr;	
 	a_ptr = NULL;

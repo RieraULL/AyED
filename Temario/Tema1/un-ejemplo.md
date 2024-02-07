@@ -1,18 +1,18 @@
 # Un ejemplo de una clase compleja
 
-Ref. [code1a](vector/vector1/vector_t.hpp)
-Ref. [code1b](vector/vector1/vector_t.cpp)
+Ref. [code1a](vector/vector1/vector.hpp)
+Ref. [code1b](vector/vector1/vector.cpp)
 Ref. [code1c](vector/vector1/main.cpp)
 
-Ref. [code2a](vector/vector2/vector_t.hpp)
-Ref. [code2b](vector/vector2/vector_t.cpp)
+Ref. [code2a](vector/vector2/vector.hpp)
+Ref. [code2b](vector/vector2/vector.cpp)
 Ref. [code2c](vector/vector2/main.cpp)
 
-A continuación se describe una clase que representa un tipo de dato algo más complejo de lo que hemos visto hasta el momento. Se trata de un clase que representa un vector cuyos elementos son de tipo `double`. En esta ocasión el código se presenta en tres ficheros. Un primer fichero `vector_t.hpp` en el que se incluye únicamente la declaración de la clase `vector_t`; un segundo fichero `vector_t.cpp` en el que se incluye la implementación de los métodos de la clase `vector_t`; y un último fichero `main.cpp` en el que se incluye el programa principal de nuestro sencillo programa. 
+A continuación se describe una clase que representa un tipo de dato algo más complejo de lo que hemos visto hasta el momento. Se trata de un clase que representa un vector cuyos elementos son de tipo `double`. En esta ocasión el código se presenta en tres ficheros. Un primer fichero `vector.hpp` en el que se incluye únicamente la declaración de la clase `vector`; un segundo fichero `vector.cpp` en el que se incluye la implementación de los métodos de la clase `vector`; y un último fichero `main.cpp` en el que se incluye el programa principal de nuestro sencillo programa. 
 
 Estos tres ficheros deben compilarse con la llamada:
 ~~~
-g++ -g main.cpp vector_t.cpp -o vector
+g++ -g main.cpp vector.cpp -o vector
 ~~~
 
 El siguiente fragmento de código recoge la declaración de la clase, así como de dos operadores de entrada y salida.
@@ -20,14 +20,14 @@ El siguiente fragmento de código recoge la declaración de la clase, así como 
 ~~~cpp
 namespace AyED
 {
-  class vector_t
+  class vector
   {
 
   public:
-    vector_t(void);
-    vector_t(size_t sz);
-    vector_t(const vector_t &v);
-    ~vector_t(void);
+    vector(void);
+    vector(size_t sz);
+    vector(const vector &v);
+    ~vector(void);
 
     void resize(size_t sz);
 
@@ -51,8 +51,8 @@ namespace AyED
   };
 }
 
-std::ostream &operator<<(std::ostream &os, const AyED::vector_t &v);
-std::istream &operator>>(std::istream &is, AyED::vector_t &v);
+std::ostream &operator<<(std::ostream &os, const AyED::vector &v);
+std::istream &operator>>(std::istream &is, AyED::vector &v);
 ~~~
 
 Como se puede observar esta clase define un tipo de dato que representa un vector. Tal y como ya habíamos avanzado en nuestra introducción sobre [punteros](punteros.md) un vector es en realidad una región de memoria de un tamaño determinado, que se ha reservado previamente, y accesible mediante un puntero. Por ello, la clase vector de nuestro ejemplo va a estar caracterizado por dos atributos: un puntero a la base del vector `base_`, y el tamaño del vector `sz_`. Aunque no es extrictamente necesario conocer el tamaño del vector, resulta conveniente con el fin de evitar desbordamientos en el acceso.
@@ -66,8 +66,8 @@ Vamos a crear tres constructores:
 En este caso es de gran importancia llevar a cabo un constructor de copia, ya que, como habíamos adelantado en secciones anteriores, el constructor de copia que crea el compilador por defecto, copia en el objeto receptor los atributos del objeto original. Esto supone que si llevamos a cabo una llamada de este tipo:
 
 ~~~cpp
-	vector_t a(5);
-	vector_t b(a);
+	vector a(5);
+	vector b(a);
 ~~~
 
 el vector `a` puede que tenga en sus atributos los valores `(0xA1B34, 5)`; así que al crear el vector `b` lo inicializaremos con el mismo contenido `(0xA1B34, 5)`. El gran inconveniente es que ambos vectores comparten la misma dirección base, por lo que si introducimos un elemento en el vector `a`:
@@ -92,29 +92,29 @@ Dentro de la familia de métodos podemos encontrar:
 Se muestra a continuación la implementación de dos constructores y el destructor.
 
 ~~~cpp
-vector_t::vector_t(void):
+vector::vector(void):
 base_(NULL),
 sz_(0)
 {}
 
-vector_t::vector_t(size_t sz):
+vector::vector(size_t sz):
 base_(NULL),
 sz_(sz)
 {
     build(sz_);
 }
 
-vector_t::~vector_t(void)
+vector::~vector(void)
 {
     destroy();
 }
 
-void vector_t::build(size_t sz)
+void vector::build(size_t sz)
 {
     base_ = new double [sz];
 }
 
-void vector_t::destroy(void)
+void vector::destroy(void)
 {
     if (base_ != NULL){
 
@@ -129,7 +129,7 @@ El segundo de los constructores llama al procedimiento privado `build` para rese
 De igual manera, el método `resize` hace uso de estos dos métodos privados.
 
 ~~~cpp
-void vector_t::resize(size_t sz)
+void vector::resize(size_t sz)
 {
     destroy();
     sz_ = sz;
@@ -143,14 +143,14 @@ Nótese que esta versión del método `resize` no preserva los datos que estaban
 Veamos a continuación la implementacón de los métodos de acceso:
 
 ~~~cpp
-double& vector_t::at(size_t i)
+double& vector::at(size_t i)
 {
 	assert(i < sz_);
 
     return base_[i];
 }
 
-double vector_t::at(size_t i) const
+double vector::at(size_t i) const
 {
 	assert(i < sz_);
 
@@ -165,12 +165,12 @@ Si quiere ver cómo funciona, prueba a acceder a una posición del vector poster
 Los métodos de sobrecarga del operador `[]` hacen referencia a los métodos de acceso reseñados anteriormente.
 
 ~~~cpp
-double& vector_t::operator[](size_t i)
+double& vector::operator[](size_t i)
 {
     return at(i);
 }
 
-double vector_t::operator[](size_t i) const
+double vector::operator[](size_t i) const
 {
     return at(i);
 }
@@ -180,7 +180,7 @@ double vector_t::operator[](size_t i) const
 Los siguiente métodos de entrada salida tienen como propósito la escritura y la lectura, respectivamente, de un vector en/desde fichero.
 
 ~~~cpp
-    std::ostream &vector_t::write(std::ostream &os) const
+    std::ostream &vector::write(std::ostream &os) const
     {
         os << std::setw(8) << sz_ << std::endl;
 
@@ -190,7 +190,7 @@ Los siguiente métodos de entrada salida tienen como propósito la escritura y l
         os << std::endl;
     }
 
-    std::istream &vector_t::read(std::istream &is)
+    std::istream &vector::read(std::istream &is)
     {
         is >> sz_;
 
@@ -205,19 +205,19 @@ Los siguiente métodos de entrada salida tienen como propósito la escritura y l
 
 ## Actividades propuestas
 
-1. Modifica la clase `vector_t` para que incluya, además de los constructores actuales, un constructor 
+1. Modifica la clase `vector` para que incluya, además de los constructores actuales, un constructor 
 
 ~~~cpp
-	vector_t(int a, int b);
+	vector(int a, int b);
 ~~~
 que permita indexar el vector en el rango [a, b]. Permitiendo accesos como éste:
 ~~~cpp
-	vector_t a(-10, -1);
+	vector a(-10, -1);
 
 	a[-5] = 4;
 ~~~
 :boom: Pista: Se deben cambiar los atributos, incluso de tipo de dato.
 
-2. Modifica la clase `vector_t` para que el método `resize` preserve el contenido original del vector.
+2. Modifica la clase `vector` para que el método `resize` preserve el contenido original del vector.
 
-3. Modifica la clase `vector_t` para que almacene elementos de tipo entero.
+3. Modifica la clase `vector` para que almacene elementos de tipo entero.

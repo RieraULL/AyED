@@ -5,7 +5,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
 
 #define MAXIMO 10
 
@@ -28,8 +27,8 @@ int main(void){
 
 	for(int i = 0; i < MAXIMO; i++)
 	{	
-		cout << setw(4) << a[i] << setw(4) << *(a_ptr + i) << endl; 
-		cout << setw(4) << a_ptr[i] << setw(4) << *(a + i) << endl; 
+		std::cout << std::setw(4) << a[i] << std::setw(4) << *(a_ptr + i) << std::endl; 
+		std::cout << std::setw(4) << a_ptr[i] << std::setw(4) << *(a + i) << std::endl; 
 	}
 
 	return 0;
