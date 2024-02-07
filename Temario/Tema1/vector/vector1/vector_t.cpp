@@ -58,17 +58,17 @@ namespace AyED
         return base_[i];
     }
 
-    ostream &vector_t::write(ostream &os) const
+    std::ostream &vector_t::write(std::ostream &os) const
     {
-        os << setw(8) << sz_ << endl;
+        os << std::setw(8) << sz_ << std::endl;
 
         for (int i = 0; i < sz_; i++)
-            os << setw(8) << fixed << setprecision(4) << base_[i] << " ";
+            os << std::setw(8) << std::fixed << std::setprecision(4) << base_[i] << " ";
 
-        os << endl;
+        os << std::endl;
     }
 
-    istream &vector_t::read(istream &is)
+    std::istream &vector_t::read(std::istream &is)
     {
         is >> sz_;
 
@@ -104,12 +104,12 @@ namespace AyED
 
 }
 
-ostream &operator<<(ostream &os, const AyED::vector_t &v)
+std::ostream &operator<<(std::ostream &os, const AyED::vector_t &v)
 {
     return v.write(os);
 }
 
-istream &operator>>(istream &is, AyED::vector_t &v)
+std::istream &operator>>(std::istream &is, AyED::vector_t &v)
 {
     return v.read(is);
 }

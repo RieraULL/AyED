@@ -3,8 +3,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 #include "vector_t.hpp"
 
 #define VECTOR_SZ 10
@@ -29,6 +27,7 @@ int main(void)
         w[i] = val;
     }
     
-    v.write(cout); cout << endl;
-    cout << w << endl;
+    v.write(std::cout); 
+    std::cout << std::endl;
+    std::cout << w << std::endl;
 }

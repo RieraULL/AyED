@@ -18,40 +18,41 @@ g++ -g main.cpp vector_t.cpp -o vector
 El siguiente fragmento de código recoge la declaración de la clase, así como de dos operadores de entrada y salida.
 
 ~~~cpp
-class vector_t{
+namespace AyED
+{
+  class vector_t
+  {
 
   public:
-
     vector_t(void);
     vector_t(size_t sz);
-    vector_t(const vector_t& v);
+    vector_t(const vector_t &v);
     ~vector_t(void);
-    
+
     void resize(size_t sz);
-    
-    size_t  size(void) const;
-    double& at(size_t i);
-    double  at(size_t i) const;
-    
-    ostream& write(ostream& os) const;
-    istream& read(istream& is);
-        
-    double& operator[](size_t i);
-    double  operator[](size_t i) const;
-    
+
+    size_t size(void) const;
+    double &at(size_t i);
+    double at(size_t i) const;
+
+    std::ostream &write(std::ostream &os) const;
+    std::istream &read(std::istream &is);
+
+    double &operator[](size_t i);
+    double operator[](size_t i) const;
+
   private:
     void build(size_t sz);
     void destroy(void);
 
   private:
+    double *base_;
+    size_t sz_;
+  };
+}
 
-    double* base_;
-    size_t  sz_;
-    
-};
-
-ostream& operator<<(ostream& os, const vector_t& v);
-istream& operator>>(istream& is, vector_t& v);
+std::ostream &operator<<(std::ostream &os, const AyED::vector_t &v);
+std::istream &operator>>(std::istream &is, AyED::vector_t &v);
 ~~~
 
 Como se puede observar esta clase define un tipo de dato que representa un vector. Tal y como ya habíamos avanzado en nuestra introducción sobre [punteros](punteros.md) un vector es en realidad una región de memoria de un tamaño determinado, que se ha reservado previamente, y accesible mediante un puntero. Por ello, la clase vector de nuestro ejemplo va a estar caracterizado por dos atributos: un puntero a la base del vector `base_`, y el tamaño del vector `sz_`. Aunque no es extrictamente necesario conocer el tamaño del vector, resulta conveniente con el fin de evitar desbordamientos en el acceso.
@@ -179,25 +180,25 @@ double vector_t::operator[](size_t i) const
 Los siguiente métodos de entrada salida tienen como propósito la escritura y la lectura, respectivamente, de un vector en/desde fichero.
 
 ~~~cpp
-ostream& vector_t::write(ostream& os) const
-{
-    os << setw(8) << sz_ << endl;
-    
-    for(int i = 0; i < sz_; i++)
-        os << setw(8) << fixed << setprecision(4) << base_[i] << " ";
-        
-    os << endl;
-}
+    std::ostream &vector_t::write(std::ostream &os) const
+    {
+        os << std::setw(8) << sz_ << std::endl;
 
-istream& vector_t::read(istream& is)
-{
-    is >> sz_;
-    
-    resize(sz_);
-    
-    for(int i = 0; i < sz_; i++)
-        is >> base_[i];
-}
+        for (int i = 0; i < sz_; i++)
+            os << std::setw(8) << std::fixed << std::setprecision(4) << base_[i] << " ";
+
+        os << std::endl;
+    }
+
+    std::istream &vector_t::read(std::istream &is)
+    {
+        is >> sz_;
+
+        resize(sz_);
+
+        for (int i = 0; i < sz_; i++)
+            is >> base_[i];
+    }
 ~~~
 
 

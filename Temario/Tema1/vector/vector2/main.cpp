@@ -3,8 +3,6 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
 #include "vector_t.hpp"
 
 #define VECTOR_SZ 10
@@ -13,8 +11,8 @@ int main(void)
 {
     const int sz = VECTOR_SZ;
     
-    vector_t v(sz);
-    vector_t w;
+    AyED::vector_t v(sz);
+    AyED::vector_t w;
     
     w.resize(sz);
     
@@ -29,15 +27,15 @@ int main(void)
         w[i] = val;
     }
     
-    v.write(cout); cout << endl;
-    cout << w << endl;
+    v.write(std::cout); std::cout << std::endl;
+    std::cout << w << std::endl;
 
     const int ocur1 = v.ocurrencias(5.2, 0.001);
     const int ocur2 = v.ocurrencias(5.2, 0.100);
     const int ocur3 = v.ocurrencias(5.2, 0.500);
     
-    cout << setw(5) << ocur1 << setw(5) << ocur2 << setw(5) << ocur3 << endl;
+    std::cout << std::setw(5) << ocur1 << std::setw(5) << ocur2 << std::setw(5) << ocur3 << std::endl;
     
-    cout << v * w << endl;
-    cout << v.scalprod(w) << endl;
+    std::cout << v * w << std::endl;
+    std::cout << v.scalprod(w) << std::endl;
 }

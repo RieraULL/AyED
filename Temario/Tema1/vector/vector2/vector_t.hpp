@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-using namespace std;
 
 namespace AyED
 {
@@ -22,8 +21,8 @@ namespace AyED
     double &at(size_t i);
     double at(size_t i) const;
 
-    ostream &write(ostream &os) const;
-    istream &read(istream &is);
+    std::ostream &write(std::ostream &os) const;
+    std::istream &read(std::istream &is);
 
     double &operator[](size_t i);
     double operator[](size_t i) const;
@@ -42,7 +41,7 @@ namespace AyED
 
 }
 
-ostream &operator<<(ostream &os, const AyED::vector_t &v);
-istream &operator>>(istream &is, AyED::vector_t &v);
+std::ostream &operator<<(std::ostream &os, const AyED::vector_t &v);
+std::istream &operator>>(std::istream &is, AyED::vector_t &v);
 
 double operator*(const AyED::vector_t &v, const AyED::vector_t &w);
