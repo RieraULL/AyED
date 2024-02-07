@@ -13,8 +13,8 @@ int main(void)
 {
     const int sz = VECTOR_SZ;
     
-    vector_t v(sz);
-    vector_t w;
+    AyED::vector_t v(sz);
+    AyED::vector_t w;
     
     w.resize(sz);
     
