@@ -16,12 +16,12 @@ int main(void)
     cp = new complex_t(b);
     dp = NULL;
 
-    cout << endl;
+    std::cout << std::endl;
     ap->write_cartesian(cout); cout << endl;
     bp->write_cartesian(cout); cout << endl;
     cp->write_cartesian(cout); cout << endl;
     /* dp->write_cartesian(cout);  ERROR */
-    cout << endl;
+    std::cout << std::endl;
 
     ap = NULL;
 

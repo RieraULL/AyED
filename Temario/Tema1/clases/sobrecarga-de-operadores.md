@@ -7,32 +7,31 @@ La sobrecarga de operadores extiende el mecanismo de la sobrecarga de funciones 
 La sobrecarga de operadores permite redefinir los operadores. Veamos a continuación la redefinición de tres operadores para el caso del operador `<<`, salida a través de un *stream*, el operador `+` suma, y el operador `*`.
 
 ```cpp
-ostream& operator<<(ostream& os, const complex_t& c)
-{
-	c.write_cartesian(os);
-	return os;
-}
+	std::ostream &operator<<(std::ostream &os, const complex_t &c)
+	{
+		c.write_cartesian(os);
+		return os;
+	}
 
+	complex_t operator+(const complex_t &c1, const complex_t &c2)
+	{
+		complex_t aux;
 
-complex_t operator+(const complex_t& c1, const complex_t& c2)  
-{
-	complex_t aux;
+		aux.set_real(c1.get_real() + c2.get_real());
+		aux.set_imag(c1.get_imag() + c2.get_imag());
 
-	aux.set_real(c1.get_real() + c2.get_real());
-	aux.set_imag(c1.get_imag() + c2.get_imag());
+		return aux;
+	}
 
-	return aux;
-}
+	complex_t operator*(const complex_t &c1, const complex_t &c2)
+	{
+		complex_t aux;
 
-complex_t operator*(const complex_t& c1,const complex_t& c2) 
-{
-	complex_t aux;
+		aux.set_real(c1.get_real() * c2.get_real() - c1.get_imag() * c2.get_imag());
+		aux.set_imag(c1.get_real() * c2.get_imag() + c2.get_real() * c1.get_imag());
 
-	aux.set_real(c1.get_real()*c2.get_real() - c1.get_imag()*c2.get_imag());
-	aux.set_imag(c1.get_real()*c2.get_imag() + c2.get_real()*c1.get_imag());
-
-	return aux;	
-}
+		return aux;
+	}
 ```
 Obsérvese la sintaxis y ejecútese el código de referencia en un depurador para observar la ejecución paso a paso.
 
@@ -44,8 +43,8 @@ int main(void)
 	c = a + b;
 	d = a * b; 
 
-	cout << c << endl;
-	cout << d << endl;
+	std::cout << c << std::endl;
+	std::cout << d << std::endl;
 
 	return 0;
 }

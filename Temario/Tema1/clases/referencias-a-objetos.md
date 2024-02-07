@@ -11,14 +11,14 @@ int main(void)
     complex_t &ar(a), &br = a;
     const complex_t &cr = a;
 
-    ar.write_cartesian(cout); cout << endl;
+    ar.write_cartesian(cout); std::cout << std::endl;
 
     ar.set_real(25);
 
-    ar.write_cartesian(cout); cout << endl;
+    ar.write_cartesian(cout); std::cout << std::endl;
 
     br.set_real(2);
-    a.write_cartesian(cout); cout << endl;
+    a.write_cartesian(cout); std::cout << std::endl;
 
     return 0;
 }

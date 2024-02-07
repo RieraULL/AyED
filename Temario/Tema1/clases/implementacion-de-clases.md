@@ -47,7 +47,7 @@ complex_t::complex_t(void)
 
 complex_t::~complex_t(void)
 {
-    cout << "-- Bye, bye, complex! --" << endl;
+    std::cout << "-- Bye, bye, complex! --" << std::endl;
 }
 ```
 

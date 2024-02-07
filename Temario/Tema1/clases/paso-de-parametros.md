@@ -7,35 +7,35 @@ El paso de objetos a alguna función o método se suele efectuar mediante una _r
 En caso de que deseemos alterar el contenido del parámetro dentro del método debemos pasarlo por referencia.
 
 ```cpp
-class complex_t {
-private:
-    double r_;
-    double i_;
+	class complex_t
+	{
 
-public:
+	public:
+		complex_t(double r, double i);
+		complex_t(void);
 
-    complex_t(double r,double i);
-    complex_t(void);
+		~complex_t(void);
 
-    ~complex_t(void);
+		void write_cartesian(std::ostream &os) const;
+		void write_polar(std::ostream &os) const;
 
-    void write_cartesian(ostream& os) const;
-    void write_polar(ostream& os) const;
+		void set_real(double r);
+		void set_imag(double i);
 
-    void set_real(double r);
-    void set_imag(double i);
+		double get_real(void) const;
+		double get_imag(void) const;
 
-    double get_real(void) const;
-    double get_imag(void) const;
+		void get(complex_t &c) const;
+		void set(const complex_t &c);
 
-    void get(complex_t& c) const;
-    void set(const complex_t& c);
+	private:
+		double get_mod(void) const;
+		double get_phase(void) const;
 
-private:
-
-    double get_mod(void) const;
-    double get_phase(void) const;
-};
+	private:
+		double r_;
+		double i_;
+	};
 ```
 
 ```cpp
@@ -61,8 +61,8 @@ int main(void)
     b.set(a);
     b.get(c);
 
-    b.write_cartesian(cout); cout << endl;
-    c.write_cartesian(cout); cout << endl;
+    b.write_cartesian(std::cout); std::cout << std::endl;
+    c.write_cartesian(std::cout); std::cout << std::endl;
 
     return 0;
 }

@@ -7,37 +7,35 @@ A continuación, veamos cómo se declara una clase similar a la definida en la s
 El siguiente código 
 
 ```cpp
-class complex_t {
+	class complex_t
+	{
 
-public:
+	public:
+		complex_t(double r, double i);
+		complex_t(void);
 
-    complex_t(double r,double i);
-    complex_t(void);
+		~complex_t(void);
 
-    ~complex_t(void);
+		void write_cartesian(std::ostream &os) const;
+		void write_polar(std::ostream &os) const;
 
-    void write_cartesian(ostream& os) const;
-    void write_polar(ostream& os) const;
+		void set_real(double r);
+		void set_imag(double i);
 
-    void set_real(double r);
-    void set_imag(double i);
+		double get_real(void) const;
+		double get_imag(void) const;
 
-    double get_real(void) const;
-    double get_imag(void) const;
+		void get(complex_t &c) const;
+		void set(const complex_t &c);
 
-    void get(complex_t& c) const;
-    void set(const complex_t& c);
+	private:
+		double get_mod(void) const;
+		double get_phase(void) const;
 
-private:
-
-    double get_mod(void) const;
-    double get_phase(void) const;
-    
- private:
-
-    double r_;
-    double i_;
-};
+	private:
+		double r_;
+		double i_;
+	};
 ```
 
 La definición de una clase viene precedida por la palabra reservada `class` seguida del nombre de la clase, en este caso `complex_t`. El cuerpo de la definición está delimitado por los símbolos `{` y `};`. Igual que en el caso anterior se definirá una estructura que representa un número complejo por sendos valores de tipo `double`, refiriéndose a la parte real y imaginaria mendiante `r_` e `i_`, respectivamente.

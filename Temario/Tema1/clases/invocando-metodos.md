@@ -9,13 +9,13 @@ int main(void)
 {
 	complex_t a(1, 2), b;
 
-	cout << endl;
-	a.write_cartesian(cout); cout << endl;
-	b.write_cartesian(cout); cout << endl;
-	cout << endl;
+	std::cout << std::endl;
+	a.write_cartesian(std::cout); std::cout << endl;
+	b.write_cartesian(std::cout); std::cout << endl;
+	std::cout << std::endl;
 
-	cout << "Parte real      : "<< a.get_real()<< endl;
-	cout << "Parte imaginaria: "<< a.get_imag()<< endl;
+	std::cout << "Parte real      : "<< a.get_real()<< std::endl;
+	std::cout << "Parte imaginaria: "<< a.get_imag()<< std::endl;
 
 	// a._r = 10; ERROR
 
@@ -34,18 +34,18 @@ No obstante no todos los métodos se invocan a través de un objeto. Este es el 
 A continuación se muestra un ejemplo en el que los métodos `get_mod`y `get_phase` han sido declarados bajo la claúsula `private`, y son utilizados de forma auxiliar por el procedimiento `write_polar`.
 
 ```cpp
-void complex_t::write_polar(ostream& os) const
+void complex_t::write_polar(std::ostream& os) const
 {
     const double mod = get_mod();
     const double pha = get_phase();
 
-    os << setw(3) << fixed << setprecision(1) << mod;
+    os << std::setw(3) << std::fixed << std::setprecision(1) << mod;
     os << " cos(";
-    os << setw(3) << fixed << setprecision(1) << pha;
+    os << std::setw(3) << std::fixed << std::setprecision(1) << pha;
     os << ") + ";
-    os << setw(3) << fixed << setprecision(1) << mod;
+    os << std::setw(3) << std::fixed << std::setprecision(1) << mod;
     os << " i sin(";
-    os << setw(3) << fixed << setprecision(1) << pha;
+    os << std::setw(3) << std::fixed << std::setprecision(1) << pha;
     os << ")";
 }
 ```

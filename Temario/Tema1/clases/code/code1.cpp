@@ -37,17 +37,11 @@ namespace AyED
 		double i_;
 	};
 
-	complex_t::complex_t(double r, double i)
-	{
-		r_ = r;
-		i_ = i;
-	}
+	complex_t::complex_t(double r, double i): r_(r), i_(i)
+	{}
 
-	complex_t::complex_t(void)
-	{
-		r_ = 0;
-		i_ = 0;
-	}
+	complex_t::complex_t(void): r_(0), i_(0)
+	{}
 
 	complex_t::~complex_t(void)
 	{

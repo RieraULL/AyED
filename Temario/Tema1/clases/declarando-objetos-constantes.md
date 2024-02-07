@@ -11,14 +11,14 @@ int main(void)
 
     const complex_t aa(a), bb = a;
 
-    cout << "Parte real      : "<< aa.get_real()   << endl;
-    cout << "Parte imaginaria: "<< aa.get_imag()   << endl;
-    cout << "Módulo          : "<< aa.get_modulo() << endl;
-    cout << "Fase            : "<< aa.get_fase()   << endl;
-    cout << endl;
+    std::cout << "Parte real      : "<< aa.get_real()   << std::endl;
+    std::cout << "Parte imaginaria: "<< aa.get_imag()   << std::endl;
+    std::cout << "Módulo          : "<< aa.get_modulo() << std::endl;
+    std::cout << "Fase            : "<< aa.get_fase()   << std::endl;
+    std::cout << std::endl;
 
     a.write_cartesian(cout);
-    cout << endl;
+    std::cout << std::endl;
 
     /* aa.set_real(5); ERROR */
 
