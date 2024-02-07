@@ -56,7 +56,7 @@ namespace AyED
 
 		virtual double area(void) { return (Base_ + base_) * h_ * 0.5; }
 
-		virtual double perimeter(void) { Base_ + base_ + 2 * sqrt(h_ * h_ + (Base_ - base_) * (Base_ - base_) * 0.25); }
+		virtual double perimeter(void) { return Base_ + base_ + 2 * sqrt(h_ * h_ + (Base_ - base_) * (Base_ - base_) * 0.25); }
 
 		virtual void write(std::ostream &os)
 		{
@@ -124,10 +124,10 @@ int main(void)
 
 	for (int i = 0; i < 4; i++)
 	{
-		formas[i]->write(std::cout);
-		std::cout << std::endl;
+		formas[i]->write(std::cout); std::cout << std::endl;
 		std::cout << "Area     : " << formas[i]->area() << std::endl;
 		std::cout << "Perímetro: " << formas[i]->perimeter() << std::endl;
+		std::cout << std::endl;
 	}
 
 	return 0;
