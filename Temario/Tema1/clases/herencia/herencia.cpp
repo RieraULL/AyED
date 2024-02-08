@@ -11,7 +11,7 @@ namespace AyED
 
 	public:
 		position(int x, int y) : x_(x),
-								   y_(y) {}
+					y_(y) {}
 
 		~position(void) {}
 
@@ -48,9 +48,9 @@ namespace AyED
 	{
 	public:
 		trapecio(const position &p, double base, double Base, double h) : shape(p),
-																			  base_(base),
-																			  Base_(Base),
-																			  h_(h) {}
+										base_(base),
+										Base_(Base),
+										h_(h) {}
 
 		virtual ~trapecio(void) {}
 
