@@ -14,10 +14,10 @@ namespace AyED
 	{
 	public:
 		vector(void) : v_(NULL),
-					   sz_(0) {}
+				sz_(0) {}
 
 		vector(int sz) : v_(NULL),
-						 sz_(sz)
+				sz_(sz)
 		{
 
 			crea_vector();
