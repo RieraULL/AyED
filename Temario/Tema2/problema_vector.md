@@ -1,4 +1,4 @@
-# Un ejemplo de una clase compleja
+# Problemas con vectores de tipo `double`
 
 Ref. [code1a](vector/vector1/vector.hpp)
 Ref. [code1b](vector/vector1/vector.cpp)
