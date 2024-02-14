@@ -3,7 +3,7 @@
 Ref. [code1](matrices/matrices.cpp)
 
 Estos ejemplos ponen de manifiesto cómo, a través de la abstracción, podemos crear una estructura determinada que se gestiona internamente de forma ajena al conocimiento de la persona que la utiliza.
-En concreto vamos a crear una matriz que estará gestionada sobre un vector. Esta estructura tiene utilidad cuando las matrices que utilizamos nos tienen muchos elementos nulos.
+En concreto vamos a crear una matriz que estará gestionada sobre un vector. Esta estructura tiene utilidad cuando las matrices que utilizamos no contienen muchos elementos nulos.
 
 En este ejemplo podemos ver:
 
