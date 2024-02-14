@@ -9,7 +9,8 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
 ## Índice
 
 * Tema 1
-  * [Problemas de repaso](problemas/Problemas1.md)
+  * [Problemas de examen 1](problemas/Problemas1.md)
+  * [Problemas de examen 2](problemas/Problemas2.md)
   * [Punteros en C++](Temario/Tema1/punteros/punteros.md)
   * [Clases](Temario/Tema1/clases/clases.md)
     * [Declarando una clase](Temario/Tema1/clases/definicion-de-clases.md)

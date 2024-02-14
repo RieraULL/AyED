@@ -1,4 +1,4 @@
-# Problemas resueltos I
+# Problemas de examen resueltos I
 
 ## Problema 1
 
