@@ -26,4 +26,5 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
   * [Problemas sobre clases](problemas/Problemas2.md)
 * Tema 2
   * [Problemas con vectores](Temario/Tema2/problema_vector.md)
+  * [Problemas con matrices](Temario/Tema2/matrices.md)
   
