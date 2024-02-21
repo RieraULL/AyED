@@ -1,15 +1,14 @@
-#include "vector_t.hpp"
-#include "sparse_vector_t.hpp"
+#include "vector.hpp"
+#include "sparse_vector.hpp"
 
 #include <iostream>
-using namespace std;
 
 #define V_SZ 10000
 #define EPS  1E-3
 
 int main(void)
 {
-	vector_t v(V_SZ);
+	AyED::vector v(V_SZ);
 
 	for(int i = 0; i < V_SZ; i++)
 		v.get_set_v(i) = 0.0;
@@ -21,8 +20,8 @@ int main(void)
 	v.get_set_v(4000) = 1.0; 
 	v.get_set_v(5000) = 1.0;
 
-	sparse_vector_t sv(v, EPS);	
+	AyED::sparse_vector sv(v, EPS);	
 
-	sv.write(cout);
-	cout << endl;
+	sv.write(std::cout);
+	std::cout << std::endl;
 }
