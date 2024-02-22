@@ -23,24 +23,24 @@ namespace AyED
 							  sz_(0) {}
 
 		sparse_vector(const vector<double> &v, double eps) : v_(),
-															 sz_(v.get_sz())
+															 sz_(v.size())
 		{
 
 			// Cuenta el número de elementos no nulos
 			int nz = 0;
 
-			for (int i = 0; i < v.get_sz(); i++)
-				if (is_not_zero(v.get_v(i), eps))
+			for (int i = 0; i < v.size(); i++)
+				if (is_not_zero(v.at(i), eps))
 					nz++;
 
 			v_.resize(nz);
 
 			nz = 0;
 
-			for (int i = 0; i < v.get_sz(); i++)
-				if (is_not_zero(v.get_v(i), eps))
+			for (int i = 0; i < v.size(); i++)
+				if (is_not_zero(v.at(i), eps))
 				{
-					v_.get_set_v(nz).set(i, v.get_v(i));
+					v_.at(nz).set(i, v.at(i));
 					nz++;
 				}
 		}
@@ -59,8 +59,8 @@ namespace AyED
 		{
 			double res = 0.0;
 
-			for (int i = 0; i < v_.get_sz(); i++)
-				res += v_.get_v(i).get_val() * v.get_v(v_.get_v(i).get_inx());
+			for (int i = 0; i < v_.size(); i++)
+				res += v_.at(i).get_val() * v.at(v_.at(i).get_inx());
 
 			return res;
 		}
@@ -71,15 +71,15 @@ namespace AyED
 
 			int i = 0, j = 0;
 
-			while ((i < v_.get_sz()) && (j < v.v_.get_sz()))
+			while ((i < v_.size()) && (j < v.v_.size()))
 			{
-				if (v_.get_v(i).get_inx() == v.v_.get_v(j).get_inx())
+				if (v_.at(i).get_inx() == v.v_.at(j).get_inx())
 				{
-					res += v_.get_v(i).get_val() * v.v_.get_v(j).get_val();
+					res += v_.at(i).get_val() * v.v_.at(j).get_val();
 					i++;
 					j++;
 				}
-				else if (v_.get_v(i).get_inx() < v.v_.get_v(j).get_inx())
+				else if (v_.at(i).get_inx() < v.v_.at(j).get_inx())
 					i++;
 				else
 					j++;

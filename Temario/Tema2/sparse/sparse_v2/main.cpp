@@ -8,21 +8,21 @@
 
 #define V_SZ 10000
 #define NZ 8
-#define EPS  1E-3
+#define EPS 1E-3
 
 int main(void)
 {
-	srand (time(NULL));
+	srand(time(NULL));
 
 	AyED::vector<double> v1(V_SZ);
 
-	for(int i = 0; i < V_SZ; i++)
+	for (int i = 0; i < V_SZ; i++)
 		v1[i] = 0.0;
 
-	for(int i = 0; i < NZ; i++)
+	for (int i = 0; i < NZ; i++)
 		v1[rand() % V_SZ] = (rand() % 1000) / 100.0;
 
-	AyED::sparse_vector sv1(v1, EPS);	
+	AyED::sparse_vector sv1(v1, EPS);
 
 	std::cout << "Muestra vector disperso sv1" << std::endl;
 	std::cout << std::endl;
@@ -30,14 +30,15 @@ int main(void)
 
 	AyED::vector<double> v2(V_SZ);
 
-	for(int i = 0; i < V_SZ; i++)
+	for (int i = 0; i < V_SZ; i++)
 		v2[i] = 0.0;
 
-	for(int i = 0; i < NZ; i++)
-		v2[rand() % V_SZ] = (rand() % 1000) / 100.0;	
+	for (int i = 0; i < NZ; i++)
+		v2[rand() % V_SZ] = (rand() % 1000) / 100.0;
 
 	AyED::sparse_vector sv2(v2, EPS);
 
+	std::cout << std::endl;
 	std::cout << "Muestra vector disperso sv2" << std::endl;
 	std::cout << std::endl;
 	std::cout << sv2 << std::endl;
@@ -52,6 +53,7 @@ int main(void)
 	const double producto_6 = sv1 * sv1;
 	const double producto_7 = sv2 * sv2;
 
+	std::cout << std::endl;
 	std::cout << "Muestra productos escalares" << std::endl;
 	std::cout << std::endl;
 	std::cout << std::setw(8) << std::fixed << std::setprecision(1) << producto_1 << std::endl;
