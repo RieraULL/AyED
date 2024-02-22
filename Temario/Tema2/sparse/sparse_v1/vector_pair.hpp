@@ -41,12 +41,12 @@ namespace AyED
 			crea_vector();
 		}
 
-		int get_sz(void) const
+		int size(void) const
 		{
 			return sz_;
 		}
 
-		pair get_v(int pos) const
+		pair at(int pos) const
 		{
 
 			assert((pos < sz_) && ((pos >= 0)));
@@ -54,7 +54,7 @@ namespace AyED
 			return v_[pos];
 		}
 
-		pair &get_set_v(int pos)
+		pair &at(int pos)
 		{
 
 			assert((pos < sz_) && ((pos >= 0)));

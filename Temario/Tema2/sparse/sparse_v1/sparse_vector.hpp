@@ -23,24 +23,24 @@ namespace AyED
 							  sz_(0) {}
 
 		sparse_vector(const vector &v, double eps) : v_(),
-													   sz_(v.get_sz())
+													   sz_(v.size())
 		{
 
 			// Cuenta el número de elementos no nulos
 			int nz = 0;
 
-			for (int i = 0; i < v.get_sz(); i++)
-				if (is_not_zero(v.get_v(i), eps))
+			for (int i = 0; i < v.size(); i++)
+				if (is_not_zero(v.at(i), eps))
 					nz++;
 
 			v_.resize(nz);
 
 			nz = 0;
 
-			for (int i = 0; i < v.get_sz(); i++)
-				if (is_not_zero(v.get_v(i), eps))
+			for (int i = 0; i < v.size(); i++)
+				if (is_not_zero(v.at(i), eps))
 				{
-					v_.get_set_v(nz).set(i, v.get_v(i));
+					v_.at(nz).set(i, v.at(i));
 					nz++;
 				}
 		}

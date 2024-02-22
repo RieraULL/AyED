@@ -11,14 +11,14 @@ int main(void)
 	AyED::vector v(V_SZ);
 
 	for(int i = 0; i < V_SZ; i++)
-		v.get_set_v(i) = 0.0;
+		v.at(i) = 0.0;
 
-	v.get_set_v(0)    = 1.0; 
-	v.get_set_v(1000) = 1.0; 
-	v.get_set_v(2000) = 1.0; 
-	v.get_set_v(3000) = 1.0; 
-	v.get_set_v(4000) = 1.0; 
-	v.get_set_v(5000) = 1.0;
+	v.at(0)    = 1.0; 
+	v.at(1000) = 1.0; 
+	v.at(2000) = 1.0; 
+	v.at(3000) = 1.0; 
+	v.at(4000) = 1.0; 
+	v.at(5000) = 1.0;
 
 	AyED::sparse_vector sv(v, EPS);	
 
