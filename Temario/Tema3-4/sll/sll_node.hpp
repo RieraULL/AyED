@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-using namespace std;
 
 namespace AyED
 {
@@ -23,7 +22,7 @@ namespace AyED
 
 		const T &get_data(void) const;
 
-		ostream &write(ostream &os) const;
+		std::ostream &write(std::ostream &os) const;
 	};
 
 	template <class T>
@@ -63,7 +62,7 @@ namespace AyED
 	}
 
 	template <class T>
-	ostream &sll_node<T>::write(ostream &os) const
+	std::ostream &sll_node<T>::write(std::ostream &os) const
 	{
 		os << data_;
 		return os;

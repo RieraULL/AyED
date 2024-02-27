@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <stack>
-using namespace std;
 
 #include "sll_node.hpp"
 
@@ -12,9 +11,6 @@ namespace AyED
       template <class T>
       class sll
       {
-      private:
-            sll_node<T> *head_;
-
       public:
             sll(void);
             virtual ~sll(void);
@@ -25,11 +21,11 @@ namespace AyED
             void insert_after(sll_node<T> *pred, sll_node<T> *n);
             sll_node<T> *extract_after(sll_node<T> *pred);
 
-            sll_node<T> *head(void);
+            sll_node<T> *head(void) const;
 
             bool empty(void) const;
-            void write(ostream &os) const;
-            void inverse_write(ostream &os) const;
+            void write(std::ostream &os) const;
+            void inverse_write(std::ostream &os) const;
 
             sll_node<T> *tail(void);
 
@@ -37,111 +33,125 @@ namespace AyED
 
             sll_node<T> *extract_tail(void);
 
-            void invPar(const sll<T> &L)
+            void invPar(const sll<T> &L);
+
+            void invPar(const sll_node<T> *n);
+
+            void merge1(sll<T> &L1, sll<T> &L2);
+            void merge2(const sll<T> &L1, const sll<T> &L2);
+
+      private:
+            void write_reverse(std::ostream &os, sll_node<T> *n);
+
+      private:
+            sll_node<T> *head_;
+      };
+
+      template <class T>
+      void sll<T>::invPar(const sll<T> &L)
+      {
+            invPar(L.head_);
+      }
+
+      template <class T>
+      void sll<T>::invPar(const sll_node<T> *n)
+      {
+            if (n != NULL)
             {
-                  invPar(L.head_);
+                  const T &n_d = n->get_data();
+                  if (n_d % 2 != 0)
+                        insert_head(new sll_node<T>(n_d));
+
+                  invPar(n->get_next());
             }
+      }
 
-            void invPar(const sll_node<T> *n)
+      template <class T>
+      void sll<T>::merge1(sll<T> &L1, sll<T> &L2)
+      {
+            sll_node<T> *L1_h = L1.head_;
+            sll_node<T> *L2_h = L2.head_;
+
+            std::stack<sll_node<T> *> pila;
+
+            while ((L1_h != NULL) && (L2_h != NULL))
             {
-                  if (n != NULL)
-                  {
-                        const T &n_d = n->get_data();
-                        if (n_d % 2 != 0)
-                              insert_head(new sll_node<T>(n_d));
 
-                        invPar(n->get_next());
-                  }
-            }
+                  const T &L1_d = L1_h->get_data();
+                  const T &L2_d = L2_h->get_data();
 
-            void merge1(sll<T> &L1, sll<T> &L2)
-            {
-                  sll_node<T> *L1_h = L1.head_;
-                  sll_node<T> *L2_h = L2.head_;
-
-                  stack<sll_node<T> *> pila;
-
-                  while ((L1_h != NULL) && (L2_h != NULL))
-                  {
-
-                        const T &L1_d = L1_h->get_data();
-                        const T &L2_d = L2_h->get_data();
-
-                        if (L1_d < L2_d)
-                        {
-                              L1_h = L1_h->get_next();
-                              sll_node<T> *L1_a = L1.extract_head();
-                              pila.push(L1_a);
-                        }
-                        else
-                        {
-                              L2_h = L2_h->get_next();
-                              sll_node<T> *L2_a = L2.extract_head();
-                              pila.push(L2_a);
-                        }
-                  }
-
-                  while (L1_h != NULL)
+                  if (L1_d < L2_d)
                   {
                         L1_h = L1_h->get_next();
                         sll_node<T> *L1_a = L1.extract_head();
                         pila.push(L1_a);
                   }
-
-                  while (L2_h != NULL)
+                  else
                   {
                         L2_h = L2_h->get_next();
                         sll_node<T> *L2_a = L2.extract_head();
                         pila.push(L2_a);
                   }
-
-                  while (!pila.empty())
-                  {
-                        sll_node<T> *aux = pila.top();
-                        pila.pop();
-                        insert_head(aux);
-                  }
             }
 
-            void merge2(const sll<T> &L1, const sll<T> &L2)
+            while (L1_h != NULL)
             {
-                  sll_node<T> *L1_h = L1.head_;
-                  sll_node<T> *L2_h = L2.head_;
+                  L1_h = L1_h->get_next();
+                  sll_node<T> *L1_a = L1.extract_head();
+                  pila.push(L1_a);
+            }
 
-                  while ((L1_h != NULL) && (L2_h != NULL))
+            while (L2_h != NULL)
+            {
+                  L2_h = L2_h->get_next();
+                  sll_node<T> *L2_a = L2.extract_head();
+                  pila.push(L2_a);
+            }
+
+            while (!pila.empty())
+            {
+                  sll_node<T> *aux = pila.top();
+                  pila.pop();
+                  insert_head(aux);
+            }
+      }
+
+      template <class T>
+      void sll<T>::merge2(const sll<T> &L1, const sll<T> &L2)
+      {
+            sll_node<T> *L1_h = L1.head_;
+            sll_node<T> *L2_h = L2.head_;
+
+            while ((L1_h != NULL) && (L2_h != NULL))
+            {
+
+                  const T &L1_d = L1_h->get_data();
+                  const T &L2_d = L2_h->get_data();
+
+                  if (L1_d > L2_d)
                   {
-
-                        const T &L1_d = L1_h->get_data();
-                        const T &L2_d = L2_h->get_data();
-
-                        if (L1_d > L2_d)
-                        {
-                              insert_head(new sll_node<T>(L1_d));
-                              L1_h = L1_h->get_next();
-                        }
-                        else
-                        {
-                              insert_head(new sll_node<T>(L2_d));
-                              L2_h = L2_h->get_next();
-                        }
-                  }
-
-                  while (L1_h != NULL)
-                  {
-                        insert_head(new sll_node<T>(L1_h->get_data()));
+                        insert_head(new sll_node<T>(L1_d));
                         L1_h = L1_h->get_next();
                   }
-
-                  while (L2_h != NULL)
+                  else
                   {
-                        insert_head(new sll_node<T>(L2_h->get_data()));
+                        insert_head(new sll_node<T>(L2_d));
                         L2_h = L2_h->get_next();
                   }
             }
 
-      private:
-            void write_reverse(ostream &os, sll_node<T> *n);
-      };
+            while (L1_h != NULL)
+            {
+                  insert_head(new sll_node<T>(L1_h->get_data()));
+                  L1_h = L1_h->get_next();
+            }
+
+            while (L2_h != NULL)
+            {
+                  insert_head(new sll_node<T>(L2_h->get_data()));
+                  L2_h = L2_h->get_next();
+            }
+      }
 
       template <class T>
       sll<T>::sll(void) : head_(NULL) {}
@@ -149,7 +159,6 @@ namespace AyED
       template <class T>
       sll<T>::~sll(void)
       {
-
             while (!empty())
             {
 
@@ -238,7 +247,7 @@ namespace AyED
       }
 
       template <class T>
-      sll_node<T> *sll<T>::head(void)
+      sll_node<T> *sll<T>::head(void) const
       {
             return head_;
       }
@@ -254,7 +263,7 @@ namespace AyED
       }
 
       template <class T>
-      void sll<T>::write(ostream &os) const
+      void sll<T>::write(std::ostream &os) const
       {
             sll_node<T> *aux = head_;
 
@@ -266,18 +275,17 @@ namespace AyED
       }
 
       template <class T>
-      void sll<T>::inverse_write(ostream &os) const
+      void sll<T>::inverse_write(std::ostream &os) const
       {
             write_reverse(head_);
       }
 
       template <class T>
-      void sll<T>::write_reverse(ostream &os, sll_node<T> *n)
+      void sll<T>::write_reverse(std::ostream &os, sll_node<T> *n)
       {
             if (n != NULL)
                   write_reverse(os, n->get_next());
             else
                   os << n->get_data() << " ";
       }
-
 }

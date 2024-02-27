@@ -7,58 +7,70 @@
 
 int main(void)
 {
-      /*     {
-           AyED::sll<char> L1;
-           AyED::sll<char> L2;
+      /*{
+            AyED::sll<char> L1;
+            AyED::sll<char> L2;
 
-           for(int i = 14; i >= 0; i-=2)
-                 L1.insert_head( new AyED::sll_node<char>('a' + i) );
+            for (int i = 14; i >= 0; i -= 2)
+                  L1.insert_head(new AyED::sll_node<char>('a' + i));
 
-           for(int i = 25; i >= 0; i-=2)
-                 L2.insert_head( new AyED::sll_node<char>('a' + i) );
+            for (int i = 25; i >= 0; i -= 2)
+                  L2.insert_head(new AyED::sll_node<char>('a' + i));
 
-           AyED::sll<char> L;
+            AyED::sll<char> L;
 
-           L1.write(std::cout); std::cout << std::endl;
-           L2.write(std::cout); std::cout << std::endl;
-           L.write(std::cout);  std::cout << std::endl;
+            L1.write(std::cout);
+            std::cout << std::endl;
+            L2.write(std::cout);
+            std::cout << std::endl;
+            L.write(std::cout);
+            std::cout << std::endl;
 
-           std::cout << std::endl;
+            std::cout << std::endl;
 
-           L.merge1(L1, L2);
+            L.merge1(L1, L2);
 
-           L1.write(std::cout); std::cout << std::endl;
-           L2.write(std::cout); std::cout << std::endl;
-           L.write(std::cout);  std::cout << std::endl;
-           std::cout << std::endl;
-           }
-      */
-      /*     {
-           AyED::sll<char> L1;
-           AyED::sll<char> L2;
+            L1.write(std::cout);
+            std::cout << std::endl;
+            L2.write(std::cout);
+            std::cout << std::endl;
+            L.write(std::cout);
+            std::cout << std::endl;
+            std::cout << std::endl;
+      }
 
-           for(int i = 0; i <=14; i+=2)
-                 L1.insert_head( new AyED::sll_node<char>('a' + i) );
+      {
+            AyED::sll<char> L1;
+            AyED::sll<char> L2;
 
-           for(int i = 1; i <= 25; i+=2)
-                 L2.insert_head( new AyED::sll_node<char>('a' + i) );
+            for (int i = 0; i <= 14; i += 2)
+                  L1.insert_head(new AyED::sll_node<char>('a' + i));
 
-           AyED::sll<char> L;
+            for (int i = 1; i <= 25; i += 2)
+                  L2.insert_head(new AyED::sll_node<char>('a' + i));
 
-           L1.write(std::cout); std::cout << std::endl;
-           L2.write(std::cout); std::cout << std::endl;
-           L.write(std::cout);  std::cout << std::endl;
+            AyED::sll<char> L;
 
-           std::cout << std::endl;
+            L1.write(std::cout);
+            std::cout << std::endl;
+            L2.write(std::cout);
+            std::cout << std::endl;
+            L.write(std::cout);
+            std::cout << std::endl;
 
-           L.merge2(L1, L2);
+            std::cout << std::endl;
 
-           L1.write(std::cout); std::cout << std::endl;
-           L2.write(std::cout); std::cout << std::endl;
-           L.write(std::cout);  std::cout << std::endl;
-           std::cout << std::endl;
-           }
-     */
+            L.merge2(L1, L2);
+
+            L1.write(std::cout);
+            std::cout << std::endl;
+            L2.write(std::cout);
+            std::cout << std::endl;
+            L.write(std::cout);
+            std::cout << std::endl;
+            std::cout << std::endl;
+      }*/
+
       {
             AyED::sll<char> L1;
 
