@@ -1,85 +1,87 @@
 #include <iostream>
 
-#include "sll_t.hpp"
-#include "lista_char_t.hpp"
+#include "sll.hpp"
+#include "lista_char.hpp"
 
 #define N_CHARS 26
 
-using namespace std;
-
 int main(void)
 {
- /*     {
-	AED::sll_t<char> L1;
-      AED::sll_t<char> L2;
+      /*     {
+           AyED::sll<char> L1;
+           AyED::sll<char> L2;
 
-	for(int i = 14; i >= 0; i-=2)
-		L1.insert_head( new AED::sll_node_t<char>('a' + i) );
-            
-	for(int i = 25; i >= 0; i-=2)
-		L2.insert_head( new AED::sll_node_t<char>('a' + i) );
+           for(int i = 14; i >= 0; i-=2)
+                 L1.insert_head( new AyED::sll_node<char>('a' + i) );
 
-      AED::sll_t<char> L;
-      
-      L1.write(cout); cout << endl;
-      L2.write(cout); cout << endl;
-      L.write(cout);  cout << endl;
-      
-      cout << endl;
-      
-      L.merge1(L1, L2);
+           for(int i = 25; i >= 0; i-=2)
+                 L2.insert_head( new AyED::sll_node<char>('a' + i) );
 
-      L1.write(cout); cout << endl;
-      L2.write(cout); cout << endl;
-      L.write(cout);  cout << endl;
-	cout << endl;
-      }
- */     
- /*     {
-	AED::sll_t<char> L1;
-      AED::sll_t<char> L2;
+           AyED::sll<char> L;
 
-	for(int i = 0; i <=14; i+=2)
-		L1.insert_head( new AED::sll_node_t<char>('a' + i) );
-            
-	for(int i = 1; i <= 25; i+=2)
-		L2.insert_head( new AED::sll_node_t<char>('a' + i) );
+           L1.write(std::cout); std::cout << std::endl;
+           L2.write(std::cout); std::cout << std::endl;
+           L.write(std::cout);  std::cout << std::endl;
 
-      AED::sll_t<char> L;
-      
-      L1.write(cout); cout << endl;
-      L2.write(cout); cout << endl;
-      L.write(cout);  cout << endl;
-      
-      cout << endl;
-      
-      L.merge2(L1, L2);
+           std::cout << std::endl;
 
-      L1.write(cout); cout << endl;
-      L2.write(cout); cout << endl;
-      L.write(cout);  cout << endl;
-	cout << endl;
-      }   
-*/      
+           L.merge1(L1, L2);
+
+           L1.write(std::cout); std::cout << std::endl;
+           L2.write(std::cout); std::cout << std::endl;
+           L.write(std::cout);  std::cout << std::endl;
+           std::cout << std::endl;
+           }
+      */
+      /*     {
+           AyED::sll<char> L1;
+           AyED::sll<char> L2;
+
+           for(int i = 0; i <=14; i+=2)
+                 L1.insert_head( new AyED::sll_node<char>('a' + i) );
+
+           for(int i = 1; i <= 25; i+=2)
+                 L2.insert_head( new AyED::sll_node<char>('a' + i) );
+
+           AyED::sll<char> L;
+
+           L1.write(std::cout); std::cout << std::endl;
+           L2.write(std::cout); std::cout << std::endl;
+           L.write(std::cout);  std::cout << std::endl;
+
+           std::cout << std::endl;
+
+           L.merge2(L1, L2);
+
+           L1.write(std::cout); std::cout << std::endl;
+           L2.write(std::cout); std::cout << std::endl;
+           L.write(std::cout);  std::cout << std::endl;
+           std::cout << std::endl;
+           }
+     */
       {
-	AED::sll_t<char> L1;
-            
-	for(int i = 25; i >= 0; i--)
-		L1.insert_head( new AED::sll_node_t<char>('a' + i) );
+            AyED::sll<char> L1;
 
-      AED::sll_t<char> L;
-      
-      L1.write(cout); cout << endl;
-      L.write(cout);  cout << endl;
-      
-      cout << endl;
-      
-      L.invPar(L1);
+            for (int i = 25; i >= 0; i--)
+                  L1.insert_head(new AyED::sll_node<char>('a' + i));
 
-      L1.write(cout); cout << endl;
-      L.write(cout);  cout << endl;
-	cout << endl;
-      }         
-   
-	return 0;
+            AyED::sll<char> L;
+
+            L1.write(std::cout);
+            std::cout << std::endl;
+            L.write(std::cout);
+            std::cout << std::endl;
+
+            std::cout << std::endl;
+
+            L.invPar(L1);
+
+            L1.write(std::cout);
+            std::cout << std::endl;
+            L.write(std::cout);
+            std::cout << std::endl;
+            std::cout << std::endl;
+      }
+
+      return 0;
 }

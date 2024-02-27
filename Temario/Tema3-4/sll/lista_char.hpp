@@ -3,19 +3,19 @@
 #include <iostream>
 using namespace std;
 
-#include "sll_t.hpp"
+#include "sll.hpp"
 
-class lista_char_t
+class lista_char
 {
 private:
 
-      AED::sll_t<char> list_;
+      AyED::sll<char> list_;
 
 public:
-      lista_char_t(void):
+      lista_char(void):
             list_() {}
 
-      ~lista_char_t(void) {}
+      ~lista_char(void) {}
 
       bool empty(void)
       {
@@ -29,13 +29,13 @@ public:
 
       void insert_head(char c)
       {
-            AED::sll_node_t<char>* n = new AED::sll_node_t<char>(c);
+            AyED::sll_node<char>* n = new AyED::sll_node<char>(c);
             list_.insert_head(n);
       }
 
       char extract_head()
       {
-            AED::sll_node_t<char>* n = list_.extract_head();
+            AyED::sll_node<char>* n = list_.extract_head();
             char c = n->get_data();
             delete n;
 
