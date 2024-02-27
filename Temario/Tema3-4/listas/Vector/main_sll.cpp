@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "sll_t.hpp"
-#include "memory_t.hpp"
+#include "sll.hpp"
+#include "memory.hpp"
 
 #define N_CHARS 26
 
@@ -9,9 +9,9 @@ using namespace std;
 
 int main(void)
 {
-	AyED::memory_t<char> memory;
+	AyED::memory<char> memory;
 	
-	AyED::sll_t<char> lista(memory);
+	AyED::sll<char> lista(memory);
 
 	for(int i = 0; i < N_CHARS; i++)
 		lista.insert_head( memory.New('a' + i) );

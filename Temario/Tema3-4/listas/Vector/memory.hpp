@@ -1,7 +1,7 @@
 #pragma once
 
-#include "vector_t.hpp"
-#include "sll_node_t.hpp"
+#include "vector.hpp"
+#include "sll_node.hpp"
 
 #define MAX_SZ 100
 
@@ -10,13 +10,13 @@
 namespace AyED {
     
     template <class T>
-    class memory_t 
+    class memory 
     {
         private:
-            vector_t<AyED::sll_node_t<T> > mem_;
+            vector<AyED::sll_node<T> > mem_;
             
         public:
-            memory_t(int max_sz = MAX_SZ):
+            memory(int max_sz = MAX_SZ):
             mem_(max_sz)
             {
                 for(int i = 0; i < mem_.size(); i++)
@@ -42,12 +42,12 @@ namespace AyED {
                 mem_[inx].set_next(FREE);
             }
             
-            sll_node_t<T>& operator[](int i)
+            sll_node<T>& operator[](int i)
             {
                 return mem_[i];
             }
             
-            const sll_node_t<T>& operator[](int i) const
+            const sll_node<T>& operator[](int i) const
             {
                 return mem_[i];
             }
