@@ -326,7 +326,7 @@ public:
             
             if (m_ == 1) return at(1,1);
             
-            double suma = 0;
+            double suma{0};
             
             for(int i = 1; i <= m_; i++) {
                 
@@ -355,7 +355,7 @@ public:
             
             M.resize(m_ - 1, n_ - 1);
             
-            int inc_r = 0;
+            int inc_r{0};
             
             for(int i = 1; i <= M.get_m(); i++) {
                 

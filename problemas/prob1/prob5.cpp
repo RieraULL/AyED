@@ -45,7 +45,7 @@ namespace AyED
 
 		void init_random(int max)
 		{
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				at(i) = rand() % max + 1;
 		}
 
@@ -78,7 +78,7 @@ namespace AyED
 		std::ostream &write(std::ostream &os) const
 		{
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				os << v_[i] << " ";
 
 			return os;
@@ -108,7 +108,7 @@ namespace AyED
 	std::ostream &vector_t<int>::write(std::ostream &os) const
 	{
 
-		for (int i = 0; i < sz_; i++)
+		for (int i{0}; i < sz_; i++)
 			os << std::setw(3) << v_[i] << " ";
 
 		return os;
@@ -137,7 +137,7 @@ namespace AyED
 	template <class T>
 	void biggest_2_end(vector_t<T> &v, int end_v)
 	{
-		for (int i = 0; i <= end_v - 1; i++)
+		for (int i{0}; i <= end_v - 1; i++)
 			if (unordered<T>(v[i], v[i + 1]))
 				swap<T>(v[i], v[i + 1]);
 	}

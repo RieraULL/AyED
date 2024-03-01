@@ -8,9 +8,9 @@
 
 int count_eq(double v[], int sz, double val, double tol)
 {
-	int count = 0;
+	int count{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (fabs(v[i] - val) < tol)
 			count++;
 

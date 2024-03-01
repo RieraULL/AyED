@@ -24,7 +24,7 @@ std::ostream &AyED::vector<AyED::pair<double>>::write(std::ostream &os) const
 
 	os << "[ ";
 
-	for (int i = 0; i < sz_; i++)
+	for (int i{0}; i < sz_; i++)
 	{
 		v_[i].write(os);
 		os << " ";
@@ -43,7 +43,7 @@ std::istream &AyED::vector<AyED::pair<double>>::read(std::istream &is)
 
 	resize(sz_);
 
-	for (int i = 0; i < sz_; i++)
+	for (int i{0}; i < sz_; i++)
 		v_[i].read(is);
 
 	return is;

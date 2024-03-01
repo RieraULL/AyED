@@ -57,7 +57,7 @@ int bsearch(const int* v, int i, int d, int x)
 
     void write(const vector<int>& v, ostream& os)
     {
-        for(unsigned int i = 0; i < v.size(); i++)
+        for(unsigned int i{0}; i < v.size(); i++)
             os << v[i];
             
         os << endl;
@@ -69,7 +69,7 @@ int bsearch(const int* v, int i, int d, int x)
 	        write(number, cout);
 	    else {
 	        
-	        for(int b = 0; b < 2; b ++){
+	        for(int b{0}; b < 2; b ++){
 	            number[i] = b;
 	            generate(number, i - 1);
 	        }
@@ -94,7 +94,7 @@ La pila debe inicializarse con dos elementos relativos a los valores 0 y 1, para
 	    stack<par_t> Pila;
 	    vector<int> number(N_DIGITS);
 	    
-	    for(int b = 0; b < 2; b++) 
+	    for(int b{0}; b < 2; b++) 
 	        Pila.push(par_t(b, N_DIGITS - 1));
 	    
 	    while(!Pila.empty())
@@ -110,7 +110,7 @@ La pila debe inicializarse con dos elementos relativos a los valores 0 y 1, para
 	        if (l <= 0) 
 	            write(number, cout);
 	        else {
-	            for(int b = 0; b < 2; b++) 
+	            for(int b{0}; b < 2; b++) 
 	                Pila.push(par_t(b, l - 1));	            
 	        }
 	    }

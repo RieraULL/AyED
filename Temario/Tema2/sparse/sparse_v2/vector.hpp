@@ -33,7 +33,7 @@ namespace AyED
 
 			crea_vector();
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				v_[i] = v.v_[i];
 		}
 
@@ -76,7 +76,7 @@ namespace AyED
 
 			os << sz_ << std::endl;
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				os << v_[i] << " ";
 
 			return os;
@@ -89,7 +89,7 @@ namespace AyED
 
 			resize(sz_);
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				is >> v_[i];
 
 			return is;
@@ -117,7 +117,7 @@ namespace AyED
 				sz_ = v.sz_;
 				crea_vector();
 
-				for (int i = 0; i < sz_; i++)
+				for (int i{0}; i < sz_; i++)
 					v_[i] = v.v_[i];
 			}
 
@@ -147,7 +147,7 @@ std::ostream &AyED::vector<double>::write(std::ostream &os) const
 
 	os << std::setw(7) << sz_ << std::endl;
 
-	for (int i = 0; i < sz_; i++)
+	for (int i{0}; i < sz_; i++)
 		os << std::setw(7) << std::fixed << std::setprecision(2) << v_[i] << " ";
 
 	return os;

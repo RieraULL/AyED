@@ -52,7 +52,7 @@ namespace AyED
     {
         double point = left;
 
-        int i = 0;
+        int i{0};
 
         while (point <= right)
         {
@@ -75,7 +75,7 @@ namespace AyED
 
     void function_evaluation::evaluate_function(const double *x_points, double *y_points, const funtion_ptr f)
     {
-        for (int i = 0; i < n_points_; i++)
+        for (int i{0}; i < n_points_; i++)
         {
             y_points[i] = f(x_points[i]);
         }
@@ -84,7 +84,7 @@ namespace AyED
     std::ostream &function_evaluation::write(std::ostream &os) const
     {
         os << "#" << std::setw(10) << "x" << std::setw(10) << "f(x)" << std::endl;
-        for (int i = 0; i < n_points_; ++i)
+        for (int i{0}; i < n_points_; ++i)
         {
             os << " " << std::setw(10) << std::fixed << std::setprecision(3) << x_points_[i] << std::setw(10)  << std::fixed << std::setprecision(3) << y_points_[i] << std::endl;
         }

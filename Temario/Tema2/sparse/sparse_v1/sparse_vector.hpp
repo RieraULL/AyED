@@ -27,17 +27,17 @@ namespace AyED
 		{
 
 			// Cuenta el número de elementos no nulos
-			int nz = 0;
+			int nz{0};
 
-			for (int i = 0; i < v.size(); i++)
+			for (int i{0}; i < v.size(); i++)
 				if (is_not_zero(v.at(i), eps))
 					nz++;
 
 			v_.resize(nz);
 
-			nz = 0;
+			nz{0};
 
-			for (int i = 0; i < v.size(); i++)
+			for (int i{0}; i < v.size(); i++)
 				if (is_not_zero(v.at(i), eps))
 				{
 					v_.at(nz).set(i, v.at(i));

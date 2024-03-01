@@ -20,6 +20,6 @@ int main(void){
 	p = numbers + 3; *p = 40; 
 	p = numbers;     *(p+4) = 50;
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 		std::cout << std::setw(4) << numbers[i] << std::endl;			
 }

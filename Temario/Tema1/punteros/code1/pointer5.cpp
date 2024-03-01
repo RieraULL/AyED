@@ -20,7 +20,7 @@ int main(void){
 
 	*b_ptr = 5;
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{			
 		a[i] = i;
 		a_ptr[i] = i;

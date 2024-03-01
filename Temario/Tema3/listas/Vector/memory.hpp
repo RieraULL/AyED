@@ -33,7 +33,7 @@ namespace AyED
     template <class T>
     memory<T>::memory(int max_sz) : mem_(max_sz)
     {
-        for (int i = 0; i < mem_.size(); i++)
+        for (int i{0}; i < mem_.size(); i++)
             mem_[i].set_next(FREE);
     }
 
@@ -41,7 +41,7 @@ namespace AyED
     int memory<T>::New(const T &data)
     {
         int i;
-        for (i = 0; (i < mem_.size()) && (mem_[i].get_next() != FREE); i++);
+        for (i{0}; (i < mem_.size()) && (mem_[i].get_next() != FREE); i++);
         if (i < mem_.size())
         {
             mem_[i].set_data(data);

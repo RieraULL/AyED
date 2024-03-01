@@ -13,14 +13,14 @@ int main(void){
  	
 	int *a_ptr = NULL; 
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{			
 		a[i] = i;
 	}
 			
 	a_ptr = a;
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{			
 		std::cout << std::setw(4) << a[i] << std::setw(4) << *a_ptr << std::endl;
 		a_ptr ++;

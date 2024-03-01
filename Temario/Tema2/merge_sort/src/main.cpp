@@ -17,7 +17,7 @@ int main(void)
     
     CyA::sorted_vector_t v;
     
-    for(int i = 0; i < SIZE; i++)
+    for(int i{0}; i < SIZE; i++)
         v.push_back(distribution(generator));
         
     cout << v << endl;

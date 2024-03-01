@@ -19,6 +19,6 @@ int main(void){
 	
 	int i;
 
-	for(i = 0; i < MAXIMO; i++)			
+	for(i{0}; i < MAXIMO; i++)			
 		printf("%4d\n", numbers[i]); 
 }

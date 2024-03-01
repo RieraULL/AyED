@@ -6,9 +6,9 @@
 
 int suma(int v[], int sz)
 {
-	int aux = 0;
+	int aux{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		aux = aux + v[i];
 
 	return aux;
@@ -16,9 +16,9 @@ int suma(int v[], int sz)
 
 int cont_pair(int v[], int sz)
 {
-	int cont = 0;
+	int cont{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] % 2 == 0)
 			cont++;
 
@@ -27,9 +27,9 @@ int cont_pair(int v[], int sz)
 
 int cont_odd(int v[], int sz)
 {
-	int cont = 0;
+	int cont{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] % 2 != 0)
 			cont++;
 

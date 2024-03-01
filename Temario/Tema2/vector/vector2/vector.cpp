@@ -24,7 +24,7 @@ namespace AyED
     {
         build(sz_);
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             base_[i] = v.base_[i];
     }
 
@@ -63,7 +63,7 @@ namespace AyED
     {
         os << std::setw(8) << sz_ << std::endl;
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             os << std::setw(8) << std::fixed << std::setprecision(4) << base_[i] << " ";
 
         os << std::endl;
@@ -75,7 +75,7 @@ namespace AyED
 
         resize(sz_);
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             is >> base_[i];
     }
 
@@ -105,9 +105,9 @@ namespace AyED
 
     size_t vector::ocurrencias(double d, double eps) const
     {
-        size_t cnt = 0;
+        size_t cnt{0};
 
-        for (size_t i = 0; i < sz_; i++)
+        for (size_t i{0}; i < sz_; i++)
             if (fabs(base_[i] - d) < eps)
                 cnt++;
 
@@ -118,7 +118,7 @@ namespace AyED
     {
         double prod = 0.0;
 
-        for (size_t i = 0; i < sz_; i++)
+        for (size_t i{0}; i < sz_; i++)
             prod += base_[i] * v.base_[i];
 
         return prod;

@@ -11,7 +11,7 @@ bool check_bracket(const string& s)
 {
     const int sz = s.size();
     bool check = true;
-    int i = 0;
+    int i{0};
     stack<int> pila;
     
     // Mientras no termine de recorrer la cadena

@@ -13,7 +13,7 @@ int main(void)
 	
 	AyED::sll<char> lista(memory);
 
-	for(int i = 0; i < N_CHARS; i++)
+	for(int i{0}; i < N_CHARS; i++)
 		lista.insert_head( memory.New('a' + i) );
 
 	lista.write(cout);

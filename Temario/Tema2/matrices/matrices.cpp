@@ -115,7 +115,7 @@ namespace AyED
 
         int suma_total(void) const
         {
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i <= get_m(); i++)
                 for (int j = 1; j <= get_n(); j++)
@@ -126,7 +126,7 @@ namespace AyED
 
         int suma_ind_par(void) const
         {
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i <= get_m(); i++)
                 for (int j = 1; j <= get_n(); j++)
@@ -140,7 +140,7 @@ namespace AyED
         {
             assert(get_m() == get_n());
 
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i <= get_m(); i++)
                 sum += at(i, i);
@@ -152,7 +152,7 @@ namespace AyED
         {
             assert(get_m() == get_n());
 
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i <= get_m(); i++)
                 sum += at(i, get_n() - i + 1);
@@ -164,7 +164,7 @@ namespace AyED
         {
             assert(get_m() == get_n());
 
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i <= get_m(); i++)
                 for (int j = 1; j <= i; j++)
@@ -177,7 +177,7 @@ namespace AyED
         {
             assert(get_m() == get_n());
 
-            int sum = 0;
+            int sum{0};
 
             for (int i = 2; i <= get_m(); i++)
                 for (int j = 1; j < i; j++)
@@ -190,7 +190,7 @@ namespace AyED
         {
             assert(get_m() == get_n());
 
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i <= get_m(); i++)
                 for (int j = i; j <= get_n(); j++)
@@ -203,7 +203,7 @@ namespace AyED
         {
             assert(get_m() == get_n());
 
-            int sum = 0;
+            int sum{0};
 
             for (int i = 1; i < get_m(); i++)
                 for (int j = i + 1; j <= get_n(); j++)
@@ -234,7 +234,7 @@ namespace AyED
                 for (int j = 1; j <= get_n(); j++)
                 {
 
-                    at(i, j) = 0;
+                    at(i, j){0};
 
                     for (int k = 1; k <= A.get_n(); k++)
                         at(i, j) += A.at(i, k) * B.at(k, j);

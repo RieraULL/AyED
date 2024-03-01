@@ -13,14 +13,14 @@ int main(void){
 	
 	int i;
 
-	for(i = 0; i < MAXIMO; i++)
+	for(i{0}; i < MAXIMO; i++)
 	{			
 		a[i] = i;
 	}
 			
 	a_ptr = a;
 
-	for(i = 0; i < MAXIMO; i++)
+	for(i{0}; i < MAXIMO; i++)
 	{			
 		printf("%4d %4d\n", a[i], *a_ptr);
 		a_ptr ++;

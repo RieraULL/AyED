@@ -18,7 +18,7 @@ int main(void)
     
     double val = 5.0;
 
-    for(int i = 0; i < sz; i++){
+    for(int i{0}; i < sz; i++){
         
         v.at(i) = val;
         

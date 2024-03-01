@@ -48,7 +48,7 @@ namespace AyED
     vector<T>::vector(const vector<T> &v) : v_(NULL), sz_(v.sz_)
     {
         crea_vector();
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             v_[i] = v.v_[i];
     }
 
@@ -58,7 +58,7 @@ namespace AyED
         if (this != &v)
         {
             resize(v.sz_);
-            for (int i = 0; i < sz_; i++)
+            for (int i{0}; i < sz_; i++)
                 v_[i] = v.v_[i];
         }
         return *this;

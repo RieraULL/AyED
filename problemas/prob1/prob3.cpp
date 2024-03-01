@@ -8,9 +8,9 @@
 
 int count_less(double v[], int sz, double val, double tol)
 {
-	int count = 0;
+	int count{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] - val < -tol)
 			count++;
 
@@ -19,9 +19,9 @@ int count_less(double v[], int sz, double val, double tol)
 
 int count_great(double v[], int sz, double val, double tol)
 {
-	int count = 0;
+	int count{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] - val > tol)
 			count++;
 

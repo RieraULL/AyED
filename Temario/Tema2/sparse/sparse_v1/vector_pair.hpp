@@ -65,7 +65,7 @@ namespace AyED
 		std::ostream &write(std::ostream &os) const
 		{
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 			{
 				v_[i].write(os);
 				os << " ";
@@ -81,7 +81,7 @@ namespace AyED
 
 			resize(sz_);
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				v_[i].read(is);
 
 			return is;

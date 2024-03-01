@@ -101,9 +101,9 @@ namespace AyED
 
     void pascal_triangle_t::pascal_triangle_t::write(ostream &os) const
     {
-        for (size_t i = 0; i < n_; i++)
+        for (size_t i{0}; i < n_; i++)
         {
-            for (size_t j = 0; j <= i; j++)
+            for (size_t j{0}; j <= i; j++)
                 os << setw(8) << at(i, j);
             os << endl;
         }

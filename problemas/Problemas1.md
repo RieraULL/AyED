@@ -26,9 +26,9 @@ Ref. [Prob1](prob1/prob1.cpp)
 
 int scal_prod(int v1[], int v2[], int sz)
 {
-	int aux = 0;
+	int aux{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		aux = aux + v1[i] * v2[i];
 
 	return aux;
@@ -38,19 +38,19 @@ int main(void)
 {
 	int v1[MAX_SZ], v2[MAX_SZ];
 
-	for (int i = 0; i < MAX_SZ; i++)
+	for (int i{0}; i < MAX_SZ; i++)
 	{
 
 		v1[i] = rand() % (2 * (MAX_VAL + 1)) - MAX_VAL;
 		v2[i] = rand() % (2 * (MAX_VAL + 1)) - MAX_VAL;
 	}
 
-	for (int i = 0; i < MAX_SZ; i++)
+	for (int i{0}; i < MAX_SZ; i++)
 		std::cout << std::setw(4) << v1[i];
 
 	std::cout << std::endl;
 
-	for (int i = 0; i < MAX_SZ; i++)
+	for (int i{0}; i < MAX_SZ; i++)
 		std::cout << std::setw(4) << v2[i];
 
 	std::cout << std::endl;
@@ -90,9 +90,9 @@ Ref. [Prob2](prob1/prob2.cpp)
 
 int count_eq(double v[], int sz, double val, double tol)
 {
-	int count = 0;
+	int count{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (fabs(v[i] - val) < tol)
 			count++;
 
@@ -144,9 +144,9 @@ Ref. [Prob3](prob1/prob3.cpp)
 
 int count_less(double v[], int sz, double val, double tol)
 {
-	int count = 0;
+	int count{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] - val < -tol)
 			count++;
 
@@ -155,9 +155,9 @@ int count_less(double v[], int sz, double val, double tol)
 
 int count_great(double v[], int sz, double val, double tol)
 {
-	int count = 0;
+	int count{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] - val > tol)
 			count++;
 
@@ -219,9 +219,9 @@ Ref. [Prob4](prob1/prob4.cpp)
 
 int suma(int v[], int sz)
 {
-	int aux = 0;
+	int aux{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		aux = aux + v[i];
 
 	return aux;
@@ -229,9 +229,9 @@ int suma(int v[], int sz)
 
 int cont_pair(int v[], int sz)
 {
-	int cont = 0;
+	int cont{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] % 2 == 0)
 			cont++;
 
@@ -240,9 +240,9 @@ int cont_pair(int v[], int sz)
 
 int cont_odd(int v[], int sz)
 {
-	int cont = 0;
+	int cont{0};
 
-	for (int i = 0; i < sz; i++)
+	for (int i{0}; i < sz; i++)
 		if (v[i] % 2 != 0)
 			cont++;
 
@@ -309,7 +309,7 @@ La función `unordered` determina si las dos variables `a` y `b` están desorden
 template<class T>
 void biggest_2_end(vector_t<T>& v, int end_v)
 {
-	for(int i = 0; i <= end_v - 1; i++)
+	for(int i{0}; i <= end_v - 1; i++)
 		if (unordered<T>(v[i], v[i + 1]))
 			swap<T>(v[i], v[i + 1]);
 }
@@ -380,7 +380,7 @@ Impleméntese dos métodos, uno para obtener la representación en base decimal 
 ```cpp
     int decimal(void) const
     {
-        int aux = 0;
+        int aux{0};
 
         for(int i = n_digits() - 1; i >= 0; i--)
             aux += number_[i] * pow(base_, i);
@@ -416,7 +416,7 @@ Impleméntese un método recursivo que genere todos los números posibles a part
 	    }
 	    else {
 
-	        for(int b = 0; b < base_; b ++){
+	        for(int b{0}; b < base_; b ++){
 	            number_[i] = b;
 	            generate(i - 1);
 	        }
@@ -453,7 +453,7 @@ Seguidamente, una estructura iterativa, que itera mientras la pila no esté vac�
 	{
 	    stack<par_t> Pila;
 
-	    for(int b = 0; b < base_; b++)
+	    for(int b{0}; b < base_; b++)
 	        Pila.push(par_t(b, n_digits() - 1));
 
 	    while(!Pila.empty())
@@ -470,7 +470,7 @@ Seguidamente, una estructura iterativa, que itera mientras la pila no esté vac�
 	            write(cout);
 	            cout << endl;
 	        } else {
-	            for(int b = 0; b < base_; b++)
+	            for(int b{0}; b < base_; b++)
 	                Pila.push(par_t(b, l - 1));
 	        }
 	    }

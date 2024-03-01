@@ -112,7 +112,7 @@ namespace AyED
 
                   build();
 
-                  for (int i = 0; i < size(); i++)
+                  for (int i{0}; i < size(); i++)
                         v_[i] = v.v_[i];
 
                   return (*this);

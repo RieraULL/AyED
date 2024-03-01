@@ -32,7 +32,7 @@ public:
 
             build();
 
-            for(size_t i = 0; i < sz_; i++)
+            for(size_t i{0}; i < sz_; i++)
                   v_[i] = v.v_[i];
       }
 
@@ -81,7 +81,7 @@ public:
             sz_ = v.sz_;
             build();
             
-            for(int i = 0; i < sz_; i++)
+            for(int i{0}; i < sz_; i++)
                   v_[i] = v.v_[i];
 
             return (*this);

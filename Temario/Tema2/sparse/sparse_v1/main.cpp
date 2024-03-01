@@ -10,7 +10,7 @@ int main(void)
 {
 	AyED::vector v(V_SZ);
 
-	for(int i = 0; i < V_SZ; i++)
+	for(int i{0}; i < V_SZ; i++)
 		v.at(i) = 0.0;
 
 	v.at(0)    = 1.0; 

@@ -10,7 +10,7 @@ int main(void)
 
 
 
-	for(int i = 0; i < MAX_STACK_SIZE + 1; i++){
+	for(int i{0}; i < MAX_STACK_SIZE + 1; i++){
 
 		try {
 			pila_vector.push('a' + i);

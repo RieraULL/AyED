@@ -62,7 +62,7 @@ public:
 	
 		os <<  sz_ << endl;
 
-		for(int i = 0; i < sz_; i ++)
+		for(int i{0}; i < sz_; i ++)
 		 	os << v_[i] << " ";
 
 
@@ -75,7 +75,7 @@ public:
 
 		resize(sz_);
 
-		for(int i = 0; i < sz_; i ++)
+		for(int i{0}; i < sz_; i ++)
 		 	is >> v_[i];
 
 		return is;
@@ -102,7 +102,7 @@ ostream& vector_t<double>::write(ostream& os) const{
 
 	os << setw(8) <<  sz_ << endl;
 
-	for(int i = 0; i < sz_; i ++)
+	for(int i{0}; i < sz_; i ++)
 	 	os << setw(8) << fixed << setprecision(2) << v_[i] << " ";
 
 

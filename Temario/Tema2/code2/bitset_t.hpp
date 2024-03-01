@@ -143,7 +143,7 @@ class small_bitset_t
 
             block_type block = block_;	
 
-            for(size_t i = 0; i < N; i++)
+            for(size_t i{0}; i < N; i++)
             {
                 const char c = '0' + (block & block_type(0x1));
                 s.insert(s.begin(),c); 

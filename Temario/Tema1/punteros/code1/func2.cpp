@@ -25,6 +25,6 @@ int main(void)
 
    const int a = 10, b = 5;
 
-   for (size_t i = 0; i < N_OP; i++)
+   for (size_t i{0}; i < N_OP; i++)
       std::cout << AyED::opera(a, b, opera_array[i]) << std::endl;
 }

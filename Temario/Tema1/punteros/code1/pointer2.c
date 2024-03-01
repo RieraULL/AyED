@@ -19,13 +19,13 @@ int main(void){
 	
 	int i;
 
-	for(i = 0; i < MAXIMO; i++)
+	for(i{0}; i < MAXIMO; i++)
 	{			
 		a[i] = i;
 		b[i] = i + 0.5;
 	}
 
-	for(i = 0; i < MAXIMO; i++)
+	for(i{0}; i < MAXIMO; i++)
 	{			
 		printf("%4d %4d\n", a[i]    , *(a_ptr + i));
 		printf("%4d %4d\n", a_ptr[i], *(a + i)    );

@@ -185,11 +185,11 @@ int main(void)
 	Old_McDonals_farm[3] = new AyED::shark("Dentudo");
 	Old_McDonals_farm[4] = new AyED::cow("Blanquita");
 
-	for (int i = 0; i < N_HABITANTS; i++)
+	for (int i{0}; i < N_HABITANTS; i++)
 
 		Old_McDonals_farm[i]->say_hello(std::cout);
 
-	for (int i = 0; i < N_HABITANTS; i++)
+	for (int i{0}; i < N_HABITANTS; i++)
 
 		if (Old_McDonals_farm[i] != NULL)
 		{

@@ -122,7 +122,7 @@ int main(void)
 	formas[2] = new AyED::triangle(AyED::position(4, 6), 2, 1);
 	formas[3] = new AyED::trapecio(AyED::position(1, 1), 5, 4, 3);
 
-	for (int i = 0; i < 4; i++)
+	for (int i{0}; i < 4; i++)
 	{
 		formas[i]->write(std::cout); std::cout << std::endl;
 		std::cout << "Area     : " << formas[i]->area() << std::endl;

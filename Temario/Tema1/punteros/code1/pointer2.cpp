@@ -19,13 +19,13 @@ int main(void){
  	a_ptr = a;
  	b_ptr = b;
 	
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{			
 		a[i] = i;
 		b[i] = i + 0.5;
 	}
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{	
 		std::cout << std::setw(4) << a[i] << std::setw(4) << *(a_ptr + i) << std::endl; 
 		std::cout << std::setw(4) << a_ptr[i] << std::setw(4) << *(a + i) << std::endl; 

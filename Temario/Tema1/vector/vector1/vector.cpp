@@ -23,7 +23,7 @@ namespace AyED
     {
         build(sz_);
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             base_[i] = v.base_[i];
     }
 
@@ -62,7 +62,7 @@ namespace AyED
     {
         os << std::setw(8) << sz_ << std::endl;
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             os << std::setw(8) << std::fixed << std::setprecision(4) << base_[i] << " ";
 
         os << std::endl;
@@ -74,7 +74,7 @@ namespace AyED
 
         resize(sz_);
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             is >> base_[i];
     }
 

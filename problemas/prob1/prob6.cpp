@@ -48,7 +48,7 @@ namespace AyED
 
 		void init_random(int max)
 		{
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				at(i) = rand() % max + 1;
 		}
 
@@ -81,7 +81,7 @@ namespace AyED
 		void write(ostream &os) const
 		{
 
-			for (int i = 0; i < sz_; i++)
+			for (int i{0}; i < sz_; i++)
 				os << v_[i] << " ";
 		}
 
@@ -109,7 +109,7 @@ namespace AyED
 	void vector_t<int>::write(ostream &os) const
 	{
 
-		for (int i = 0; i < sz_; i++)
+		for (int i{0}; i < sz_; i++)
 			os << setw(3) << v_[i] << " ";
 	}
 
@@ -148,7 +148,7 @@ namespace AyED
 
 		int get_pos(const T &d)
 		{
-			int pos = 0;
+			int pos{0};
 
 			while ((pos <= last_) && (container_[pos] < d))
 				pos++;
@@ -166,7 +166,7 @@ namespace AyED
 
 		void write(ostream &os) const
 		{
-			for (int i = 0; i <= last_; i++)
+			for (int i{0}; i <= last_; i++)
 				cout << container_[i] << " ";
 		}
 	};
@@ -174,7 +174,7 @@ namespace AyED
 	template <>
 	void sorted_container_t<int>::write(ostream &os) const
 	{
-		for (int i = 0; i <= last_; i++)
+		for (int i{0}; i <= last_; i++)
 			cout << setw(3) << container_[i] << " ";
 	}
 
@@ -190,7 +190,7 @@ int main(void)
 {
 	AyED::sorted_container_t<int> v(VECTOR_SZ);
 
-	for (int i = 0; i < VECTOR_SZ; i++)
+	for (int i{0}; i < VECTOR_SZ; i++)
 	{
 
 		const int d = rand() % MAX_VAL + 1;

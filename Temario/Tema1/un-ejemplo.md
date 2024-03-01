@@ -184,7 +184,7 @@ Los siguiente métodos de entrada salida tienen como propósito la escritura y l
     {
         os << std::setw(8) << sz_ << std::endl;
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             os << std::setw(8) << std::fixed << std::setprecision(4) << base_[i] << " ";
 
         os << std::endl;
@@ -196,7 +196,7 @@ Los siguiente métodos de entrada salida tienen como propósito la escritura y l
 
         resize(sz_);
 
-        for (int i = 0; i < sz_; i++)
+        for (int i{0}; i < sz_; i++)
             is >> base_[i];
     }
 ~~~

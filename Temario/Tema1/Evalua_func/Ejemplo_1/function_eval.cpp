@@ -49,7 +49,7 @@ namespace AyED
     std::ostream &function_evaluation::write(std::ostream &os) const
     {
         os << "#" << std::setw(10) << "x" << std::setw(10) << "f(x)" << std::endl;
-        for (size_t i = 0; i < x_points_.size(); ++i)
+        for (size_t i{0}; i < x_points_.size(); ++i)
         {
             os << " " << std::setw(10) << std::fixed << std::setprecision(3) << x_points_[i] << std::setw(10)  << std::fixed << std::setprecision(3) << y_points_[i] << std::endl;
         }

@@ -92,7 +92,7 @@ public:
 	{
 		stack<par_t> Pila;
 
-		for (int b = 0; b < base_; b++)
+		for (int b{0}; b < base_; b++)
 			Pila.push(par_t(b, n_digits() - 1));
 
 		while (!Pila.empty())
@@ -112,7 +112,7 @@ public:
 			}
 			else
 			{
-				for (int b = 0; b < base_; b++)
+				for (int b{0}; b < base_; b++)
 					Pila.push(par_t(b, l - 1));
 			}
 		}
@@ -129,7 +129,7 @@ public:
 		else
 		{
 
-			for (int b = 0; b < base_; b++)
+			for (int b{0}; b < base_; b++)
 			{
 				number_[i] = b;
 				generate(i - 1);

@@ -11,7 +11,7 @@ int main(void)
 
   	AyED::vector<double> v(10);
 
-	for(int i = 0; i < v.size(); i++)
+	for(int i{0}; i < v.size(); i++)
 		v.at(i) = 34.3346 + i * 0.5;
 
 	v.write(cout);
@@ -19,7 +19,7 @@ int main(void)
 
   	AyED::vector<int> w(10);
 
-	for(int i = 0; i < v.size(); i++)
+	for(int i{0}; i < v.size(); i++)
 		w.at(i) = i;
 
 	w.write(cout);

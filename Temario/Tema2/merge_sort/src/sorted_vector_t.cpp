@@ -16,7 +16,7 @@ void sorted_vector_t::write(ostream& os) const
     const int sz = size();
 
     os << "< ";
-    for(int i = 0; i < sz; i++)
+    for(int i{0}; i < sz; i++)
         os << setw(5) << at(i);
     os << "> ";
 }

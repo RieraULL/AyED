@@ -10,7 +10,7 @@ int main(void)
 {
 	AED::sll_t<char> lista;
 
-	for(int i = 0; i < N_CHARS; i++)
+	for(int i{0}; i < N_CHARS; i++)
 		lista.insert_head( new AED::sll_node_t<char>('a' + i) );
 
 	lista.write(cout);

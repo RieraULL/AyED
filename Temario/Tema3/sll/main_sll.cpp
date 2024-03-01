@@ -43,7 +43,7 @@ int main(void)
             AyED::sll<char> L1;
             AyED::sll<char> L2;
 
-            for (int i = 0; i <= 14; i += 2)
+            for (int i{0}; i <= 14; i += 2)
                   L1.insert_head(new AyED::sll_node<char>('a' + i));
 
             for (int i = 1; i <= 25; i += 2)

@@ -16,10 +16,10 @@ int main(void)
 
 	AyED::vector<double> v1(V_SZ);
 
-	for (int i = 0; i < V_SZ; i++)
+	for (int i{0}; i < V_SZ; i++)
 		v1[i] = 0.0;
 
-	for (int i = 0; i < NZ; i++)
+	for (int i{0}; i < NZ; i++)
 		v1[rand() % V_SZ] = (rand() % 1000) / 100.0;
 
 	AyED::sparse_vector sv1(v1, EPS);
@@ -30,10 +30,10 @@ int main(void)
 
 	AyED::vector<double> v2(V_SZ);
 
-	for (int i = 0; i < V_SZ; i++)
+	for (int i{0}; i < V_SZ; i++)
 		v2[i] = 0.0;
 
-	for (int i = 0; i < NZ; i++)
+	for (int i{0}; i < NZ; i++)
 		v2[rand() % V_SZ] = (rand() % 1000) / 100.0;
 
 	AyED::sparse_vector sv2(v2, EPS);

@@ -100,13 +100,13 @@ int main(void){
  	a_ptr = a;
  	b_ptr = b;
 	
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{
 		a[i] = i;
 		b[i] = i + 0.5;
 	}
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{	
 		std::cout << std::setw(4) << a[i] << std::setw(4) << *(a_ptr + i) << std::endl; 
 		std::cout << std::setw(4) << a_ptr[i] << std::setw(4) << *(a + i) << std::endl; 
@@ -138,7 +138,7 @@ int main(void){
 	p = numbers + 3; *p = 40; 
 	p = numbers;     *(p+4) = 50;
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 		std::cout << std::setw(4) << numbers[i] << std::endl;				
 }
 ~~~
@@ -194,7 +194,7 @@ int main(void)
 
    const int a = 10, b = 5;
 
-   for(size_t i = 0; i < N_OP; i++)
+   for(size_t i{0}; i < N_OP; i++)
 		std::cout << opera(a, b, opera_array[i]) << std::endl;
 }
 ~~~
@@ -222,7 +222,7 @@ int main(void){
 
 	*b_ptr = 5;
 
-	for(int i = 0; i < MAXIMO; i++)
+	for(int i{0}; i < MAXIMO; i++)
 	{
 		a[i] = i;
 		a_ptr[i] = i;

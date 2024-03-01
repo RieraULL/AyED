@@ -10,7 +10,7 @@ int main(void)
 {
 	AyED::sll<char> lista;
 
-	for(int i = 0; i < N_CHARS; i++)
+	for(int i{0}; i < N_CHARS; i++)
 		lista.insert_head( new AyED::sll_node<char>('a' + i) );
 
 	lista.write(cout);
