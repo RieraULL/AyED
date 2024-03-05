@@ -6,12 +6,12 @@ La **lista doblemente enlazada** es una estructura de datos fundamental en la ci
 
 - **Nodos con doble enlace:** Cada nodo tiene un enlace al nodo siguiente y al anterior, permitiendo un recorrido eficiente en ambas direcciones.
 - **Flexibilidad en la inserción y eliminación:** Las operaciones de inserción y eliminación de elementos son más versátiles, ya que se pueden realizar eficientemente en cualquier punto de la lista.
-- **No requiere espacio adicional para el control de la estructura:** A diferencia de los arrays o arreglos, las listas doblemente enlazadas no necesitan definir un tamaño inicial, adaptándose dinámicamente a las necesidades de almacenamiento.
+- **No requiere espacio adicional para el control de la estructura:** A diferencia de los vectores, las listas doblemente enlazadas no necesitan definir un tamaño inicial, adaptándose dinámicamente a las necesidades de almacenamiento.
 
 ## Operaciones Básicas
 
 - **Inserción:** Añadir un nuevo nodo en la lista, ya sea al inicio, al final o en medio de dos nodos existentes.
-- **Eliminación:** Remover un nodo específico de la lista, ajustando los enlaces de los nodos adyacentes para mantener la integridad de la estructura.
+- **Eliminación:** Eliminar un nodo específico de la lista, ajustando los enlaces de los nodos adyacentes para mantener la integridad de la estructura.
 - **Búsqueda:** Localizar un nodo dentro de la lista que cumpla con ciertos criterios.
 - **Recorrido:** Acceder secuencialmente a cada uno de los nodos de la lista, ya sea desde el principio hacia el final o viceversa.
 
@@ -24,7 +24,7 @@ La **lista doblemente enlazada** es una estructura de datos fundamental en la ci
 
 ### Desventajas
 
-- **Consumo de memoria adicional:** Cada nodo requiere memoria adicional para almacenar dos referencias, lo que incrementa el uso total de memoria en comparación con las listas enlazadas simples.
+- **Consumo de memoria adicional:** Cada nodo requiere memoria adicional para almacenar dos referencias, lo que incrementa el uso total de memoria en comparación con las listas simplemente enlazadas.
 - **Complejidad en la manipulación:** El manejo de dos punteros por nodo puede complicar la implementación de algunas operaciones y aumentar el riesgo de errores, como la corrupción de la estructura de la lista.
 
 En resumen, las listas doblemente enlazadas ofrecen una potente alternativa a las listas simplemente enlazadas y otras estructuras de datos lineales, especialmente en aplicaciones donde las operaciones de inserción y eliminación frecuentes y el recorrido en ambas direcciones son requisitos críticos. Sin embargo, es importante considerar su mayor complejidad y requerimientos de memoria al decidir su uso en un proyecto específico.
