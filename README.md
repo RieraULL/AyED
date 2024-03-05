@@ -31,6 +31,6 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
   * [Problemas con vectores dispersos](Temario/Tema2/vectores_dispersos.md)
 * Tema 3
   * [Listas simplemente enlazadas](Temario/Tema3/listas/ListasSSL.md)
- Tema 4
+* Tema 4
   * [Listas doblemente enlazadas](Temario/Tema4/ListasDLL.md)
   
