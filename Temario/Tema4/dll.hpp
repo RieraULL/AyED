@@ -207,11 +207,11 @@ namespace AyED
 
         if (is_first(nodo))
         {
-            extract_head();
+            nodo = extract_head();
         }
         else if (is_last(nodo))
         {
-            extract_tail();
+            nodo = extract_tail();
         }
         else
         {
