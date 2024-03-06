@@ -3,8 +3,9 @@
 > [!IMPORTANT]
 El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asignatura *Algoritmos y Estructuras de Datos* del Grado en Ingeniería Informática de la Universidad de La Laguna. Estos contenidos complementan las clases magistrales, la bibliografía y material referido en la guía docente de esta asignatura.
 
-## Autor
+## Autores
 - Jorge Riera Ledesma <jriera@ull.es>
+- Marcos A. Colebrook Santamaría <mcolesan@ull.es>
 
 ## Índice
 
