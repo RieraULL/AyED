@@ -21,17 +21,20 @@ namespace AyED
 
         dll_node_t<T> *extract_tail(void);
         dll_node_t<T> *extract_head(void);
+        void extract(dll_node_t<T> *);
 
-        dll_node_t<T> *get_tail(void);
-        dll_node_t<T> *get_head(void);
+        dll_node_t<T> *get_tail(void) const;
+        dll_node_t<T> *get_head(void) const;
 
-        bool empty(void);
+        bool empty(void) const;        
 
-        void remove(dll_node_t<T> *);
+        int get_size(void) const;
 
-        int get_size(void);
+        std::ostream &write(std::ostream &os) const;
 
-        std::ostream &write(std::ostream &os);
+    private:
+        bool is_first(dll_node_t<T> *nodo) const;
+        bool is_last(dll_node_t<T> *nodo) const;
 
     private:
         dll_node_t<T> *head_;
@@ -66,7 +69,7 @@ namespace AyED
     }
 
     template <class T>
-    bool dll_t<T>::empty(void)
+    bool dll_t<T>::empty(void) const
     {
 
         if (head_ == NULL)
@@ -170,19 +173,19 @@ namespace AyED
     }
 
     template <class T>
-    dll_node_t<T> *dll_t<T>::get_head(void)
+    dll_node_t<T> *dll_t<T>::get_head(void) const
     {
         return head_;
     }
 
     template <class T>
-    dll_node_t<T> *dll_t<T>::get_tail(void)
+    dll_node_t<T> *dll_t<T>::get_tail(void) const
     {
         return tail_;
     }
 
     template <class T>
-    std::ostream &dll_t<T>::write(std::ostream &os)
+    std::ostream &dll_t<T>::write(std::ostream &os) const 
     {
 
         dll_node_t<T> *aux = head_;
@@ -197,29 +200,46 @@ namespace AyED
     }
 
     template <class T>
-    void dll_t<T>::remove(dll_node_t<T> *nodo)
+    void dll_t<T>::extract(dll_node_t<T> *nodo)
     {
 
         assert(nodo != NULL);
 
-        if (nodo->get_prev() != NULL)
-            nodo->get_prev()->set_next(nodo->get_next());
+        if (is_first(nodo))
+        {
+            extract_head();
+        }
+        else if (is_last(nodo))
+        {
+            extract_tail();
+        }
         else
-            head_ = nodo->get_next();
+        {
+            dll_node_t<T> *prev = nodo->get_prev();
+            dll_node_t<T> *next = nodo->get_next();
 
-        if (nodo->get_next() != NULL)
-            nodo->get_next()->set_prev(nodo->get_prev());
-        else
-            tail_ = nodo->get_prev();
+            prev->set_next(next);
+            next->set_prev(prev);
 
-        delete nodo;
-
-        sz_--;
+            sz_--;
+        }
     }
 
     template <class T>
-    int dll_t<T>::get_size(void)
+    int dll_t<T>::get_size(void) const
     {
         return sz_;
+    }
+
+    template <class T>
+    bool dll_t<T>::is_first(dll_node_t<T> *nodo) const
+    {
+        return (nodo == head_);
+    }
+
+    template <class T>
+    bool dll_t<T>::is_last(dll_node_t<T> *nodo) const
+    {
+        return (nodo == tail_);
     }
 }

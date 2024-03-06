@@ -37,7 +37,9 @@ int main(void)
 	lista.write(std::cout);
 	std::cout << std::endl;
 
-	lista.remove(lista.get_head()->get_next()->get_next());
+	AyED::dll_node_t<char>* to_delete = lista.get_head()->get_next()->get_next();
+	lista.extract(to_delete);
+	delete to_delete;
 
 	lista.write(std::cout);
 	std::cout << std::endl;
