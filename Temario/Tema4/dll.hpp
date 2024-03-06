@@ -221,6 +221,9 @@ namespace AyED
             prev->set_next(next);
             next->set_prev(prev);
 
+            nodo->set_next(NULL);
+            nodo->set_prev(NULL);
+
             sz_--;
         }
     }
