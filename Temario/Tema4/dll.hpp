@@ -54,7 +54,7 @@ namespace AyED
     dll<T>::~dll(void)
     {
 
-        dll_node<T> *aux = NULL;
+        dll_node<T> *aux{NULL};
 
         while (head_ != NULL)
         {
@@ -132,7 +132,7 @@ namespace AyED
 
         assert(!empty());
 
-        dll_node<T> *aux = tail_;
+        dll_node<T> *aux{tail_};
 
         tail_ = tail_->get_prev();
 
@@ -155,7 +155,7 @@ namespace AyED
 
         assert(!empty());
 
-        dll_node<T> *aux = head_;
+        dll_node<T> *aux{head_};
 
         head_ = head_->get_next();
 
@@ -188,7 +188,7 @@ namespace AyED
     std::ostream &dll<T>::write(std::ostream &os) const 
     {
 
-        dll_node<T> *aux = head_;
+        dll_node<T> *aux{head_};
 
         while (aux != NULL)
         {
@@ -215,8 +215,8 @@ namespace AyED
         }
         else
         {
-            dll_node<T> *prev = nodo->get_prev();
-            dll_node<T> *next = nodo->get_next();
+            dll_node<T> *prev{nodo->get_prev()};
+            dll_node<T> *next{nodo->get_next()};
 
             prev->set_next(next);
             next->set_prev(prev);
