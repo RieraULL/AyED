@@ -37,15 +37,15 @@ namespace AyED
 
 	template <class T>
 	dll_node<T>::dll_node() : next_(NULL),
-								  prev_(NULL),
-								  data_()
+							  prev_(NULL),
+							  data_()
 	{
 	}
 
 	template <class T>
 	dll_node<T>::dll_node(const T &data) : next_(NULL),
-											   prev_(NULL),
-											   data_(data)
+										   prev_(NULL),
+										   data_(data)
 	{
 	}
 

@@ -58,7 +58,7 @@ namespace AyED
       {
             if (n != NULL)
             {
-                  const T &n_d = n->get_data();
+                  const T &n_d{n->get_data()};
                   if (n_d % 2 != 0)
                         insert_head(new sll_node<T>(n_d));
 
@@ -69,27 +69,27 @@ namespace AyED
       template <class T>
       void sll<T>::merge1(sll<T> &L1, sll<T> &L2)
       {
-            sll_node<T> *L1_h = L1.head_;
-            sll_node<T> *L2_h = L2.head_;
+            sll_node<T> *L1_h{L1.head_};
+            sll_node<T> *L2_h{L2.head_};
 
             std::stack<sll_node<T> *> pila;
 
             while ((L1_h != NULL) && (L2_h != NULL))
             {
 
-                  const T &L1_d = L1_h->get_data();
-                  const T &L2_d = L2_h->get_data();
+                  const T &L1_d{L1_h->get_data()};
+                  const T &L2_d{L2_h->get_data()};
 
                   if (L1_d < L2_d)
                   {
                         L1_h = L1_h->get_next();
-                        sll_node<T> *L1_a = L1.extract_head();
+                        sll_node<T> *L1_a{L1.extract_head()};
                         pila.push(L1_a);
                   }
                   else
                   {
                         L2_h = L2_h->get_next();
-                        sll_node<T> *L2_a = L2.extract_head();
+                        sll_node<T> *L2_a{L2.extract_head()};
                         pila.push(L2_a);
                   }
             }
@@ -97,20 +97,20 @@ namespace AyED
             while (L1_h != NULL)
             {
                   L1_h = L1_h->get_next();
-                  sll_node<T> *L1_a = L1.extract_head();
+                  sll_node<T> *L1_a{L1.extract_head()};
                   pila.push(L1_a);
             }
 
             while (L2_h != NULL)
             {
                   L2_h = L2_h->get_next();
-                  sll_node<T> *L2_a = L2.extract_head();
+                  sll_node<T> *L2_a{L2.extract_head()};
                   pila.push(L2_a);
             }
 
             while (!pila.empty())
             {
-                  sll_node<T> *aux = pila.top();
+                  sll_node<T> *aux{pila.top()};
                   pila.pop();
                   insert_head(aux);
             }
@@ -119,8 +119,8 @@ namespace AyED
       template <class T>
       void sll<T>::merge2(const sll<T> &L1, const sll<T> &L2)
       {
-            sll_node<T> *L1_h = L1.head_;
-            sll_node<T> *L2_h = L2.head_;
+            sll_node<T> *L1_h{L1.head_};
+            sll_node<T> *L2_h{L2.head_};
 
             while ((L1_h != NULL) && (L2_h != NULL))
             {
@@ -162,7 +162,7 @@ namespace AyED
             while (!empty())
             {
 
-                  sll_node<T> *aux = head_;
+                  sll_node<T> *aux{head_};
                   head_ = head_->get_next();
                   delete aux;
             }
@@ -177,7 +177,7 @@ namespace AyED
       template <class T>
       void sll<T>::insert_tail(sll_node<T> *n)
       {
-            sll_node<T> *prev = tail();
+            sll_node<T> *prev{tail()};
 
             if (prev == NULL)
                   insert_head(n);
@@ -193,7 +193,7 @@ namespace AyED
             else
             {
 
-                  sll_node<T> *aux = head_;
+                  sll_node<T> *aux{head_};
 
                   while (aux->get_next() != NULL)
                         aux = aux->get_next();
@@ -212,7 +212,7 @@ namespace AyED
 
             else
             {
-                  sll_node<T> *aux = head_;
+                  sll_node<T> *aux{head_};
 
                   while (aux->get_next()->get_next() != NULL)
                         aux = aux->get_next();
@@ -232,7 +232,7 @@ namespace AyED
       sll_node<T> *sll<T>::extract_head(void)
       {
 
-            sll_node<T> *aux = head_;
+            sll_node<T> *aux{head_};
             head_ = head_->get_next();
             aux->set_next(NULL);
 
@@ -255,7 +255,7 @@ namespace AyED
       template <class T>
       sll_node<T> *sll<T>::extract_after(sll_node<T> *prev)
       {
-            sll_node<T> *aux = prev->get_next();
+            sll_node<T> *aux{prev->get_next()};
             prev->set_next(aux->get_next());
             aux->set_next(NULL);
 
@@ -265,7 +265,7 @@ namespace AyED
       template <class T>
       void sll<T>::write(std::ostream &os) const
       {
-            sll_node<T> *aux = head_;
+            sll_node<T> *aux{head_};
 
             while (aux != NULL)
             {

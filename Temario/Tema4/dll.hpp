@@ -26,7 +26,7 @@ namespace AyED
         dll_node<T> *get_tail(void) const;
         dll_node<T> *get_head(void) const;
 
-        bool empty(void) const;        
+        bool empty(void) const;
 
         int get_size(void) const;
 
@@ -45,8 +45,8 @@ namespace AyED
 
     template <class T>
     dll<T>::dll(void) : head_(NULL),
-                            tail_(NULL),
-                            sz_(0)
+                        tail_(NULL),
+                        sz_(0)
     {
     }
 
@@ -185,7 +185,7 @@ namespace AyED
     }
 
     template <class T>
-    std::ostream &dll<T>::write(std::ostream &os) const 
+    std::ostream &dll<T>::write(std::ostream &os) const
     {
 
         dll_node<T> *aux{head_};
