@@ -19,18 +19,21 @@ int main(void)
 	AyED::dll_node<char> *nodo{lista.extract_head()};
 	char dato{nodo->get_data()};
 	delete nodo;
+	nodo = NULL;
 
 	std::cout << "Extrae desde cabecera: " << dato << std::endl;
 
 	nodo = lista.extract_head();
 	dato = nodo->get_data();
 	delete nodo;
+	nodo = NULL;
 
 	std::cout << "Extrae desde cabecera: " << dato << std::endl;
 
 	nodo = lista.extract_tail();
 	dato = nodo->get_data();
 	delete nodo;
+	nodo = NULL;
 
 	std::cout << "Extrae desde cola: " << dato << std::endl;
 
@@ -40,6 +43,7 @@ int main(void)
 	AyED::dll_node<char> *to_delete = lista.get_head()->get_next()->get_next();
 	lista.extract(to_delete);
 	delete to_delete;
+	to_delete = NULL;
 
 	lista.write(std::cout);
 	std::cout << std::endl;
@@ -47,6 +51,7 @@ int main(void)
 	nodo = lista.extract_tail();
 	dato = nodo->get_data();
 	delete nodo;
+	nodo = NULL;
 
 	std::cout << "Dato 5: " << dato << std::endl;
 
