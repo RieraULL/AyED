@@ -8,20 +8,20 @@ namespace AyED
 {
 
 	template <class T>
-	class dll_node_t
+	class dll_node
 	{
 
 	public:
-		dll_node_t();
-		dll_node_t(const T &data);
+		dll_node();
+		dll_node(const T &data);
 
-		virtual ~dll_node_t(void);
+		virtual ~dll_node(void);
 
-		void set_next(dll_node_t<T> *);
-		void set_prev(dll_node_t<T> *);
+		void set_next(dll_node<T> *);
+		void set_prev(dll_node<T> *);
 
-		dll_node_t<T> *get_next(void) const;
-		dll_node_t<T> *get_prev(void) const;
+		dll_node<T> *get_next(void) const;
+		dll_node<T> *get_prev(void) const;
 
 		void set_data(const T &data);
 		T get_data(void) const;
@@ -29,71 +29,71 @@ namespace AyED
 		std::ostream &write(std::ostream &os) const;
 
 	private:
-		dll_node_t<T> *next_;
-		dll_node_t<T> *prev_;
+		dll_node<T> *next_;
+		dll_node<T> *prev_;
 
 		T data_;
 	};
 
 	template <class T>
-	dll_node_t<T>::dll_node_t() : next_(NULL),
+	dll_node<T>::dll_node() : next_(NULL),
 								  prev_(NULL),
 								  data_()
 	{
 	}
 
 	template <class T>
-	dll_node_t<T>::dll_node_t(const T &data) : next_(NULL),
+	dll_node<T>::dll_node(const T &data) : next_(NULL),
 											   prev_(NULL),
 											   data_(data)
 	{
 	}
 
 	template <class T>
-	dll_node_t<T>::~dll_node_t(void)
+	dll_node<T>::~dll_node(void)
 	{
 		prev_ = NULL;
 		next_ = NULL;
 	}
 
 	template <class T>
-	void dll_node_t<T>::set_next(dll_node_t<T> *next)
+	void dll_node<T>::set_next(dll_node<T> *next)
 	{
 		next_ = next;
 	}
 
 	template <class T>
-	dll_node_t<T> *dll_node_t<T>::get_next(void) const
+	dll_node<T> *dll_node<T>::get_next(void) const
 	{
 		return next_;
 	}
 
 	template <class T>
-	void dll_node_t<T>::set_prev(dll_node_t<T> *prev)
+	void dll_node<T>::set_prev(dll_node<T> *prev)
 	{
 		prev_ = prev;
 	}
 
 	template <class T>
-	dll_node_t<T> *dll_node_t<T>::get_prev(void) const
+	dll_node<T> *dll_node<T>::get_prev(void) const
 	{
 		return prev_;
 	}
 
 	template <class T>
-	void dll_node_t<T>::set_data(const T &data)
+	void dll_node<T>::set_data(const T &data)
 	{
 		data_ = data;
 	}
 
 	template <class T>
-	T dll_node_t<T>::get_data(void) const
+	T dll_node<T>::get_data(void) const
 	{
 		return data_;
 	}
 
 	template <class T>
-	std::ostream &dll_node_t<T>::write(std::ostream &os) const
+	std::ostream &dll_node<T>::write(std::ostream &os) const
 	{
 		os << data_;
 		return os;

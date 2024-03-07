@@ -6,17 +6,17 @@
 
 int main(void)
 {
-	AyED::dll_t<char> lista;
+	AyED::dll<char> lista;
 
 	for (int i = 0; i < N_CHARS; i++)
 	{
 		std::cout << "Introduciendo la letra: " << (char)('a' + i) << std::endl;
-		lista.insert_head(new AyED::dll_node_t<char>('a' + i));
+		lista.insert_head(new AyED::dll_node<char>('a' + i));
 		lista.write(std::cout);
 		std::cout << std::endl;
 	}
 
-	AyED::dll_node_t<char> *nodo = lista.extract_head();
+	AyED::dll_node<char> *nodo = lista.extract_head();
 	char dato = nodo->get_data();
 	delete nodo;
 
@@ -37,7 +37,7 @@ int main(void)
 	lista.write(std::cout);
 	std::cout << std::endl;
 
-	AyED::dll_node_t<char>* to_delete = lista.get_head()->get_next()->get_next();
+	AyED::dll_node<char>* to_delete = lista.get_head()->get_next()->get_next();
 	lista.extract(to_delete);
 	delete to_delete;
 
