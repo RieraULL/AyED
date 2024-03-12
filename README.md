@@ -6,6 +6,7 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
 ## Autores
 - Jorge Riera Ledesma <jriera@ull.es>
 - Marcos A. Colebrook Santamaría <mcolesan@ull.es>
+- Patricio García Báez <pgarcia@ull.es>
 
 ## Índice
 
@@ -31,7 +32,9 @@ El conjunto de las notas aquí incluidas **no constituyen** apuntes de la asigna
   * [Problemas con matrices](Temario/Tema2/matrices.md)
   * [Problemas con vectores dispersos](Temario/Tema2/vectores_dispersos.md)
 * Tema 3
-  * [Listas simplemente enlazadas](Temario/Tema3/listas/ListasSSL.md)
+  * [TAD Listas simplemente enlazadas](Temario/Tema3/listas/ListasSSL.md)
 * Tema 4
-  * [Listas doblemente enlazadas](Temario/Tema4/ListasDLL.md)
+  * [TAD Listas doblemente enlazadas](Temario/Tema4/ListasDLL.md)
+* Tema 5
+  * [TAD Pila](Temario/Tema5/Pilas.md)
   
