@@ -1,6 +1,6 @@
 // AUTOR: Patricio García
 // FECHA: 14/05/20201
-// EMAIL: pgarcia@ull.es 
+// EMAIL: pgarcia@ull.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // TEMA: 5
@@ -22,33 +22,44 @@
 #include <iostream>
 #include <string.h>
 
-#include "stack_v_t.h"
-#include "stack_l_t.h"
+#include "stack_v.h"
+#include "stack_l.h"
+
+#define PILA_VECTOR
+
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
-  stack_v_t<char> pila;
-  // stack_l_t<char> pila;
+int main(int argc, char *argv[])
+{
+#ifdef PILA_VECTOR
+  AyED::stack_v<char> pila;
+#else
+  AyED::stack_l<char> pila;
+#endif
+
   const char *open_parenths{"([{"};
   const char *closed_parenths{")]}"};
 
-  if (argc == 2) {
+  if (argc == 2)
+  {
     bool fail{false};
     int i{0};
     // Revisar toda la cadena o hasta encontrar un error
-    while (argv[1][i] != '\0' && fail != true) {
+    while (argv[1][i] != '\0' && fail != true)
+    {
       if (strchr(open_parenths, argv[1][i]) != NULL)
-	pila.push(argv[1][i]);  // Insertar en pila paréntesis abierto
-      else if (strchr(closed_parenths, argv[1][i]) != NULL) {
-	// Encontrado paréntesis cerrado
-	// Hallar posición dentro del string del paréntesis cerrado
-	int pos = strchr(closed_parenths, argv[1][i]) - closed_parenths;
-	if (pila.empty() || pila.top() != open_parenths[pos])
-	  // Si la pila está vacía o no empareja paréntesis fallar
-	  fail = true;
+        pila.push(argv[1][i]); // Insertar en pila paréntesis abierto
+      else if (strchr(closed_parenths, argv[1][i]) != NULL)
+      {
+        // Encontrado paréntesis cerrado
+        // Hallar posición dentro del string del paréntesis cerrado
+        int pos = strchr(closed_parenths, argv[1][i]) - closed_parenths;
+        if (pila.empty() || pila.top() != open_parenths[pos])
+          // Si la pila está vacía o no empareja paréntesis fallar
+          fail = true;
         else
-	  pila.pop();  // Sacar de pila el paréntesis abierto del top
+          pila.pop(); // Sacar de pila el paréntesis abierto del top
       }
       // cout << "Caracter: " << argv[1][i] << endl;
       // pila.write();
@@ -59,7 +70,8 @@ int main(int argc, char *argv[]) {
       cout << "Cadena  balanceada" << endl;
     else
       cout << "Cadena no balanceada" << endl;
-  } else
+  }
+  else
     cout << "Argumento de entrada incorrecto" << endl;
 
   return 0;
