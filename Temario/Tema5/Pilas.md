@@ -18,10 +18,38 @@ El **Tipo Abstracto de Dato Pila** (en inglés, *Stack*) es una estructura de da
 
 Las pilas son utilizadas en una amplia variedad de aplicaciones informáticas, incluyendo:
 
-- **Evaluación de expresiones**: Manejo de expresiones aritméticas en notación postfija o infija.
-- **Gestión de llamadas a funciones**: Mantenimiento de direcciones de retorno en llamadas a funciones.
-- **Algoritmos de recorrido**: Por ejemplo, algoritmos para recorrer estructuras de datos complejas como árboles y grafos.
-- **Desarrollo de algoritmos**: Implementación de algoritmos que necesitan revertir secuencias o manejar datos de forma inversa a su orden de entrada.
+## Aplicaciones más importantes del Tipo Abstracto de Datos Pila (Stack)
+
+### Gestión de llamadas a funciones y procedimientos
+
+- **Descripción**: Las pilas facilitan la gestión de llamadas a funciones o procedimientos, almacenando direcciones de retorno y variables locales. Esto permite ejecuciones anidadas y manejo eficiente de subrutinas.
+
+### Eliminación de la recursividad
+
+- **Descripción**: La recursividad en funciones puede convertirse en iteración mediante pilas, optimizando el uso de memoria y evitando el desbordamiento de pila en casos de recursividad profunda.
+
+### Evaluación y conversión de expresiones
+
+- **Descripción**: Las pilas son esenciales en la evaluación de expresiones aritméticas y lógicas y en su conversión entre notaciones (infija, postfija, prefija). Esto es crucial para compiladores e intérpretes.
+
+### Soporte para operaciones de deshacer (Undo)
+
+- **Descripción**: En aplicaciones de edición y entornos interactivos, las pilas gestionan las operaciones de deshacer, permitiendo revertir acciones almacenando cada acción del usuario.
+
+### Navegación (Forward y Backward) en aplicaciones web y exploradores de archivos
+
+- **Descripción**: Las pilas permiten implementar la navegación hacia adelante y hacia atrás, almacenando las direcciones visitadas o los directorios abiertos, facilitando la navegación por páginas o directorios previos.
+
+### Análisis sintáctico en compiladores
+
+- **Descripción**: El análisis sintáctico en compiladores utiliza pilas para manejar estructuras gramaticales anidadas, verificando la corrección sintáctica del código fuente.
+
+### Manejo de memoria en sistemas operativos
+
+- **Descripción**: Los sistemas operativos usan pilas para gestionar la memoria de los procesos, incluyendo variables locales, direcciones de retorno y el estado del procesador, facilitando la ejecución concurrente de múltiples procesos.
+
+
+Estas aplicaciones demuestran la importancia y versatilidad del TAD Pila en distintas áreas de la computación, subrayando su capacidad para organizar datos y controlar flujos de ejecución en un modelo LIFO.
 
 ## Implementación
 
