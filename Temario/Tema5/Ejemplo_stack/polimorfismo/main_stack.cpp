@@ -1,12 +1,10 @@
 #include <iostream>
-#include "stack_v_t.hpp"
-
-using namespace std;
+#include "stack_v.hpp"
 
 int main(void)
 {
 	
-	stack_v_t<char> pila_vector;
+	AyED::stack_v<char> pila_vector;
 
 
 
@@ -15,14 +13,14 @@ int main(void)
 		try {
 			pila_vector.push('a' + i);
 		 }
-		catch(stack_exception_t& e)
+		catch(AyED::stack_exception& e)
   		{
-    			cout << "Excepción de la clase 'stack_t': ";
-   			cout << e.what() <<  endl;
+    			std::cout << "Excepción de la clase 'stack_t': ";
+   			std::cout << e.what() <<  std::endl;
   		}
  		catch(exception& e)
   		{
-		    	cout << e.what() <<  endl;
+		    	std::cout << e.what() <<  std::endl;
   		}
 	}
 
@@ -31,14 +29,14 @@ int main(void)
 		try{
 			pila_vector.pop();
 		}
-		catch(stack_exception_t& e)
+		catch(AyED::stack_exception& e)
   		{
-    			cout << "Excepción de la clase 'stack_t': ";
-   			cout << e.what() <<  endl;
+    			std::cout << "Excepción de la clase 'stack_t': ";
+   			std::cout << e.what() <<  std::endl;
   		}
  		catch(exception& e)
   		{
-		    	cout << e.what() <<  endl;
+		    	std::cout << e.what() <<  std::endl;
   		}
 	}
 	
@@ -46,14 +44,14 @@ int main(void)
 	try{
 		pila_vector.pop();
 	}
-	catch(stack_exception_t& e)
+	catch(AyED::stack_exception& e)
 	{
-		cout << "Excepción de la clase 'stack_t': ";
-		cout << e.what() <<  endl;
+		std::cout << "Excepción de la clase 'stack_t': ";
+		std::cout << e.what() <<  std::endl;
 	}
 	catch(exception& e)
 	{
-	    	cout << e.what() <<  endl;
+	    	std::cout << e.what() <<  std::endl;
 	}
 	
 
