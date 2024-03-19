@@ -14,6 +14,7 @@
 #include "stack_v.h"
 #include "stack_v_h.h"
 #include "stack_l.h"
+#include "stack_l_h.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ int main(void)
 
   AyED::stack_v_h<char> pila_vector_h;
   cout << "***** PILA VECTOR HERENCIA *****" << endl;
-   for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 10; i++)
   {
     pila_vector.push('a' + i);
     pila_vector.write();
@@ -67,6 +68,23 @@ int main(void)
   {
     pila_lista.pop();
     pila_lista.write();
+    cout << endl;
+  }
+
+  AyED::stack_l_h<char> pila_lista_h;
+  cout << "***** PILA LISTA HERENCIA *****" << endl;
+  for (int i = 0; i < 10; i++)
+  {
+    pila_lista_h.push('a' + i);
+    pila_lista_h.write();
+    cout << endl;
+  }
+  cout << endl;
+
+  while (!pila_lista_h.empty())
+  {
+    pila_lista_h.pop();
+    pila_lista_h.write();
     cout << endl;
   }
 
