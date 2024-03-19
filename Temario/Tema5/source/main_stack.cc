@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include "stack_v.h"
+#include "stack_v_h.h"
 #include "stack_l.h"
 
 using namespace std;
@@ -21,6 +22,23 @@ int main(void)
   AyED::stack_v<char> pila_vector;
   cout << "********** PILA VECTOR **********" << endl;
   for (int i = 0; i < 10; i++)
+  {
+    pila_vector.push('a' + i);
+    pila_vector.write();
+    cout << endl;
+  }
+  cout << endl;
+
+  while (!pila_vector.empty())
+  {
+    pila_vector.pop();
+    pila_vector.write();
+    cout << endl;
+  }
+
+  AyED::stack_v_h<char> pila_vector_h;
+  cout << "***** PILA VECTOR HERENCIA *****" << endl;
+   for (int i = 0; i < 10; i++)
   {
     pila_vector.push('a' + i);
     pila_vector.write();
