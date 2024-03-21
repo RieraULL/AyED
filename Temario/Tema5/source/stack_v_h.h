@@ -66,7 +66,7 @@ namespace AyED
   const T &stack_v_h<T>::top(void) const
   {
     assert(!empty());
-    return at(top_);
+    return vector<T>::at(top_);
   }
 
   template <class T>
