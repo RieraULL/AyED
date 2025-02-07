@@ -17,15 +17,15 @@ namespace AyED
 
         size_t size(void) const;
 
-        const double &at(size_t pos) const;
-        double &at(size_t pos);
+        double at(const size_t pos) const;
+        double &at(const size_t pos);
 
-        const double &operator[](size_t pos) const;
-        double &operator[](size_t pos);
+        double operator[](const size_t pos) const;
+        double &operator[](const size_t pos);
 
         double scalar_product(const vector &v) const;
 
-        bool perpendicular(const double precision, const vector &v) const;
+        bool perpendicular(const vector &v, const double precision = 1E-3) const;
 
         std::ostream &write(std::ostream &os) const;
         std::istream &read(std::istream &is);

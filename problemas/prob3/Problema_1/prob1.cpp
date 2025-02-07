@@ -30,7 +30,7 @@ int main(void)
     std::cout << std::endl;
 
     std::cout << "Los vectores v1 y v2";
-    if (v1.perpendicular(precision, v2))
+    if (v1.perpendicular(v2, precision))
         std::cout << " son perpendiculares" << std::endl;
     else
         std::cout << " no son perpendiculares" << std::endl;
@@ -55,7 +55,7 @@ int main(void)
     std::cout << std::endl;
 
     std::cout << "Los vectores v3 y v4";
-    if (v3.perpendicular(precision, v4))
+    if (v3.perpendicular(v4, precision))
         std::cout << " son perpendiculares" << std::endl;
     else
         std::cout << " no son perpendiculares" << std::endl;

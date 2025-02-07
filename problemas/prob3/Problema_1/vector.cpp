@@ -28,26 +28,26 @@ namespace AyED
         return sz_;
     }
 
-    const double &vector::at(size_t pos) const
+    double vector::at(const size_t pos) const
     {
         assert(pos < sz_);
 
         return v_[pos];
     }
 
-    double &vector::at(size_t pos)
+    double &vector::at(const size_t pos)
     {
         assert(pos < sz_);
 
         return v_[pos];
     }
 
-    const double &vector::operator[](size_t pos) const
+    double vector::operator[](const size_t pos) const
     {
         return at(pos);
     }
 
-    double &vector::operator[](size_t pos)
+    double &vector::operator[](const size_t pos)
     {
         return at(pos);
     }
@@ -64,7 +64,7 @@ namespace AyED
         return result;
     }
 
-    bool vector::perpendicular(const double precision, const vector &v) const
+    bool vector::perpendicular(const vector &v, const double precision) const
     {
         assert(sz_ == v.size());
 
