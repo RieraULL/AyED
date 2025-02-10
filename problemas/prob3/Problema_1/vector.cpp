@@ -18,6 +18,31 @@ namespace AyED
         crea_vector_();
     }
 
+    vector::vector(const vector &v) : v_(NULL),
+                                      sz_(v.sz_)
+    {
+        crea_vector_();
+
+        for (size_t i{0}; i < sz_; i++)
+            v_[i] = v.v_[i];
+    }
+
+    vector &vector::operator=(const vector &v)
+    {
+        if (this != &v)
+        {
+            destruye_vector_();
+
+            sz_ = v.sz_;
+            crea_vector_();
+
+            for (size_t i{0}; i < sz_; i++)
+                v_[i] = v.v_[i];
+        }
+
+        return *this;
+    }
+
     vector::~vector(void)
     {
         destruye_vector_();

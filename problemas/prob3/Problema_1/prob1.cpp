@@ -61,5 +61,16 @@ int main(void)
         std::cout << " no son perpendiculares" << std::endl;
     std::cout << std::endl;
 
+    const AyED::vector v5{v1};
+    v3 = v5;
+
+    std::cout << "Vector v5" << std::endl;
+    std::cout << v5 << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Vector v3" << std::endl;
+    std::cout << v3 << std::endl;
+    std::cout << std::endl;
+
     return 0;
 }

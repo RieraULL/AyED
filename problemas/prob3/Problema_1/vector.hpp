@@ -13,6 +13,7 @@ namespace AyED
     public:
         vector(void);
         vector(size_t sz);
+        vector(const vector &v);
         ~vector(void);
 
         size_t size(void) const;
@@ -22,6 +23,8 @@ namespace AyED
 
         double operator[](const size_t pos) const;
         double &operator[](const size_t pos);
+
+        vector &operator=(const vector &v);
 
         double scalar_product(const vector &v) const;
 
