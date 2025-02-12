@@ -4,6 +4,7 @@
 #include <iomanip>
 
 #include "vector.hpp"
+#include "i_vector.hpp"
 
 
 
@@ -71,6 +72,14 @@ int main(void)
     std::cout << "Vector v3" << std::endl;
     std::cout << v3 << std::endl;
     std::cout << std::endl;
+
+    std::cout << "Vector iv1" << std::endl;
+    AyED::i_vector iv1{-3, 5};
+
+    for (int i{-3}; i <= 5; ++i)
+        iv1[i] = i + 0.5;
+
+    std::cout << iv1 << std::endl;
 
     return 0;
 }
