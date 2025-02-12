@@ -5,8 +5,7 @@
 
 #include "vector.hpp"
 #include "i_vector.hpp"
-
-
+#include "t_vector.hpp"
 
 int main(void)
 {
@@ -73,6 +72,8 @@ int main(void)
     std::cout << v3 << std::endl;
     std::cout << std::endl;
 
+    /////////////////////////////////////////////////
+
     std::cout << "Vector iv1" << std::endl;
     AyED::i_vector iv1{-3, 5};
 
@@ -80,6 +81,18 @@ int main(void)
         iv1[i] = i + 0.5;
 
     std::cout << iv1 << std::endl;
+    std::cout << std::endl;
+
+    ////////////////////////////////////////////////
+
+    std::cout << "Vector tv1" << std::endl;
+    AyED::t_vector<int> tv1{10};
+
+    for (size_t i{0}; i < tv1.size(); ++i)
+        tv1[i] = i;
+
+    std::cout << tv1 << std::endl;
+    std::cout << std::endl;
 
     return 0;
 }
