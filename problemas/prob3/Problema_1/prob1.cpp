@@ -75,7 +75,7 @@ int main(void)
     /////////////////////////////////////////////////
 
     std::cout << "Vector iv1" << std::endl;
-    AyED::i_vector iv1{-3, 5};
+    AyED::i_vector iv1(-3, 5);
 
     for (int i{-3}; i <= 5; ++i)
         iv1[i] = i + 0.5;
@@ -86,7 +86,7 @@ int main(void)
     ////////////////////////////////////////////////
 
     std::cout << "Vector tv1" << std::endl;
-    AyED::t_vector<int> tv1{10};
+    AyED::t_vector<int> tv1(10);
 
     for (size_t i{0}; i < tv1.size(); ++i)
         tv1[i] = i;
