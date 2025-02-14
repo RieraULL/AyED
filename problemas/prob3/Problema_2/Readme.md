@@ -60,3 +60,42 @@ La búsqueda binaria es un algoritmo eficiente para encontrar un valor específi
     *   Si el valor buscado es menor que el elemento central, se reduce el rango a la mitad inferior.
     *   Si el valor buscado es mayor que el elemento central, se reduce el rango a la mitad superior.
 4.  **Repetición:** Se repiten los pasos 2 y 3 hasta que se encuentra el valor o el rango se reduce a cero (lo que significa que el valor no está en la colección).
+
+
+## Enunciado del Problema: Ordenación en la clase `vector`
+
+Extienda la clase `vector` (previamente implementada) dentro del espacio de nombres `AyED` con un método para ordenar los elementos del vector utilizando el algoritmo de selección. La clase `vector` ahora deberá cumplir con los siguientes requisitos adicionales:
+
+1.  **Método de ordenación:**
+
+    *   `void sort()`: Ordena los elementos del vector en orden ascendente utilizando el algoritmo de selección.
+
+2.  **Métodos auxiliares (privados):**
+
+    *   `size_t smaller_inx_(const size_t a, const size_t b) const`: Encuentra el índice del elemento más pequeño en el subvector que va desde el índice `a` hasta el índice `b` (inclusive).
+        *   **Precondiciones:** Se debe cumplir que `a < sz_`, `b < sz_` y `a <= b`.
+        *   **Valor de retorno:** El índice del elemento más pequeño en el rango [`a`, `b`].
+
+    *   `void swap_(const size_t a, const size_t b)`: Intercambia los elementos en las posiciones `a` y `b` del vector.
+        *   **Precondiciones:** Se debe cumplir que `a < sz_` y `b < sz_`.
+
+3.  **Algoritmo de Selección:**
+
+    El método `sort()` debe implementar el algoritmo de selección de la siguiente manera:
+
+    1.  Iterar desde el primer elemento hasta el penúltimo elemento del vector.
+    2.  En cada iteración `i`, encontrar el índice del elemento más pequeño en el subvector que comienza en el índice `i` y termina en el último índice del vector.  Para ello, se utilizará el método auxiliar `smaller_inx_`.
+    3.  Intercambiar el elemento en la posición `i` con el elemento encontrado en el paso anterior (el más pequeño del subvector). Para ello, se utilizará el método auxiliar `swap_`.
+
+## Ejemplo de uso
+
+```c++
+AyED::vector v(10); // Crea un vector de tamaño 10
+// ... (Se llenan los elementos del vector con valores desordenados)
+
+std::cout << "Vector sin ordenar: " << v << std::endl;
+
+v.sort(); // Ordena el vector
+
+std::cout << "Vector ordenado: " << v << std::endl;
+```

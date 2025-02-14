@@ -99,6 +99,35 @@ namespace AyED
         }
     }
 
+    void vector::swap_(const size_t a, const size_t b)
+    {
+        assert(a < sz_);
+        assert(b < sz_);
+
+        const double tmp{v_[a]};
+        v_[a] = v_[b];
+        v_[b] = tmp;
+    }
+
+    size_t vector::smaller_inx_(const size_t a, const size_t b) const
+    {
+        assert(a < sz_);
+        assert(b < sz_);
+        assert(a <= b);
+
+        size_t smaller_inx{a};
+        double smaller{v_[a]};
+
+        for (size_t i{a + 1}; i <= b; i++)
+            if (v_[i] < smaller)
+            {
+                smaller = v_[i];
+                smaller_inx = i;
+            }
+
+        return smaller_inx;
+    }
+
     bool vector::sequential_search(const double val, const double eps, size_t &pos) const
     {
         bool found{false};
@@ -144,35 +173,6 @@ namespace AyED
         }
 
         return found;
-    }
-
-    void vector::swap_(const size_t a, const size_t b)
-    {
-        assert(a < sz_);
-        assert(b < sz_);
-
-        const double tmp{v_[a]};
-        v_[a] = v_[b];
-        v_[b] = tmp;
-    }
-
-    size_t vector::smaller_inx_(const size_t a, const size_t b) const
-    {
-        assert(a < sz_);
-        assert(b < sz_);
-        assert(a <= b);
-
-        size_t smaller_inx{a};
-        double smaller{v_[a]};
-
-        for (size_t i{a + 1}; i <= b; i++)
-            if (v_[i] < smaller)
-            {
-                smaller = v_[i];
-                smaller_inx = i;
-            }
-
-        return smaller_inx;
     }
 
     void vector::crea_vector_(void)
