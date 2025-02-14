@@ -1,4 +1,4 @@
-    ## Enunciado del Problema: vector double
+## Enunciado del Problema: vector double
 
 Diseñe e implemente una clase denominada `vector` dentro del espacio de nombres `AyED` que represente un vector de elementos de tipo `double` utilizando memoria dinámica. La clase debe cumplir con los siguientes requisitos:
 
@@ -50,6 +50,7 @@ std::istream& operator>>(std::istream& is, AyED::vector& v);
 
 // Sobrecarga del operador de multiplicación (producto escalar)
 double operator*(const AyED::vector& v1, const AyED::vector& v2);
+```
 
 ## Enunciado del Problema: vector genérico
 
@@ -103,3 +104,4 @@ std::ostream& operator<<(std::ostream& os, const AyED::t_vector<double>& v);
 
 // Sobrecarga del operador de extracción de flujo para double
 std::istream& operator>>(std::istream& is, AyED::t_vector<double>& v);
+```
