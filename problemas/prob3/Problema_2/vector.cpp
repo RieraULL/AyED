@@ -9,9 +9,6 @@
 namespace AyED
 {
 
-    vector::vector(void) : v_(NULL),
-                           sz_(0) {}
-
     vector::vector(size_t sz) : v_(NULL),
                                 sz_(sz)
     {
@@ -77,30 +74,6 @@ namespace AyED
         return at(pos);
     }
 
-    double vector::scalar_product(const vector &v) const
-    {
-        assert(sz_ == v.size());
-
-        double result{0};
-
-        for (size_t i{0}; i < sz_; i++)
-            result += v_[i] * v[i];
-
-        return result;
-    }
-
-    bool vector::perpendicular(const vector &v, const double precision) const
-    {
-        assert(sz_ == v.size());
-
-        const double result{scalar_product(v)};
-
-        if (fabs(result) < precision)
-            return true;
-        else
-            return false;
-    }
-
     std::ostream &vector::write(std::ostream &os) const
     {
         os << std::setw(MAX_WIDE) << std::fixed << std::setprecision(0) << sz_ << std::endl;
@@ -124,6 +97,47 @@ namespace AyED
             const size_t smaller_inx{smaller_inx_(i, sz_ - 1)};
             swap_(i, smaller_inx);
         }
+    }
+
+    bool vector::find_first(const double val, const double eps, size_t &pos) const
+    {
+        bool found{false};
+
+        for (size_t i{0}; (i < sz_) && (!found); i++)
+        {
+            if (std::abs(v_[i] - val) < eps)
+            {
+                pos = i;
+                found = true;
+            }
+        }
+
+        return found;
+    }
+
+    bool vector::find_first_sorted(const double val, const double eps, size_t &pos) const
+    {
+        bool found{false};
+
+        size_t left{0};
+        size_t right{sz_ - 1};
+
+        while ((left <= right) && (!found))
+        {
+            const size_t middle{(left + right) / 2};
+
+            if (std::abs(v_[middle] - val) < eps)
+            {
+                pos = middle;
+                found = true;
+            }
+            else if (v_[middle] < val)
+                left = middle + 1;
+            else
+                right = middle - 1;
+        }
+
+        return found;
     }
 
     void vector::swap_(const size_t a, const size_t b)
@@ -151,23 +165,8 @@ namespace AyED
                 smaller = v_[i];
                 smaller_inx = i;
             }
-               
+
         return smaller_inx;
-    }
-
-
-
-    std::istream &vector::read(std::istream &is)
-    {
-        is >> sz_;
-
-        destruye_vector_();
-        crea_vector_();
-
-        for (size_t i{0}; i < sz_; i++)
-            is >> v_[i];
-
-        return is;
     }
 
     void vector::crea_vector_(void)
@@ -189,14 +188,4 @@ std::ostream &operator<<(std::ostream &os, const AyED::vector &v)
 {
     v.write(os);
     return os;
-}
-
-std::istream &operator>>(std::istream &is, AyED::vector &v)
-{
-    return v.read(is);
-}
-
-double operator*(const AyED::vector &v1, const AyED::vector &v2)
-{
-    return v1.scalar_product(v2);
 }

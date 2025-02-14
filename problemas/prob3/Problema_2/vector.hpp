@@ -11,30 +11,24 @@ namespace AyED
     class vector
     {
     public:
-        vector(void);
         vector(size_t sz);
         vector(const vector &v);
         ~vector(void);
 
-        size_t size(void) const;
+        void init_random(const double min, const double max);
+        std::ostream &write(std::ostream &os) const;
+        vector &operator=(const vector &v);
 
+        size_t size(void) const;
         double at(const size_t pos) const;
         double &at(const size_t pos);
-
         double operator[](const size_t pos) const;
         double &operator[](const size_t pos);
 
-        vector &operator=(const vector &v);
-
-        double scalar_product(const vector &v) const;
-        bool perpendicular(const vector &v, const double precision = 1E-3) const;
-
         void sort(void);
-
-        void init_random(const double min, const double max);
-
-        std::ostream &write(std::ostream &os) const;
-        std::istream &read(std::istream &is);
+        bool find_first(const double val, const double eps, size_t &pos) const;
+        bool find_first_sorted(const double val, const double eps, size_t &pos) const;
+        size_t count(const double val, const double eps) const;
 
     private:
         void crea_vector_(void);
@@ -50,7 +44,5 @@ namespace AyED
 }
 
 std::ostream &operator<<(std::ostream &os, const AyED::vector &v);
-
-std::istream &operator>>(std::istream &is, AyED::vector &v);
 
 double operator*(const AyED::vector &v1, const AyED::vector &v2);
