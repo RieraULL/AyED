@@ -122,6 +122,12 @@ namespace AyED
         size_t left{0};
         size_t right{sz_ - 1};
 
+        if (v_[left] > val)
+            return false;
+
+        if (v_[right] < val)
+            return false;
+
         while ((left <= right) && (!found))
         {
             const size_t middle{(left + right) / 2};
