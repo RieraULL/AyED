@@ -26,8 +26,8 @@ namespace AyED
         double &operator[](const size_t pos);
 
         void sort(void);
-        bool find_first(const double val, const double eps, size_t &pos) const;
-        bool find_first_sorted(const double val, const double eps, size_t &pos) const;
+        bool sequential_search(const double val, const double eps, size_t &pos) const;
+        bool binary_search(const double val, const double eps, size_t &pos) const;
         size_t count(const double val, const double eps) const;
 
     private:

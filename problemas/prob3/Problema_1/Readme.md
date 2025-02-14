@@ -106,7 +106,7 @@ std::ostream& operator<<(std::ostream& os, const AyED::t_vector<double>& v);
 std::istream& operator>>(std::istream& is, AyED::t_vector<double>& v);
 ```
 
-## Enunciado del Problema: Vector Indexado
+## Enunciado del Problema: vector indexado
 
 Diseñe e implemente una clase denominada `i_vector` dentro del espacio de nombres `AyED` que represente un vector especializado de elementos de tipo `double` con acceso indexado restringido, heredando y extendiendo la funcionalidad de la clase `vector` (previamente implementada por los estudiantes). La clase `i_vector` debe cumplir con los siguientes requisitos:
 

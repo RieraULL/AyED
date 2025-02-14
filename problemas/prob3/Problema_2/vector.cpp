@@ -99,7 +99,7 @@ namespace AyED
         }
     }
 
-    bool vector::find_first(const double val, const double eps, size_t &pos) const
+    bool vector::sequential_search(const double val, const double eps, size_t &pos) const
     {
         bool found{false};
 
@@ -115,7 +115,7 @@ namespace AyED
         return found;
     }
 
-    bool vector::find_first_sorted(const double val, const double eps, size_t &pos) const
+    bool vector::binary_search(const double val, const double eps, size_t &pos) const
     {
         bool found{false};
 
