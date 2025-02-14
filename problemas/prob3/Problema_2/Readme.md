@@ -48,3 +48,15 @@ if (v.binary_search(valor_a_buscar, epsilon, posicion)) {
   std::cout << "Valor no encontrado." << std::endl;
 }
 ```
+
+## ¿Qué es la búsqueda binaria?
+
+La búsqueda binaria es un algoritmo eficiente para encontrar un valor específico dentro de una colección de datos **ordenados**. Su funcionamiento se basa en dividir repetidamente la colección a la mitad y comparar el valor buscado con el elemento central.
+
+1.  **Comienzo:** Se define un rango inicial que abarca toda la colección.
+2.  **División:** Se calcula el punto medio del rango.
+3.  **Comparación:** Se compara el valor buscado con el elemento en el punto medio.
+    *   Si el valor buscado es igual al elemento central, se ha encontrado y la búsqueda termina.
+    *   Si el valor buscado es menor que el elemento central, se reduce el rango a la mitad inferior.
+    *   Si el valor buscado es mayor que el elemento central, se reduce el rango a la mitad superior.
+4.  **Repetición:** Se repiten los pasos 2 y 3 hasta que se encuentra el valor o el rango se reduce a cero (lo que significa que el valor no está en la colección).
