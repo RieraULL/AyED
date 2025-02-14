@@ -105,3 +105,41 @@ std::ostream& operator<<(std::ostream& os, const AyED::t_vector<double>& v);
 // Sobrecarga del operador de extracción de flujo para double
 std::istream& operator>>(std::istream& is, AyED::t_vector<double>& v);
 ```
+
+## Enunciado del Problema: Vector Indexado
+
+Diseñe e implemente una clase denominada `i_vector` dentro del espacio de nombres `AyED` que represente un vector especializado de elementos de tipo `double` con acceso indexado restringido, heredando y extendiendo la funcionalidad de la clase `vector` (previamente implementada por los estudiantes). La clase `i_vector` debe cumplir con los siguientes requisitos:
+
+1.  **Herencia**:
+    *   `i_vector` debe heredar **privadamente** de la clase `vector`. Esto significa que los miembros públicos de `vector` no serán directamente accesibles desde `i_vector`.
+
+2.  **Atributos**:
+    *   Dos atributos privados de tipo `int`: `a_` y `b_`. Estos representarán el índice de inicio y el índice de fin del rango válido para el acceso a los elementos del vector.
+
+3.  **Constructores**:
+    *   `i_vector(int a, int b)`: Constructor que recibe los índices `a` y `b` y los utiliza para inicializar los atributos `a_` y `b_`. Este constructor también debe inicializar el vector base (de la clase `vector`) con un tamaño adecuado para el rango especificado por `a` y `b`.
+
+4.  **Destructor**:
+    *   `~i_vector()`: Destructor que libera los recursos utilizados por la clase. No es necesario realizar ninguna acción especial aquí, ya que el destructor de la clase base `vector` se encargará de liberar la memoria dinámica.
+
+5.  **Métodos de acceso**:
+    *   `double at(const int pos) const`: Devuelve el elemento en la posición `pos`. Se debe realizar una comprobación de límites para asegurar que `pos` esté dentro del rango válido definido por `a_` y `b_`. Si `pos` está fuera de rango, se debe lanzar una excepción o utilizar `assert`.
+    *   `double& at(const int pos)`: Devuelve una referencia al elemento en la posición `pos`. Se debe realizar una comprobación de límites similar a la de la versión `const`.
+    *   Sobrecarga del operador `[]`:
+        *   `double operator[](const int pos) const`: Devuelve el elemento en la posición `pos`. No es necesario realizar comprobación de límites (se asume que `pos` es válido).
+        *   `double& operator[](const int pos)`: Devuelve una referencia al elemento en la posición `pos`. No es necesario realizar comprobación de límites.
+
+6.  **Entrada/salida**:
+    *   `std::ostream& write(std::ostream& os) const`: Escribe el vector `i_vector` en el flujo de salida `os`. El formato exacto de la salida queda a criterio del implementador, pero debe ser consistente y legible.
+
+## Espacio de nombres y declaración de funciones externas
+
+```c++
+namespace AyED {
+  class i_vector : private vector {
+    // ... (atributos y métodos)
+  };
+} // namespace AyED
+
+std::ostream& operator<<(std::ostream& os, const AyED::i_vector& v);
+```
