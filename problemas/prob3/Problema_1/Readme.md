@@ -1,0 +1,50 @@
+Diseñe e implemente una clase denominada `vector` dentro del espacio de nombres `AyED` que represente un vector de elementos de tipo `double` utilizando memoria dinámica. La clase debe cumplir con los siguientes requisitos:
+
+1.  **Atributos**:
+    *   Un puntero a la base del vector (`double* v_`).
+    *   El tamaño del vector (`size_t sz_`).
+
+2.  **Constructores**:
+    *   Constructor por defecto (`vector()`): Inicializa un vector vacío (tamaño 0).
+    *   Constructor con tamaño (`vector(size_t sz)`): Crea un vector con `sz` elementos de tipo `double`, inicializados con valores por defecto (generalmente 0).
+    *   Constructor de copia (`vector(const vector& v)`): Crea una copia profunda del vector `v`.
+
+3.  **Destructor**:
+    *   Destructor (`~vector()`): Libera la memoria dinámica utilizada por el vector.
+
+4.  **Métodos de acceso**:
+    *   `size_t size() const`: Devuelve el tamaño del vector.
+    *   `double at(size_t pos) const`: Devuelve el elemento en la posición `pos`. Lanza una excepción si `pos` está fuera de rango.
+    *   `double& at(size_t pos)`: Devuelve una referencia al elemento en la posición `pos`. Lanza una excepción si `pos` está fuera de rango.
+    *   Sobrecarga del operador `[]`:
+        *   `double operator[](size_t pos) const`: Devuelve el elemento en la posición `pos`. No realiza comprobación de límites (se asume que `pos` es válido).
+        *   `double& operator[](size_t pos)`: Devuelve una referencia al elemento en la posición `pos`. No realiza comprobación de límites (se asume que `pos` es válido).
+
+5.  **Métodos de modificación**:
+    *   Sobrecarga del operador de asignación (`vector& operator=(const vector& v)`): Asigna el vector `v` al vector actual, realizando una copia profunda.
+
+6.  **Operaciones con vectores**:
+    *   `double scalar_product(const vector& v) const`: Calcula y devuelve el producto escalar del vector actual con el vector `v`. Si los vectores no tienen el mismo tamaño, se debe lanzar una excepción.
+    *   `bool perpendicular(const vector& v, const double precision = 1E-3) const`: Determina si el vector actual es perpendicular al vector `v`, utilizando una precisión dada. Dos vectores se consideran perpendiculares si su producto escalar es cercano a cero (dentro de la precisión especificada).
+
+7.  **Entrada/salida**:
+    *   Sobrecarga del operador de inserción en flujo (`std::ostream& operator<<(std::ostream& os, const vector& v)`): Escribe el vector `v` en el flujo de salida `os` con un formato adecuado (por ejemplo, los elementos separados por comas y entre corchetes).
+    *   Sobrecarga del operador de extracción de flujo (`std::istream& operator>>(std::istream& is, vector& v)`): Lee el vector desde el flujo de entrada `is`. Se espera un formato compatible con la salida (por ejemplo, elementos separados por comas y entre corchetes).
+
+## Espacio de nombres y declaración de funciones externas
+
+```c++
+namespace AyED {
+  class vector {
+    // ... (atributos y métodos)
+  };
+} // namespace AyED
+
+// Sobrecarga del operador de inserción en flujo
+std::ostream& operator<<(std::ostream& os, const AyED::vector& v);
+
+// Sobrecarga del operador de extracción de flujo
+std::istream& operator>>(std::istream& is, AyED::vector& v);
+
+// Sobrecarga del operador de multiplicación (producto escalar)
+double operator*(const AyED::vector& v1, const AyED::vector& v2);
