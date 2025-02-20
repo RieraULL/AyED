@@ -99,6 +99,47 @@ namespace AyED
         }
     }
 
+    bool vector::find_first(const double val, const double eps, size_t &pos) const
+    {
+        bool found{false};
+
+        for (size_t i{0}; (i < sz_) && (!found); i++)
+        {
+            if (std::abs(v_[i] - val) < eps)
+            {
+                pos = i;
+                found = true;
+            }
+        }
+
+        return found;
+    }
+
+    bool vector::find_first_sorted(const double val, const double eps, size_t &pos) const
+    {
+        bool found{false};
+
+        size_t left{0};
+        size_t right{sz_ - 1};
+
+        while ((left <= right) && (!found))
+        {
+            const size_t middle{(left + right) / 2};
+
+            if (std::abs(v_[middle] - val) < eps)
+            {
+                pos = middle;
+                found = true;
+            }
+            else if (v_[middle] < val)
+                left = middle + 1;
+            else
+                right = middle - 1;
+        }
+
+        return found;
+    }
+
     void vector::swap_(const size_t a, const size_t b)
     {
         assert(a < sz_);
@@ -126,53 +167,6 @@ namespace AyED
             }
 
         return smaller_inx;
-    }
-
-    bool vector::sequential_search(const double val, const double eps, size_t &pos) const
-    {
-        bool found{false};
-
-        for (size_t i{0}; (i < sz_) && (!found); i++)
-        {
-            if (std::abs(v_[i] - val) < eps)
-            {
-                pos = i;
-                found = true;
-            }
-        }
-
-        return found;
-    }
-
-    bool vector::binary_search(const double val, const double eps, size_t &pos) const
-    {
-        bool found{false};
-
-        size_t left{0};
-        size_t right{sz_ - 1};
-
-        if (v_[left] > val)
-            return false;
-
-        if (v_[right] < val)
-            return false;
-
-        while ((left <= right) && (!found))
-        {
-            const size_t middle{(left + right) / 2};
-
-            if (std::abs(v_[middle] - val) < eps)
-            {
-                pos = middle;
-                found = true;
-            }
-            else if (v_[middle] < val)
-                left = middle + 1;
-            else
-                right = middle - 1;
-        }
-
-        return found;
     }
 
     void vector::crea_vector_(void)
