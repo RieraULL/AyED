@@ -161,6 +161,19 @@ namespace AyED
         return sum;
     }
 
+    void matrix_h::traspuesta_cuadrada(void)
+    {
+        assert(get_m() == get_n());
+
+        for (size_t i{1}; i <= get_m(); i++)
+            for (size_t j{i + 1}; j <= get_n(); j++)
+            {
+                double aux{at(i, j)};
+                at(i, j) = at(j, i);
+                at(j, i) = aux;
+            }
+    }
+
     void matrix_h::suma(const matrix_h &A, const matrix_h &B)
     {
         assert(get_m() == A.get_m());

@@ -31,6 +31,8 @@ namespace AyED
         double suma_tria_sup_diag(void) const;
         double suma_tria_sup(void) const;
 
+        void traspuesta_cuadrada(void);
+
         void suma(const matrix_h &A, const matrix_h &B);
         void producto(const matrix_h &A, const matrix_h &B);
 
