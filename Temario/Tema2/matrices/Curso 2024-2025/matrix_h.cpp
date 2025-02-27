@@ -14,6 +14,14 @@ namespace AyED
 
     matrix_h::~matrix_h(void) {}
 
+    void matrix_h::resize(size_t m, size_t n)
+    {
+        m_ = m;
+        n_ = n;
+
+        vector::resize(m * n);
+    }
+
     size_t matrix_h::pos_(const size_t i, const size_t j) const
     {
         assert(i >= 1 && i <= get_m());

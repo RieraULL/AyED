@@ -48,6 +48,14 @@ namespace AyED
         destruye_vector_();
     }
 
+    void vector::resize(size_t sz)
+    {
+        destruye_vector_();
+
+        sz_ = sz;
+        crea_vector_();
+    }
+
     size_t vector::size(void) const
     {
         return sz_;

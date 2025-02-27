@@ -16,6 +16,8 @@ namespace AyED
         vector(const vector &v);
         ~vector(void);
 
+        void resize(size_t sz);
+
         size_t size(void) const;
 
         double at(const size_t pos) const;

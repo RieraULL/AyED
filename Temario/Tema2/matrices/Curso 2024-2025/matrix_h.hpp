@@ -10,6 +10,8 @@ namespace AyED
         matrix_h(size_t m, size_t n);
         ~matrix_h(void);
 
+        void resize(size_t m, size_t n);
+
         size_t get_m(void) const;
         size_t get_n(void) const;
 
