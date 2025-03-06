@@ -242,6 +242,29 @@ namespace AyED
             at(l, i) += k * at(l, j);
     }
 
+    void matrix_h::Gauss_Jordan(void)
+    {
+        for (size_t i{1}; i <= get_m(); i++)
+        {
+            size_t max_row{i};
+
+            for (size_t j{i + 1}; j <= get_m(); j++)
+                if (std::abs(at(j, i)) > std::abs(at(max_row, i)))
+                    max_row = j;
+
+            swap_rows(i, max_row);
+
+            if (at(i, i) == 0)
+                continue;
+
+            mult_row(i, 1 / at(i, i));
+
+            for (size_t j{1}; j <= get_m(); j++)
+                if (j != i)
+                    sum_row(j, i, -at(j, i));
+        }
+    }
+
     void matrix_h::suma(const matrix_h &A, const matrix_h &B)
     {
         assert(get_m() == A.get_m());

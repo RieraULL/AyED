@@ -47,6 +47,8 @@ namespace AyED
         void suma(const matrix_h &A, const matrix_h &B);
         void producto(const matrix_h &A, const matrix_h &B);
 
+        void Gauss_Jordan(void);
+
     private:
         size_t pos_(const size_t i, const size_t j) const;
 
