@@ -182,6 +182,66 @@ namespace AyED
             }
     }
 
+    void matrix_h::swap_rows(const size_t i, const size_t j)
+    {
+        assert(i >= 1 && i <= get_m());
+        assert(j >= 1 && j <= get_m());
+
+        for (size_t k{1}; k <= get_n(); k++)
+        {
+            double aux{at(i, k)};
+            at(i, k) = at(j, k);
+            at(j, k) = aux;
+        }
+    }
+
+    void matrix_h::swap_cols(const size_t i, const size_t j)
+    {
+        assert(i >= 1 && i <= get_n());
+        assert(j >= 1 && j <= get_n());
+
+        for (size_t k{1}; k <= get_m(); k++)
+        {
+            double aux{at(k, i)};
+            at(k, i) = at(k, j);
+            at(k, j) = aux;
+        }
+    }
+
+    void matrix_h::mult_row(const size_t i, const double k)
+    {
+        assert(i >= 1 && i <= get_m());
+
+        for (size_t j{1}; j <= get_n(); j++)
+            at(i, j) *= k;
+    }
+
+    void matrix_h::mult_col(const size_t j, const double k)
+    {
+        assert(j >= 1 && j <= get_n());
+
+        for (size_t i{1}; i <= get_m(); i++)
+            at(i, j) *= k;
+    }
+
+    void matrix_h::sum_row(const size_t i, const size_t j, const double k)
+    {
+        assert(i >= 1 && i <= get_m());
+        assert(j >= 1 && j <= get_m());
+
+        for (size_t l{1}; l <= get_n(); l++)
+            at(i, l) += k * at(j, l);
+    }
+
+    void matrix_h::sum_col(const size_t i, const size_t j, const double k)
+    {
+        assert(i >= 1 && i <= get_n());
+        assert(j >= 1 && j <= get_n());
+
+        for (size_t l{1}; l <= get_m(); l++)
+            at(l, i) += k * at(l, j);
+    }
+
     void matrix_h::suma(const matrix_h &A, const matrix_h &B)
     {
         assert(get_m() == A.get_m());

@@ -35,6 +35,15 @@ namespace AyED
 
         void traspuesta_cuadrada(void);
 
+        void swap_rows(const size_t i, const size_t j);
+        void swap_cols(const size_t i, const size_t j);
+
+        void mult_row(const size_t i, const double k);
+        void mult_col(const size_t j, const double k);
+
+        void sum_row(const size_t i, const size_t j, const double k);
+        void sum_col(const size_t i, const size_t j, const double k);
+
         void suma(const matrix_h &A, const matrix_h &B);
         void producto(const matrix_h &A, const matrix_h &B);
 
