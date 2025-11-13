@@ -87,6 +87,51 @@ g++ -std=c++17 -O2 -Wall -Wextra -pedantic prob1.cpp -o prob1
 - Sugerencias, erratas o mejoras: abre un Issue o Pull Request.
 - Estilo recomendado: C++17, warnings activados, funciones y clases autoexplicativas.
 
+## Apéndice: Problemas de examen
+
+### Colecciones generales
+
+#### [Problemas de examen resueltos I](examenes/colecciones/Problemas1.md)
+
+1. Producto escalar de vectores
+2. Conteo de ocurrencias con tolerancia
+3. Elementos menores/mayores con tolerancia
+4. Suma y conteo de pares/impares
+5. Mover máximo a posición final
+6. Ordenamiento por burbuja (bubble sort)
+7. Contenedor ordenado con vector
+8. Cola basada en lista enlazada
+9. Número en base arbitraria con operaciones
+
+#### [Problemas de examen resueltos II](examenes/colecciones/Problemas2.md)
+
+1. Clases `point_t` y `line_equ_t` - Geometría euclídea
+2. Clase `vector_t` con límites izquierdo y derecho
+3. Triángulo de Pascal y números combinatorios
+
+### Problemas por estructura de datos
+
+#### [Listas enlazadas](examenes/Listas/)
+
+- Implementación de lista simplemente enlazada
+- Operaciones básicas: inserción, eliminación, búsqueda
+- Archivos: `main_sll.cpp`, `sll_t.hpp`, `sll_node_t.hpp`
+
+#### [Matrices](examenes/Matrices/)
+
+- Operaciones con matrices
+- Archivos: `matrices.cpp`, `matrix_t.hpp`
+
+#### [Pilas](examenes/Pilas/)
+
+- Verificación de paréntesis balanceados
+- Archivo: `check_bracket.cpp`
+
+#### [Recursividad](examenes/Recursividad/)
+
+- Problemas resueltos con técnicas recursivas
+- Archivo: `Recursividad.cpp`
+
 ## Licencia y créditos
 
 - Licencia: ver `LICENSE`.
