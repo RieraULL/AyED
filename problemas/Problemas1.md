@@ -14,7 +14,7 @@ Elabora, además, un programa principal en el que se inicialicen dos vectores `v
 
 ### Solución
 
-Ref. [Prob1](../../problemas/prob1/prob1.cpp)
+Ref. [Prob1](prob1/prob1.cpp)
 
 ```cpp
 #include <iostream>
@@ -77,7 +77,7 @@ Impleméntese, asimismo, un programa principal que inicialice un vector y muestr
 
 ### Solución
 
-Ref. [Prob2](../../problemas/prob1/prob2.cpp)
+Ref. [Prob2](prob1/prob2.cpp)
 
 ```cpp
 #include <iostream>
@@ -131,7 +131,7 @@ int count_great(double v[], int sz, double val, double tol)
 
 ### Solución
 
-Ref. [Prob3](../../problemas/prob1/prob3.cpp)
+Ref. [Prob3](prob1/prob3.cpp)
 
 ```cpp
 #include <iostream>
@@ -208,7 +208,7 @@ int cont_odd(int v[], int sz)
 
 ### Solución
 
-Ref. [Prob4](../../problemas/prob1/prob4.cpp)
+Ref. [Prob4](prob1/prob4.cpp)
 
 ```cpp
 #include <iostream>
@@ -267,7 +267,7 @@ Diseñar e implementar una función que, dado un vector y una posición `pos` de
 
 ### Solución
 
-Ref. [Prob5](../../problemas/prob1/prob5.cpp)
+Ref. [Prob5](prob1/prob5.cpp)
 
 Compílese usando
 
@@ -325,7 +325,7 @@ Diseñar e implementar una función que ordene en orden no decreciente utilizand
 
 ### Solución
 
-Ref. [Prob6](../../problemas/prob1/prob5.cpp)
+Ref. [Prob6](prob1/prob5.cpp)
 
 ```cpp
 template<class T>
@@ -344,7 +344,7 @@ Diseñar e implementar una clase que represente un contenedor implementado por u
 
 ### Solución
 
-Ref. [Prob7](../../problemas/prob1/prob6.cpp)
+Ref. [Prob7](prob1/prob6.cpp)
 
 ## Problema 8
 
@@ -354,7 +354,7 @@ Diseñar e implementar una clase que represente una cola basada en una lista sim
 
 ### Solución
 
-Ref. [Prob8](../../problemas/prob1/prob8.cpp)
+Ref. [Prob8](prob1/prob8.cpp)
 
 ## Problema 9
 
@@ -514,4 +514,4 @@ Sobrecárguese el operador pre-incremento. Con esta finalidad se incrementará e
 
 ### Solución
 
-Ref. [Prob9](../../problemas/prob1/prob9.cpp)
+Ref. [Prob9](prob1/prob9.cpp)
