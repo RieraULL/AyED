@@ -62,6 +62,10 @@ g++ -std=c++17 -O2 -Wall -Wextra -pedantic prob1.cpp -o prob1
   - [TAD Listas doblemente enlazadas](Temario/Tema4/ListasDLL.md)
 - Tema 5
   - [TAD Pila](Temario/Tema5/Pilas.md)
+- Tema 6
+  - [Recursividad](Temario/Tema6/Recursividad.md)
+  - [Backtracking](Temario/Tema6/Backtracking.md)
+  - [Ejemplos y ejercicios](Temario/Tema6/README.md)
 
 ## Exámenes y cursos
 
