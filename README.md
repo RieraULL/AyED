@@ -38,8 +38,6 @@ g++ -std=c++17 -O2 -Wall -Wextra -pedantic prob1.cpp -o prob1
 ## Índice rápido
 
 - Tema 1
-  - [Problemas de examen 1](examenes/colecciones/Problemas1.md)
-  - [Problemas de examen 2](examenes/colecciones/Problemas2.md)
   - [Punteros en C++](Temario/Tema1/punteros/punteros.md)
   - [Clases (visión general)](Temario/Tema1/clases/clases.md)
     - [Declarando una clase](Temario/Tema1/clases/definicion-de-clases.md)
@@ -53,7 +51,6 @@ g++ -std=c++17 -O2 -Wall -Wextra -pedantic prob1.cpp -o prob1
     - [Herencia](Temario/Tema1/clases/herencia.md)
     - [Plantillas](Temario/Tema1/clases/plantillas.md)
   - [Un ejemplo complejo](Temario/Tema1/un-ejemplo.md)
-  - [Problemas sobre clases](examenes/colecciones/Problemas2.md)
 - Tema 2
   - [Problemas con vectores](Temario/Tema2/problema_vector.md)
   - [Problemas con matrices](Temario/Tema2/matrices.md)
