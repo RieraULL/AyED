@@ -8,9 +8,9 @@ Construir una clase `point_t` que represente un punto en el plano euclídeo en d
 
 ### Solución
 
-Ref1. [Prob1](prob2/point_t.hpp)
-Ref2. [Prob1](prob2/line_eq_t.hpp)
-Ref3. [Prob1](prob2/prob1.cpp)
+Ref1. [Prob1](../../problemas/prob2/point_t.hpp)
+Ref2. [Prob1](../../problemas/prob2/line_eq_t.hpp)
+Ref3. [Prob1](../../problemas/prob2/prob1.cpp)
 
 Hemos codificado este problema mediante tres ficheros: un fichero de cabecera para cada una de las clases que definimos ([`point_t`](prob2/point_t.hpp) y [`line_eq_t`](prob2/line_eq_t.hpp)), y un [programa principal](prob2/prob1.cpp) en el que se muestran algunas de las funcionalidades de las clases definidas.
 
@@ -191,7 +191,7 @@ Construir una clase `vector_t` que represente un tipo de dato vector indexado en
 
 ### Solución
 
-Véase una posible solución en [Prob2](prob2/bounded_vector.cpp)
+Véase una posible solución en [Prob2](../../problemas/prob2/bounded_vector.cpp)
 
 ## Problema 3
 
@@ -309,4 +309,4 @@ Referencias
 
 ### Solución
 
-Véase una posible solución en [Prob3](prob2/pascal.cpp)
+Véase una posible solución en [Prob3](../../problemas/prob2/pascal.cpp)
