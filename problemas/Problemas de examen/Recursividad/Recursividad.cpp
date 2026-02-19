@@ -81,6 +81,36 @@ int bsearch(const int* v, int i, int d, int x)
 	    vector<int> number(N_DIGITS);
 	    generate(number, N_DIGITS - 1);
 	}
+	
+ #define N_DIGITS 4
+
+    void write(const vector<int>& v, ostream& os)
+    {
+        for(unsigned int i{0}; i < v.size(); i++)
+            os << v[i];
+            
+        os << endl;
+    }
+
+	void generate(vector<int>& number, int i)
+	{
+	    if (i < 1) 
+	        write(number, cout);
+	    else {
+	        
+	        for(int b{0}; b < 2; b ++){
+	            number[i] = b;
+	            generate(number, i - 1);
+	        }
+	    }
+	}
+
+	void generate_all(void)
+	{
+	    vector<int> number(N_DIGITS);
+	    number[0] = 0;
+	    generate(number, N_DIGITS - 1);
+	}	
 
 
 /* Impléméntese el método void generate_all2(void), que rellenerá y mostrarán de forma no recursiva todos los posibles valores que pueden tomar los dígitos del objeto. Con este propósito se deberá hacer uso de una pila que almacenará elementos de tipo par_t. Cada objeto de tipo par_t almacena uno de los dos posibles valores que puede tomar un dígito, así como la posición del dígito dentro del vector.
