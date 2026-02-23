@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -91,6 +92,23 @@ void fusionOrdenadaSinRepeticiones(const int a[], int na, const int b[], int nb,
 	}
 }
 
+void fusionOrdenadaConCentinela(const int a[], int na, const int b[], int nb, int c[], int &nc) {
+	int i = 0;
+	int j = 0;
+	nc = 0;
+
+	for (int k = 0; k < na + nb; ++k) {
+		if (a[i] <= b[j]) {
+			c[nc] = a[i];
+			++i;
+		} else {
+			c[nc] = b[j];
+			++j;
+		}
+		++nc;
+	}
+}
+
 void imprimirVector(const int v[], int n, const char titulo[]) {
 	cout << titulo << " [";
 	for (int i = 0; i < n; ++i) {
@@ -104,12 +122,22 @@ void imprimirVector(const int v[], int n, const char titulo[]) {
 
 int main() {
 	const int TAM = 10;
+	const int INFINITO = numeric_limits<int>::max();
 
 	int a[TAM] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
 	int b[TAM] = {2, 3, 4, 7, 8, 11, 12, 15, 18, 20};
+	int aConCentinela[TAM + 1];
+	int bConCentinela[TAM + 1];
 
 	int c[2 * TAM];
 	int nc = 0;
+
+	for (int i = 0; i < TAM; ++i) {
+		aConCentinela[i] = a[i];
+		bConCentinela[i] = b[i];
+	}
+	aConCentinela[TAM] = INFINITO;
+	bConCentinela[TAM] = INFINITO;
 
 	imprimirVector(a, TAM, "Vector A:");
 	imprimirVector(b, TAM, "Vector B:");
@@ -123,6 +151,9 @@ int main() {
 
 	fusionOrdenadaSinRepeticiones(a, TAM, b, TAM, c, nc);
 	imprimirVector(c, nc, "3) Fusion ordenada sin repeticiones:");
+
+	fusionOrdenadaConCentinela(aConCentinela, TAM, bConCentinela, TAM, c, nc);
+	imprimirVector(c, nc, "4) Fusion ordenada con centinela:");
 
 	return 0;
 }
