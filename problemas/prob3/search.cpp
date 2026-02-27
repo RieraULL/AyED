@@ -53,6 +53,66 @@ bool busquedaBinaria(const vector<int> &v, int objetivo, long long &iteraciones)
     return encontrado;
 }
 
+void busquedaSecuencialOrdenadaPosiciones(const vector<int> &v, int objetivo, vector<int> &posiciones) {
+    posiciones.clear();
+    bool detener = false;
+    size_t i = 0;
+
+    while (i < v.size() && !detener) {
+        if (v[i] == objetivo) {
+            posiciones.push_back(static_cast<int>(i));
+            ++i;
+        } else {
+            if (v[i] > objetivo) {
+                detener = true;
+            } else {
+                ++i;
+            }
+        }
+    }
+}
+
+void busquedaBinariaPosiciones(const vector<int> &v, int objetivo, vector<int> &posiciones) {
+    posiciones.clear();
+    int izquierda = 0;
+    int derecha = static_cast<int>(v.size()) - 1;
+    int posicionEncontrada = -1;
+
+    while (izquierda <= derecha && posicionEncontrada == -1) {
+        int medio = izquierda + (derecha - izquierda) / 2;
+
+        if (v[medio] == objetivo) {
+            posicionEncontrada = medio;
+        } else {
+            if (v[medio] < objetivo) {
+                izquierda = medio + 1;
+            } else {
+                derecha = medio - 1;
+            }
+        }
+    }
+
+    if (posicionEncontrada == -1) {
+        return;
+    }
+
+    int primera = posicionEncontrada;
+    int ultima = posicionEncontrada;
+
+    while (primera > 0 && v[primera - 1] == objetivo) {
+        --primera;
+    }
+
+    while (ultima + 1 < static_cast<int>(v.size()) && v[ultima + 1] == objetivo) {
+        ++ultima;
+    }
+
+    posiciones.reserve(ultima - primera + 1);
+    for (int i = primera; i <= ultima; ++i) {
+        posiciones.push_back(i);
+    }
+}
+
 void generarVectorOrdenadoAleatorio(vector<int> &v, mt19937 &gen) {
     uniform_int_distribution<int> inicioDist(0, 100);
     uniform_int_distribution<int> saltoDist(1, 5);
