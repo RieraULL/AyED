@@ -1,12 +1,19 @@
-#include <algorithm>
+#include "vector.hpp"
+
 #include <iomanip>
 #include <iostream>
 #include <random>
+#include <cmath>
 #include <vector>
 
 using namespace std;
 
-bool busquedaSecuencialOrdenada(const vector<int> &v, int objetivo, long long &iteraciones) {
+bool sonIguales(const double a, const double b, const double tolerancia) {
+    return fabs(a - b) <= tolerancia;
+}
+
+bool busquedaSecuencialOrdenada(const AyED::vector &v, double objetivo, long long &iteraciones,
+                                double tolerancia = 1e-9) {
     iteraciones = 0;
     bool encontrado = false;
     bool detener = false;
@@ -15,10 +22,10 @@ bool busquedaSecuencialOrdenada(const vector<int> &v, int objetivo, long long &i
     while (i < v.size() && !encontrado && !detener) {
         ++iteraciones;
 
-        if (v[i] == objetivo) {
+        if (sonIguales(v[i], objetivo, tolerancia)) {
             encontrado = true;
         } else {
-            if (v[i] > objetivo) {
+            if (v[i] > objetivo + tolerancia) {
                 detener = true;
             } else {
                 ++i;
@@ -29,7 +36,8 @@ bool busquedaSecuencialOrdenada(const vector<int> &v, int objetivo, long long &i
     return encontrado;
 }
 
-bool busquedaBinaria(const vector<int> &v, int objetivo, long long &iteraciones) {
+bool busquedaBinaria(const AyED::vector &v, double objetivo, long long &iteraciones,
+                     double tolerancia = 1e-9) {
     iteraciones = 0;
     int izquierda = 0;
     int derecha = static_cast<int>(v.size()) - 1;
@@ -39,10 +47,10 @@ bool busquedaBinaria(const vector<int> &v, int objetivo, long long &iteraciones)
         ++iteraciones;
         int medio = izquierda + (derecha - izquierda) / 2;
 
-        if (v[medio] == objetivo) {
+        if (sonIguales(v[medio], objetivo, tolerancia)) {
             encontrado = true;
         } else {
-            if (v[medio] < objetivo) {
+            if (v[medio] < objetivo - tolerancia) {
                 izquierda = medio + 1;
             } else {
                 derecha = medio - 1;
@@ -53,17 +61,18 @@ bool busquedaBinaria(const vector<int> &v, int objetivo, long long &iteraciones)
     return encontrado;
 }
 
-void busquedaSecuencialOrdenadaPosiciones(const vector<int> &v, int objetivo, vector<int> &posiciones) {
+void busquedaSecuencialOrdenadaPosiciones(const AyED::vector &v, double objetivo, vector<int> &posiciones,
+                                          double tolerancia = 1e-9) {
     posiciones.clear();
     bool detener = false;
     size_t i = 0;
 
     while (i < v.size() && !detener) {
-        if (v[i] == objetivo) {
+        if (sonIguales(v[i], objetivo, tolerancia)) {
             posiciones.push_back(static_cast<int>(i));
             ++i;
         } else {
-            if (v[i] > objetivo) {
+            if (v[i] > objetivo + tolerancia) {
                 detener = true;
             } else {
                 ++i;
@@ -72,7 +81,8 @@ void busquedaSecuencialOrdenadaPosiciones(const vector<int> &v, int objetivo, ve
     }
 }
 
-void busquedaBinariaPosiciones(const vector<int> &v, int objetivo, vector<int> &posiciones) {
+void busquedaBinariaPosiciones(const AyED::vector &v, double objetivo, vector<int> &posiciones,
+                               double tolerancia = 1e-9) {
     posiciones.clear();
     int izquierda = 0;
     int derecha = static_cast<int>(v.size()) - 1;
@@ -81,10 +91,10 @@ void busquedaBinariaPosiciones(const vector<int> &v, int objetivo, vector<int> &
     while (izquierda <= derecha && posicionEncontrada == -1) {
         int medio = izquierda + (derecha - izquierda) / 2;
 
-        if (v[medio] == objetivo) {
+        if (sonIguales(v[medio], objetivo, tolerancia)) {
             posicionEncontrada = medio;
         } else {
-            if (v[medio] < objetivo) {
+            if (v[medio] < objetivo - tolerancia) {
                 izquierda = medio + 1;
             } else {
                 derecha = medio - 1;
@@ -99,11 +109,11 @@ void busquedaBinariaPosiciones(const vector<int> &v, int objetivo, vector<int> &
     int primera = posicionEncontrada;
     int ultima = posicionEncontrada;
 
-    while (primera > 0 && v[primera - 1] == objetivo) {
+    while (primera > 0 && sonIguales(v[primera - 1], objetivo, tolerancia)) {
         --primera;
     }
 
-    while (ultima + 1 < static_cast<int>(v.size()) && v[ultima + 1] == objetivo) {
+    while (ultima + 1 < static_cast<int>(v.size()) && sonIguales(v[ultima + 1], objetivo, tolerancia)) {
         ++ultima;
     }
 
@@ -113,14 +123,14 @@ void busquedaBinariaPosiciones(const vector<int> &v, int objetivo, vector<int> &
     }
 }
 
-void generarVectorOrdenadoAleatorio(vector<int> &v, mt19937 &gen) {
+void generarVectorOrdenadoAleatorio(AyED::vector &v, mt19937 &gen) {
     uniform_int_distribution<int> inicioDist(0, 100);
     uniform_int_distribution<int> saltoDist(1, 5);
 
-    int valorActual = inicioDist(gen) * 2;
+    double valorActual = static_cast<double>(inicioDist(gen) * 2);
 
     for (size_t i = 0; i < v.size(); ++i) {
-        int salto = saltoDist(gen) * 2;
+        double salto = static_cast<double>(saltoDist(gen) * 2);
         valorActual += salto;
         v[i] = valorActual;
     }
@@ -136,7 +146,7 @@ int main() {
     uniform_int_distribution<int> indiceDist(0, TAM - 1);
     uniform_int_distribution<int> modoBusquedaDist(0, 1); // 0: existente, 1: no existente
 
-    vector<int> v(TAM);
+    AyED::vector v(TAM);
 
     long long sumaSecuencial = 0;
     long long sumaBinaria = 0;
@@ -158,7 +168,7 @@ int main() {
     for (int r = 1; r <= REPETICIONES; ++r) {
         generarVectorOrdenadoAleatorio(v, gen);
 
-        int objetivo;
+        double objetivo;
         bool deberiaExistir;
 
         if (modoBusquedaDist(gen) == 0) {
@@ -167,11 +177,11 @@ int main() {
             deberiaExistir = true;
             ++casosExistentes;
         } else {
-            int minimo = v.front() - 1;
-            int maximo = v.back() + 1;
+            int minimo = static_cast<int>(v[0]) - 1;
+            int maximo = static_cast<int>(v[TAM - 1]) + 1;
             uniform_int_distribution<int> objetivoDist(minimo, maximo);
-            objetivo = objetivoDist(gen);
-            objetivo |= 1; // fuerza impar: el vector contiene solo pares
+            objetivo = static_cast<double>(objetivoDist(gen));
+            objetivo = 2.0 * objetivo + 1.0; // fuerza impar: el vector contiene solo pares
             deberiaExistir = false;
             ++casosNoExistentes;
         }

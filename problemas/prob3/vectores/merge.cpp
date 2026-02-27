@@ -1,25 +1,29 @@
+#include "vector.hpp"
+
 #include <iostream>
 #include <limits>
 
 using namespace std;
 
-void fusionSimple(const int a[], int na, const int b[], int nb, int c[], int &nc) {
+void fusionSimple(const AyED::vector &a, size_t na, const AyED::vector &b, size_t nb,
+                  AyED::vector &c, size_t &nc) {
 	nc = 0;
 
-	for (int i = 0; i < na; ++i) {
+	for (size_t i = 0; i < na; ++i) {
 		c[nc] = a[i];
 		++nc;
 	}
 
-	for (int j = 0; j < nb; ++j) {
+	for (size_t j = 0; j < nb; ++j) {
 		c[nc] = b[j];
 		++nc;
 	}
 }
 
-void fusionOrdenada(const int a[], int na, const int b[], int nb, int c[], int &nc) {
-	int i = 0;
-	int j = 0;
+void fusionOrdenada(const AyED::vector &a, size_t na, const AyED::vector &b, size_t nb,
+                    AyED::vector &c, size_t &nc) {
+	size_t i = 0;
+	size_t j = 0;
 	nc = 0;
 
 	while (i < na && j < nb) {
@@ -47,13 +51,14 @@ void fusionOrdenada(const int a[], int na, const int b[], int nb, int c[], int &
 	}
 }
 
-void fusionOrdenadaSinRepeticiones(const int a[], int na, const int b[], int nb, int c[], int &nc) {
-	int i = 0;
-	int j = 0;
+void fusionOrdenadaSinRepeticiones(const AyED::vector &a, size_t na, const AyED::vector &b,
+                                   size_t nb, AyED::vector &c, size_t &nc) {
+	size_t i = 0;
+	size_t j = 0;
 	nc = 0;
 
 	while (i < na && j < nb) {
-		int valor;
+		double valor;
 
 		if (a[i] < b[j]) {
 			valor = a[i];
@@ -74,7 +79,7 @@ void fusionOrdenadaSinRepeticiones(const int a[], int na, const int b[], int nb,
 	}
 
 	while (i < na) {
-		int valor = a[i];
+		double valor = a[i];
 		++i;
 		if (nc == 0 || c[nc - 1] != valor) {
 			c[nc] = valor;
@@ -83,7 +88,7 @@ void fusionOrdenadaSinRepeticiones(const int a[], int na, const int b[], int nb,
 	}
 
 	while (j < nb) {
-		int valor = b[j];
+		double valor = b[j];
 		++j;
 		if (nc == 0 || c[nc - 1] != valor) {
 			c[nc] = valor;
@@ -92,12 +97,13 @@ void fusionOrdenadaSinRepeticiones(const int a[], int na, const int b[], int nb,
 	}
 }
 
-void fusionOrdenadaConCentinela(const int a[], int na, const int b[], int nb, int c[], int &nc) {
-	int i = 0;
-	int j = 0;
+void fusionOrdenadaConCentinela(const AyED::vector &a, size_t na, const AyED::vector &b,
+                                size_t nb, AyED::vector &c, size_t &nc) {
+	size_t i = 0;
+	size_t j = 0;
 	nc = 0;
 
-	for (int k = 0; k < na + nb; ++k) {
+	for (size_t k = 0; k < na + nb; ++k) {
 		if (a[i] <= b[j]) {
 			c[nc] = a[i];
 			++i;
@@ -109,9 +115,9 @@ void fusionOrdenadaConCentinela(const int a[], int na, const int b[], int nb, in
 	}
 }
 
-void imprimirVector(const int v[], int n, const char titulo[]) {
+void imprimirVector(const AyED::vector &v, size_t n, const char titulo[]) {
 	cout << titulo << " [";
-	for (int i = 0; i < n; ++i) {
+	for (size_t i = 0; i < n; ++i) {
 		cout << v[i];
 		if (i < n - 1) {
 			cout << ", ";
@@ -121,18 +127,40 @@ void imprimirVector(const int v[], int n, const char titulo[]) {
 }
 
 int main() {
-	const int TAM = 10;
-	const int INFINITO = numeric_limits<int>::max();
+	const size_t TAM = 10;
+	const double INFINITO = numeric_limits<double>::max();
 
-	int a[TAM] = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
-	int b[TAM] = {2, 3, 4, 7, 8, 11, 12, 15, 18, 20};
-	int aConCentinela[TAM + 1];
-	int bConCentinela[TAM + 1];
+	AyED::vector a(TAM);
+	AyED::vector b(TAM);
+	AyED::vector aConCentinela(TAM + 1);
+	AyED::vector bConCentinela(TAM + 1);
 
-	int c[2 * TAM];
-	int nc = 0;
+	AyED::vector c(2 * TAM);
+	size_t nc = 0;
 
-	for (int i = 0; i < TAM; ++i) {
+	a[0] = 1;
+	a[1] = 3;
+	a[2] = 5;
+	a[3] = 7;
+	a[4] = 9;
+	a[5] = 11;
+	a[6] = 13;
+	a[7] = 15;
+	a[8] = 17;
+	a[9] = 19;
+
+	b[0] = 2;
+	b[1] = 3;
+	b[2] = 4;
+	b[3] = 7;
+	b[4] = 8;
+	b[5] = 11;
+	b[6] = 12;
+	b[7] = 15;
+	b[8] = 18;
+	b[9] = 20;
+
+	for (size_t i = 0; i < TAM; ++i) {
 		aConCentinela[i] = a[i];
 		bConCentinela[i] = b[i];
 	}
