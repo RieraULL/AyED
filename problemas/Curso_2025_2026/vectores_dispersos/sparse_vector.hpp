@@ -35,6 +35,8 @@ namespace AyED
 
 			v_.resize(nz);
 
+			nz = 0;
+
 			for (int i{0}; i < v.size(); i++)
 				if (is_not_zero(v.at(i), eps))
 				{
