@@ -5,6 +5,7 @@
 #include "vector.hpp"
 
 #include <cmath>
+#include <unordered_map>
 
 #include <iostream>
 #include <iomanip>
@@ -65,11 +66,12 @@ namespace AyED
 			return res;
 		}
 
+		// Producto escalar asumiendo índices ordenados (búsqueda lineal)
 		double scal_prod(const sparse_vector &v) const
 		{
 			double res = 0.0;
 
-			int i = 0, j{0};
+			int i{0}, j{0};
 
 			while ((i < v_.size()) && (j < v.v_.size()))
 			{
@@ -86,6 +88,43 @@ namespace AyED
 			}
 
 			return res;
+		}
+
+		// Producto escalar sin asumir índices ordenados (búsqueda lineal)
+		double scal_prod_linear(const sparse_vector &v) const
+		{
+			double res = 0.0;
+
+			for (int i{0}; i < v_.size(); i++)
+			{
+				int idx_this = v_.at(i).get_inx();
+				double val_this = v_.at(i).get_val();
+
+				// Buscar el índice correspondiente en el otro vector
+				for (int j{0}; j < v.v_.size(); j++)
+				{
+					if (v.v_.at(j).get_inx() == idx_this)
+					{
+						res += val_this * v.v_.at(j).get_val();
+						break;
+					}
+				}
+			}
+
+			return res;
+		}
+
+		// Distancia euclidiana entre dos vectores dispersos
+		double euclidean_distance(const sparse_vector &v) const
+		{
+			// dist = sqrt(||v1||^2 + ||v2||^2 - 2*(v1·v2))
+			double norm_invocante = scal_prod(*this);  // v1 · v1
+			double norm_v = v.scal_prod(v);       // v2 · v2
+			double product_escalar = scal_prod(v);    // v1 · v2
+
+			double dist_squared = std::max(0.0, norm_invocante + norm_v - 2.0 * product_escalar);
+
+			return std::sqrt(dist_squared);
 		}
 
 	private:
