@@ -30,10 +30,12 @@ namespace AyED
 
             sll_node<T> *extract_tail(void);
             void insert_tail(sll_node<T> *n);
+            void insert_tail(sll_node<T> *&tail, sll_node<T> *n);
 
             bool only_one_item(void) const;
 
             void concat(const sll<T> &L1, const sll<T> &L2);
+            void concat2(const sll<T> &L1, const sll<T> &L2);
             void ordered_merge(const sll<T> &L1, const sll<T> &L2);
 
             void clear(void);
@@ -70,7 +72,42 @@ namespace AyED
       }
 
       template <class T>
+      void sll<T>::insert_tail(sll_node<T> *&tail, sll_node<T> *n)
+      {
+            if (tail == NULL)
+                  insert_head(n);
+            else
+                  insert_after(tail, n);
+
+            tail = n;
+      }
+
+      template <class T>
       void sll<T>::concat(const sll<T> &L1, const sll<T> &L2)
+      {
+            
+            clear();
+
+            sll_node<T> *aux_L1{L1.head_};
+            sll_node<T> *aux_L2{L2.head_};
+
+            sll_node<T> *tail{NULL};
+
+            while (aux_L1 != NULL)
+            {
+                  insert_tail(tail, new sll_node<T>(aux_L1->get_data()));
+                  aux_L1 = aux_L1->get_next();
+            }
+
+            while (aux_L2 != NULL)
+            {
+                  insert_tail(tail, new sll_node<T>(aux_L2->get_data()));
+                  aux_L2 = aux_L2->get_next();
+            }
+      }
+
+      template <class T>
+      void sll<T>::concat2(const sll<T> &L1, const sll<T> &L2)
       {
             
             clear();
