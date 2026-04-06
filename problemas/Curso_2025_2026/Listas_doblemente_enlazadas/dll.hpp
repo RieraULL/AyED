@@ -32,6 +32,8 @@ namespace AyED
 
         void reverse(void);
 
+        bool is_palindrome(void) const;
+
         std::ostream &write(std::ostream &os) const;
 
     private:
@@ -264,5 +266,26 @@ namespace AyED
         dll_node<T> *tmp{head_};
         head_ = tail_;
         tail_ = tmp;
+    }
+
+    template <class T>
+    bool dll<T>::is_palindrome(void) const
+    {
+        if (sz_ <= 1)
+            return true;
+
+        dll_node<T> *left{head_};
+        dll_node<T> *right{tail_};
+
+        for (int i{0}; i < sz_ / 2; ++i)
+        {
+            if (left->get_data() != right->get_data())
+                return false;
+
+            left = left->get_next();
+            right = right->get_prev();
+        }
+
+        return true;
     }
 }
