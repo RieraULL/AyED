@@ -32,6 +32,8 @@ namespace AyED
 
         void reverse(void);
 
+        void erase_backward(dll_node<T> *nodo);
+
         bool is_palindrome(void) const;
 
         std::ostream &write(std::ostream &os) const;
