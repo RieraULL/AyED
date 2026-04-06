@@ -31,6 +31,7 @@ namespace AyED
         int get_size(void) const;
 
         void reverse(void);
+        void rev_concat(dll<T> &other);
 
         void erase_backward(dll_node<T> *nodo);
 
@@ -268,6 +269,17 @@ namespace AyED
         dll_node<T> *tmp{head_};
         head_ = tail_;
         tail_ = tmp;
+    }
+
+    template <class T>
+    void dll<T>::rev_concat(dll<T> &other)
+    {
+        assert(this != &other);
+
+        while (!other.empty())
+        {
+            insert_tail(other.extract_tail());
+        }
     }
 
     template <class T>
