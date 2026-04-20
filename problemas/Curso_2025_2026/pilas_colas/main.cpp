@@ -50,6 +50,15 @@ namespace
 		return ok;
 	}
 
+	bool run_int_test(const string& test_name, int got, int expected)
+	{
+		const bool ok = (got == expected);
+		cout << (ok ? "[PASS] " : "[FAIL] ") << test_name
+			 << " -> obtenido=" << got
+			 << ", esperado=" << expected << '\n';
+		return ok;
+	}
+
 	bool run_traverse_test(const string& test_name,
 						   const vector<int>& got,
 						   const vector<int>& expected)
@@ -120,6 +129,40 @@ int main()
 				  : 0;
 	++total;
 	passed += run_bool_test("has_cycle en grafo3", algorithms.has_cycle(g3), false)
+				  ? 1
+				  : 0;
+
+	++total;
+	passed += run_bool_test("has_path en grafo1 (0->4)", algorithms.has_path(g1, 0, 4), true)
+				  ? 1
+				  : 0;
+	++total;
+	passed += run_bool_test("has_path en grafo1 (4->0)", algorithms.has_path(g1, 4, 0), true)
+				  ? 1
+				  : 0;
+	++total;
+	passed += run_bool_test("has_path en grafo2 (0->9)", algorithms.has_path(g2, 0, 9), true)
+				  ? 1
+				  : 0;
+	++total;
+	passed += run_bool_test("has_path en grafo3 (0->5)", algorithms.has_path(g3, 0, 5), false)
+				  ? 1
+				  : 0;
+
+	++total;
+	passed += run_int_test("shortest_path en grafo2 (0->0)", algorithms.shortest_path(g2, 0, 0), 0)
+				  ? 1
+				  : 0;
+	++total;
+	passed += run_int_test("shortest_path en grafo2 (0->9)", algorithms.shortest_path(g2, 0, 9), 3)
+				  ? 1
+				  : 0;
+	++total;
+	passed += run_int_test("shortest_path en grafo1 (0->9)", algorithms.shortest_path(g1, 0, 9), 3)
+				  ? 1
+				  : 0;
+	++total;
+	passed += run_int_test("shortest_path en grafo3 (0->5)", algorithms.shortest_path(g3, 0, 5), -1)
 				  ? 1
 				  : 0;
 

@@ -13,6 +13,8 @@ namespace AyED
 
         bool is_connected(const grafo &g) const;
         bool has_cycle(const grafo &g) const;
+        bool has_path(const grafo &g, int start, int end) const;
+        int shortest_path(const grafo &g, int start, int end) const;
 
     };
 }

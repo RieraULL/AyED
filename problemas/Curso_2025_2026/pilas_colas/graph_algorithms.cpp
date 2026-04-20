@@ -65,6 +65,57 @@ namespace AyED
         return traverse.size() == g.n_vertices();
     }
 
+    bool graph_algorithms::has_path(const grafo &g, int start, int end) const
+    {
+        vector<int> traverse;
+        bfs(g, start, traverse);
+        
+        for (int vertex : traverse)
+        {
+            if (vertex == end)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int graph_algorithms::shortest_path(const grafo &g, int start, int end) const
+    {
+        if (start == end)
+        {
+            return 0;
+        }
+
+        queue<int> q;
+        vector<int> distance(g.n_vertices(), -1);
+
+        q.push(start);
+        distance[start] = 0;
+
+        while (!q.empty())
+        {
+            int vertex = q.front();
+            q.pop();
+
+            for (int neighbor : g.get_adyacentes(vertex))
+            {
+                if (distance[neighbor] == -1)
+                {
+                    distance[neighbor] = distance[vertex] + 1;
+                    
+                    if (neighbor == end)
+                    {
+                        return distance[neighbor];
+                    }
+                    
+                    q.push(neighbor);
+                }
+            }
+        }
+        return -1; // No path found
+    }
+
     bool graph_algorithms::has_cycle(const grafo &g) const
     {
         vector<bool> visited(g.n_vertices(), false);
