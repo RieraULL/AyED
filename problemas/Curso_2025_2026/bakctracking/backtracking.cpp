@@ -5,8 +5,10 @@
 
 using namespace std;
 
+// Simbolos disponibles para representar digitos hasta base 16.
 const string digits = "0123456789ABCDEF";
 
+// Escribe los primeros num_digits elementos del vector como una secuencia de digitos.
 ostream &write(ostream &os, const vector<int> &vec, int num_digits)
 {
     for (size_t i = 0; i < num_digits; i++)
@@ -16,6 +18,8 @@ ostream &write(ostream &os, const vector<int> &vec, int num_digits)
     return os;
 }
 
+// Genera todas las cadenas binarias de longitud n.
+// x almacena la solucion parcial y i indica la posicion actual.
 void generate_binary_recursive(vector<int> &x, int n, int i)
 {
     if (i == n)
@@ -32,6 +36,8 @@ void generate_binary_recursive(vector<int> &x, int n, int i)
     }
 }
 
+// Variante para generar solo cadenas terminadas en 0.
+// Fija el ultimo valor a 0 cuando la recursion llega a la penultima posicion.
 void generate_binary_pairs_recursive(vector<int> &x, int n, int i)
 {
     if (i == n - 1)
@@ -49,6 +55,7 @@ void generate_binary_pairs_recursive(vector<int> &x, int n, int i)
     }
 }
 
+// Variante menos eficiente: genera todas las cadenas y filtra las que acaban en 0.
 void generate_binary_pairs_recursive_bad(vector<int> &x, int n, int i)
 {
     if (i == n)
@@ -68,6 +75,8 @@ void generate_binary_pairs_recursive_bad(vector<int> &x, int n, int i)
     }
 }
 
+// Genera numeros de longitud n en la base indicada.
+// En cada posicion se prueban todos los digitos validos [0, base).
 void generate_numbers_recursive(vector<int> &x, int n, int i, int base)
 {
     if (i == n)
@@ -84,6 +93,7 @@ void generate_numbers_recursive(vector<int> &x, int n, int i, int base)
     }
 }
 
+// Muestra por pantalla el subconjunto definido por el vector binario selected.
 void write_subset(const vector<int> &values, const vector<int> &selected)
 {
     cout << "{";
@@ -105,6 +115,8 @@ void write_subset(const vector<int> &values, const vector<int> &selected)
     cout << "}" << endl;
 }
 
+// Genera el conjunto potencia de values usando un vector de decision binario.
+// selected[i] = 0 significa "no incluir" y selected[i] = 1 significa "incluir".
 void generate_subsets_recursive(const vector<int> &values, vector<int> &selected, int i)
 {
     if (i == static_cast<int>(values.size()))
@@ -123,6 +135,7 @@ void generate_subsets_recursive(const vector<int> &values, vector<int> &selected
 
 int main()
 {
+    // Ejemplo 1: cadenas binarias de longitud n.
     int n = 3; // Cambia este valor para generar números binarios de diferente longitud
     vector<int> x(n);
 
@@ -130,6 +143,7 @@ int main()
 
     generate_binary_recursive(x, n, 0);
 
+    // Ejemplo 2: cadenas binarias de longitud n que terminan en 0.
     cout << "Generando pares de números binarios de longitud " << n << ":" << endl;
 
     generate_binary_pairs_recursive(x, n, 0);
@@ -138,6 +152,7 @@ int main()
 
     generate_binary_pairs_recursive_bad(x, n, 0);
 
+    // Ejemplo 3: generacion de numeros en base arbitraria.
     cout << "Generando números en base " << 16 << ":" << endl;
 
     int base = 16; // Cambia este valor para generar números en diferentes bases
@@ -147,6 +162,7 @@ int main()
     cout << "Generando números en base " << base2 << ":" << endl;
     generate_numbers_recursive(x, n - 1, 0, base2);
 
+    // Ejemplo 4: conjunto potencia de {1, 2, 3}.
     vector<int> conjunto = {1, 2, 3};
     vector<int> selected(conjunto.size(), 0);
 
