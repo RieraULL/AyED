@@ -9,46 +9,46 @@
 using namespace std;
 
 // Procedimiento recursivo que recorre un vector de enteros desde la primera posicion (i = 0) hasta la ultima (i = n-1) y escribe su contenido por pantalla.
-void write_vector_recursive(const AyED::vector &vec, int n, int i)
+void write_vector_recursive(const AyED::vector &vec, int i)
 {
-    if (i == n)
+    if (i == vec.size())
     {
     }
     else
     {
         cout << vec[i] << " ";
-        write_vector_recursive(vec, n, i + 1);
+        write_vector_recursive(vec, i + 1);
     }
 }
 
-void write_vector_iterative(const AyED::vector &vec, int n)
+void write_vector_iterative(const AyED::vector &vec)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < vec.size(); i++)
     {
         cout << vec[i] << " ";
     }
 }
 
 // procedimiento recursivo que recorre un vector de enteros desde la última posicion (i = n-1) hasta la primera (i = 0) y escribe su contenido por pantalla.
-void write_vector_reverse_recursive(const AyED::vector &vec, int n, int i)
+void write_vector_reverse_recursive(const AyED::vector &vec, int i)
 {
-    if (i == n)
+    if (i == vec.size())
     {
     }
     else
     {
-        write_vector_reverse_recursive(vec, n, i + 1);
+        write_vector_reverse_recursive(vec, i + 1);
         cout << vec[i] << " ";
     }
 }
 
 // procedimiento iterativo con pila que recorre un vector de enteros desde la última posicion (i = n-1) hasta la primera (i = 0) y escribe su contenido por pantalla.
 
-void write_vector_reverse_iterative(const AyED::vector &vec, int n)
+void write_vector_reverse_iterative(const AyED::vector &vec)
 {
     AyED::stack_v<int> s;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < vec.size(); i++)
     {
         s.push(vec[i]);
     }
@@ -61,7 +61,7 @@ void write_vector_reverse_iterative(const AyED::vector &vec, int n)
 }
 
 // procedimiento recursivo que recorre una lista simplemente enlazada de enteros desde la primera posicion (head) hasta la ultima (tail) y escribe su contenido por pantalla.
-void write_list_recursive(const AyED::sll<int> &L, AyED::sll_node<int> *node)
+void write_list_recursive(AyED::sll_node<int> *node)
 {
     if (node == NULL)
     {
@@ -69,19 +69,19 @@ void write_list_recursive(const AyED::sll<int> &L, AyED::sll_node<int> *node)
     else
     {
         cout << node->get_data() << " ";
-        write_list_recursive(L, node->get_next());
+        write_list_recursive(node->get_next());
     }
 }
 
 // procedimiento recursivo que recorre una lista simplemente enlazada de enteros desde la última posicion (tail) hasta la primera (head) y escribe su contenido por pantalla.
-void write_list_reverse_recursive(const AyED::sll<int> &L, AyED::sll_node<int> *node)
+void write_list_reverse_recursive(AyED::sll_node<int> *node)
 {
     if (node == NULL)
     {
     }
     else
     {
-        write_list_reverse_recursive(L, node->get_next());
+        write_list_reverse_recursive(node->get_next());
         cout << node->get_data() << " ";
     }
 }
@@ -107,81 +107,81 @@ void write_list_reverse_iterative(const AyED::sll<int> &L)
 }
 
 // procedimiento recursivo que recorre la fila i-ésima de una matriz de enteros desde la primera columna (j = 0) hasta la última (j = m-1) y escribe su contenido por pantalla.
-void write_matrix_row_recursive(const AyED::matrix &M, int n, int m, int i, int j)
+void write_matrix_row_recursive(const AyED::matrix &M, int i, int j)
 {
-    if (j == m + 1)
+    if (j == M.get_n() + 1)
     {
     }
     else
     {
         cout << setw(5) << M(i, j) << " ";
-        write_matrix_row_recursive(M, n, m, i, j + 1);
+        write_matrix_row_recursive(M, i, j + 1);
     }
 }
 
 // procedimiento recursivo que recorre la fila i-ésima de una matriz de enteros desde la última columna (j = m-1) hasta la primera (j = 0) y escribe su contenido por pantalla.
-void write_matrix_row_reverse_recursive(const AyED::matrix &M, int n, int m, int i, int j)
+void write_matrix_row_reverse_recursive(const AyED::matrix &M,  int i, int j)
 {
-    if (j == m + 1)
+    if (j == M.get_n() + 1)
     {
     }
     else
     {
-        write_matrix_row_reverse_recursive(M, n, m, i, j + 1);
+        write_matrix_row_reverse_recursive(M, i, j + 1);
         cout << setw(5) << M(i, j) << " ";
     }
 }
 
 // procedimiento recursivo que recorre la columna j-ésima de una matriz de enteros desde la primera fila (i = 0) hasta la última (i = n-1) y escribe su contenido por pantalla.
-void write_matrix_column_recursive(const AyED::matrix &M, int n, int m, int i, int j)
+void write_matrix_column_recursive(const AyED::matrix &M, int i, int j)
 {
-    if (i == n + 1)
+    if (i == M.get_m() + 1)
     {
     }
     else
     {
         cout << setw(5) << M(i, j) << " ";
-        write_matrix_column_recursive(M, n, m, i + 1, j);
+        write_matrix_column_recursive(M, i + 1, j);
     }
 }
 
 // procedimiento recursivo que recorre la columna j-ésima de una matriz de enteros desde la última fila (i = n-1) hasta la primera (i = 0) y escribe su contenido por pantalla.
-void write_matrix_column_reverse_recursive(const AyED::matrix &M, int n, int m, int i, int j)
+void write_matrix_column_reverse_recursive(const AyED::matrix &M, int i, int j)
 {
-    if (i == n + 1)
+    if (i == M.get_m() + 1)
     {
     }
     else
     {
-        write_matrix_column_reverse_recursive(M, n, m, i + 1, j);
+        write_matrix_column_reverse_recursive(M, i + 1, j);
         cout << setw(5) << M(i, j) << " ";
     }
 }
 
 // procedimiento recursivo que recorre toda una matriz de enteros de n filas y m columnas desde la primera fila (i = 0) hasta la última (i = n-1) y escribe su contenido por pantalla.
-void write_matrix_recursive(const AyED::matrix &M, int n, int m, int i, int j)
+void write_matrix_recursive(const AyED::matrix &M, int i, int j)
 {
-    if (i == n + 1)
+    if (i == M.get_m() + 1)
     {
     }
     else
     {
-        write_matrix_row_recursive(M, n, m, i, 1);
+        write_matrix_row_recursive(M, i, 1);
         cout << endl;
-        write_matrix_recursive(M, n, m, i + 1, 1);
+        write_matrix_recursive(M, i + 1, 1);
     }
 }
 
 // procedimiento recursivo que recorre toda una matriz de enteros de n filas y m columnas desde la última fila (i = n-1) hasta la primera (i = 0) y escribe su contenido por pantalla.
-void write_matrix_reverse_recursive(const AyED::matrix &M, int n, int m, int i, int j)
+void write_matrix_reverse_recursive(const AyED::matrix &M, int i, int j)
 {
-    if (i == n + 1)
+    if (i == M.get_m() + 1)
     {
     }
     else
     {
-        write_matrix_reverse_recursive(M, n, m, i + 1, 1);
-        write_matrix_row_reverse_recursive(M, n, m, i, 1);
+        write_matrix_reverse_recursive(M, i + 1, 1);
+        write_matrix_row_reverse_recursive(M, i, 1);
         cout << endl;
     }
 }
@@ -196,19 +196,19 @@ int main()
         v[i] = static_cast<int>(i + 1);
 
     cout << "Escribiendo el vector de forma recursiva:" << endl;
-    write_vector_recursive(v, v.size(), 0);
+    write_vector_recursive(v, 0);
     cout << endl;
 
     cout << "Escribiendo el vector de forma iterativa:" << endl;
-    write_vector_iterative(v, v.size());
+    write_vector_iterative(v);
     cout << endl;
 
     cout << "Escribiendo el vector de forma recursiva inversa:" << endl;
-    write_vector_reverse_recursive(v, v.size(), 0);
+    write_vector_reverse_recursive(v, 0);
     cout << endl;
 
     cout << "Escribiendo el vector de forma iterativa inversa:" << endl;
-    write_vector_reverse_iterative(v, v.size());
+    write_vector_reverse_iterative(v);
     cout << endl;
 
     cout << endl;
@@ -220,11 +220,11 @@ int main()
         L.insert_tail(new AyED::sll_node<int>(static_cast<int>(i + 1)));
 
     cout << "Escribiendo la lista de forma recursiva:" << endl;
-    write_list_recursive(L, L.head());
+    write_list_recursive(L.head());
     cout << endl;
 
     cout << "Escribiendo la lista de forma recursiva inversa:" << endl;
-    write_list_reverse_recursive(L, L.head());
+    write_list_reverse_recursive(L.head());
     cout << endl;
 
     cout << "Escribiendo la lista de forma iterativa inversa:" << endl;
@@ -247,19 +247,19 @@ int main()
     M.write(cout) << endl;
 
     cout << "Escribiendo la matriz de forma recursiva:" << endl;
-    write_matrix_recursive(M, M.get_m(), M.get_n(), 1, 1);
+    write_matrix_recursive(M, 1, 1);
     cout << endl;
 
     cout << "Escribiendo la matriz de forma recursiva inversa:" << endl;
-    write_matrix_reverse_recursive(M, M.get_m(), M.get_n(), 1, 1);
+    write_matrix_reverse_recursive(M, 1, 1);
     cout << endl;
 
     cout << "Escribiendo la fila 1 de la matriz de forma recursiva:" << endl;
-    write_matrix_row_recursive(M, M.get_m(), M.get_n(), 1, 1);
+    write_matrix_row_recursive(M, 1, 1);
     cout << endl;
 
     cout << "Escribiendo la columna 2 de la matriz de forma recursiva:" << endl;
-    write_matrix_column_recursive(M, M.get_m(), M.get_n(), 1, 2);
+    write_matrix_column_recursive(M, 1, 2);
     cout << endl;
 
     return 0;
