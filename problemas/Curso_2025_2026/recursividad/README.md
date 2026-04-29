@@ -1,182 +1,96 @@
-# Recursión: Recorridos sobre Estructuras de Datos
+# Recursion: recorridos sobre estructuras de datos
 
-## Descripción General
+## Descripcion general
 
-Este programa ilustra los conceptos fundamentales de **recursión** mediante la implementación de diversos procedimientos que recorren diferentes estructuras de datos de forma tanto **recursiva como iterativa**. El objetivo es comprender cómo la recursión puede simplificar la lógica de ciertos algoritmos y cómo se relaciona con las estructuras iterativas equivalentes.
+Este programa muestra recorridos recursivos e iterativos sobre tres estructuras de datos:
 
-## Conceptos Clave de Recursión
+1. `AyED::vector`
+2. `AyED::sll<int>` (lista simplemente enlazada)
+3. `AyED::matrix`
 
-### ¿Qué es la Recursión?
+La version actual simplifica varias firmas de funciones: se eliminan parametros redundantes (`n`, `m` o la propia lista en los recorridos recursivos de nodos) y se apoya en los metodos de cada estructura (`size()`, `get_m()`, `get_n()`).
 
-La recursión es una técnica de programación donde una función se invoca a sí misma para resolver un problema, dividiéndolo en subproblemas más pequeños del mismo tipo. Toda función recursiva debe tener:
+## Funciones implementadas
 
-1. **Caso Base**: Condición que detiene la recursión
-2. **Caso Recursivo**: Invocación de la función con parámetros más cercanos al caso base
+### Vector
 
-### Recursión vs Iteración
+- `write_vector_recursive(const AyED::vector& vec, int i)`
+   - Recorre e imprime de izquierda a derecha.
+   - Caso base: `i == vec.size()`.
 
-- **Iteración**: Usa bucles (`for`, `while`) para repetir acciones
-- **Recursión**: Usa llamadas a función para lograr repetición
-- Ambas pueden resolver los mismos problemas, pero la recursión es a menudo más elegante
+- `write_vector_iterative(const AyED::vector& vec)`
+   - Version iterativa equivalente al recorrido directo.
 
-## Estructuras de Datos Utilizadas
+- `write_vector_reverse_recursive(const AyED::vector& vec, int i)`
+   - Recorre recursivamente y escribe en orden inverso (postorden).
 
-El programa trabaja con tres tipos de estructuras:
+- `write_vector_reverse_iterative(const AyED::vector& vec)`
+   - Version iterativa inversa usando `AyED::stack_v<int>`.
 
-1. **Vector (`AyED::vector`)**: Array dinámico de enteros
-2. **Lista Simplemente Enlazada (`AyED::sll<int>`)**: Lista con nodos conectados por punteros
-3. **Matriz (`AyED::matrix`)**: Estructura bidimensional de enteros
+### Lista simplemente enlazada
 
-## Funciones Implementadas
+- `write_list_recursive(AyED::sll_node<int>* node)`
+   - Recorre desde `head` hasta `NULL`.
+   - Caso base: `node == NULL`.
 
-### 1. Operaciones con Vectores
+- `write_list_reverse_recursive(AyED::sll_node<int>* node)`
+   - Recorre recursivamente y escribe en orden inverso.
 
-#### `write_vector_recursive(const AyED::vector &vec, int n, int i)`
-- **Propósito**: Escribe los elementos del vector en orden (primera a última)
-- **Recursión**: Imprime el elemento `i`, luego avanza
-- **Caso Base**: `i == n`
-- **Complejidad**: O(n)
+- `write_list_reverse_iterative(const AyED::sll<int>& L)`
+   - Recorre la lista con un puntero y usa una pila para invertir la salida.
 
-#### `write_vector_reverse_recursive(const AyED::vector &vec, int n, int i)`
-- **Propósito**: Escribe los elementos del vector en orden inverso (última a primera)
-- **Recursión**: Primero avanza recursivamente, luego imprime
-- **Observación**: El orden de las operaciones (pre-orden vs post-orden) cambia el resultado
-- **Complejidad**: O(n)
+### Matriz
 
-#### `write_vector_iterative(const AyED::vector &vec, int n)`
-- **Propósito**: Equivalente iterativo de `write_vector_recursive`
-- **Uso**: Comparar con la solución recursiva
+- `write_matrix_row_recursive(const AyED::matrix& M, int i, int j)`
+   - Imprime la fila `i` desde la columna `j` hasta `M.get_n()`.
 
-#### `write_vector_reverse_iterative(const AyED::vector &vec, int n)`
-- **Propósito**: Equivalente iterativo de `write_vector_reverse_recursive`
-- **Técnica**: Usa una pila para simular la recursión
-- **Concepto**: Demuestra la relación entre recursión y pilas
+- `write_matrix_row_reverse_recursive(const AyED::matrix& M, int i, int j)`
+   - Imprime la fila `i` en sentido inverso.
 
-### 2. Operaciones con Listas Simplemente Enlazadas
+- `write_matrix_column_recursive(const AyED::matrix& M, int i, int j)`
+   - Imprime la columna `j` desde la fila `i` hasta `M.get_m()`.
 
-#### `write_list_recursive(const AyED::sll<int> &L, AyED::sll_node<int> *node)`
-- **Propósito**: Recorre y escribe una lista desde el inicio
-- **Parámetro**: Puntero al nodo actual (comienza en `L.head()`)
-- **Caso Base**: `node == NULL`
+- `write_matrix_column_reverse_recursive(const AyED::matrix& M, int i, int j)`
+   - Imprime la columna `j` en sentido inverso.
 
-#### `write_list_reverse_recursive(const AyED::sll<int> &L, AyED::sll_node<int> *node)`
-- **Propósito**: Recorre una lista de atrás hacia adelante sin usarla de forma doblemente enlazada
-- **Técnica**: Post-orden recursivo
-- **Ventaja**: No necesita conocer el tamaño de la lista de antemano
+- `write_matrix_recursive(const AyED::matrix& M, int i, int j)`
+   - Imprime toda la matriz fila a fila de forma recursiva.
 
-#### `write_list_reverse_iterative(const AyED::sll<int> &L)`
-- **Propósito**: Equivalente iterativo usando una pila
-- **Observación**: Idéntico al patrón de vector inverso iterativo
+- `write_matrix_reverse_recursive(const AyED::matrix& M, int i, int j)`
+   - Imprime la matriz completa en orden inverso (ultimas filas y columnas primero).
 
-### 3. Operaciones con Matrices
+## Flujo del main
 
-#### `write_matrix_row_recursive(const AyED::matrix &M, int n, int m, int i, int j)`
-- **Propósito**: Escribe una fila de la matriz recursivamente
-- **Parámetros**: `n` = filas, `m` = columnas, `i` = fila, `j` = columna actual
+1. Se crea un vector de 5 elementos con valores `1..5`.
+2. Se muestra en orden normal e inverso, tanto recursivo como iterativo.
+3. Se crea una lista simplemente enlazada con valores `1..5`.
+4. Se muestra en orden normal (recursivo) e inverso (recursivo e iterativo).
+5. Se crea una matriz de `3x4`.
+6. La matriz se rellena con la formula `M(i, j) = i * M.get_n() + j + 1`.
+7. Se imprime:
+    - Matriz completa con `M.write(cout)`
+    - Matriz recursiva
+    - Matriz recursiva inversa
+    - Fila 1 recursiva
+    - Columna 2 recursiva
 
-#### `write_matrix_row_reverse_recursive(const AyED::matrix &M, int n, int m, int i, int j)`
-- **Propósito**: Escribe una fila en orden inverso
+## Detalles importantes de esta version
 
-#### `write_matrix_column_recursive(const AyED::matrix &M, int n, int m, int i, int j)`
-- **Propósito**: Escribe una columna recursivamente
+- La matriz usa indexacion **1-based** (`i` y `j` empiezan en `1`).
+- Los casos base en matriz se expresan como `i == M.get_m() + 1` o `j == M.get_n() + 1`.
+- En los recorridos recursivos de lista ya no se pasa la lista completa, solo el nodo actual.
+- Los recorridos inversos iterativos se apoyan en una pila explicita, equivalente a la pila implícita de la recursividad.
 
-#### `write_matrix_column_reverse_recursive(const AyED::matrix &M, int n, int m, int i, int j)`
-- **Propósito**: Escribe una columna en orden inverso
+## Compilacion y ejecucion
 
-#### `write_matrix_recursive(const AyED::matrix &M, int n, int m, int i, int j)`
-- **Propósito**: Escribe toda la matriz recursivamente
-- **Técnica**: Combina recorridos de filas
-- **Recursión doble**: Maneja dos dimensiones
-
-#### `write_matrix_reverse_recursive(const AyED::matrix &M, int n, int m, int i, int j)`
-- **Propósito**: Escribe toda la matriz en orden inverso
-
-## Flujo del Programa Principal
-
-```
-1. Crear vector de 5 elementos [1, 2, 3, 4, 5]
-   ├─ Mostrar vector recursivo
-   ├─ Mostrar vector iterativo
-   ├─ Mostrar vector inverso recursivo
-   └─ Mostrar vector inverso iterativo
-
-2. Crear lista simplemente enlazada con 5 elementos
-   ├─ Mostrar lista recursiva
-   ├─ Mostrar lista inversa recursiva
-   └─ Mostrar lista inversa iterativa
-
-3. Crear matriz 3×4
-   ├─ Mostrar matriz completa
-   ├─ Mostrar matriz recursiva
-   ├─ Mostrar matriz inversa recursiva
-   ├─ Mostrar fila 1 recursiva
-   └─ Mostrar columna 2 recursiva
-```
-
-## Puntos de Aprendizaje Importantes
-
-### 1. Orden de Operaciones
-```cpp
-// PRE-ORDEN: procesa, luego recurse
-cout << elemento;
-llamada_recursiva();
-
-// POST-ORDEN: recurse, luego procesa
-llamada_recursiva();
-cout << elemento;
-```
-
-### 2. Relación Recursión-Pila
-La recursión utiliza internamente la pila de llamadas del sistema. El programa demuestra cómo simular esto explícitamente con una estructura de pila.
-
-### 3. Casos Base Correctos
-Observar cómo cada función define su caso base (`i == n`, `node == NULL`, etc.)
-
-### 4. Parámetros Acumuladores
-Las funciones recursivas usan parámetros como `i` o `j` para mantener el estado de la recursión (acumulador).
-
-## Compilación y Ejecución
-
-### Requisitos
-- Compilador C++ (C++11 o superior)
-- Las siguientes cabeceras deben estar disponibles:
-  - `vector.hpp`
-  - `sll.hpp` (Single Linked List)
-  - `sll_node.hpp`
-  - `stack_v.hpp`
-  - `matrix.hpp`
-
-### Comando de Compilación
 ```bash
 g++ -std=c++11 -o recursividad recursividad.cpp vector.cpp matrix.cpp
-```
-
-### Ejecución
-```bash
 ./recursividad
 ```
 
-## Ejercicios Propuestos
+## Ejercicios sugeridos
 
-1. **Modificar** `write_vector_recursive` para calcular la suma de elementos
-2. **Implementar** una función que encuentre el máximo elemento de un vector recursivamente
-3. **Crear** una función recursiva que invierta una lista simplemente enlazada (modificando punteros)
-4. **Extender** las operaciones de matriz para calcular determinantes recursivamente
-5. **Comparar** tiempos de ejecución entre versiones recursivas e iterativas con estructuras grandes
-
-## Notas Importantes
-
-- Las funciones de matriz usan **indexación 1-based** (como se puede ver en `M(i, j)`)
-- El parámetro `L` (lista) no se usa directamente en muchas funciones; se proporciona por claridad
-- La complejidad temporal es O(n) o O(n²) según la estructura
-- La complejidad espacial incluye el espacio de pila de recursión
-
-## Referencia de Salida Esperada
-
-El programa imprimirá:
-- Vectores en orden normal y reverso (recursivo e iterativo)
-- Listas enlazadas en orden normal y reverso
-- Matriz completa
-- Fila y columna específicas
-
-Todos estos datos demuestran que tanto la recursión como la iteración producen los mismos resultados.
+1. Implementar `sum_vector_recursive` para sumar elementos del vector.
+2. Implementar `max_vector_recursive` para hallar el maximo.
+3. Añadir version iterativa de recorrido de columna inversa en matriz.
+4. Comparar coste temporal y espacial entre versiones recursivas e iterativas.
