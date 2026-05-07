@@ -9,7 +9,7 @@ using namespace std;
 const string digits = "0123456789ABCDEF";
 
 // Escribe los primeros num_digits elementos del vector como una secuencia de digitos.
-ostream &write(ostream &os, const vector<int> &vec, int num_digits)
+ostream &write(ostream &os, const vector<int> &vec, const int num_digits)
 {
     for (size_t i = 0; i < num_digits; i++)
     {
@@ -20,7 +20,7 @@ ostream &write(ostream &os, const vector<int> &vec, int num_digits)
 
 // Genera todas las cadenas binarias de longitud n.
 // x almacena la solucion parcial y i indica la posicion actual.
-void generate_binary_recursive(vector<int> &x, int n, int i)
+void generate_binary_recursive(vector<int> &x, const int n, const int i)
 {
     if (i == n)
     {
@@ -38,7 +38,7 @@ void generate_binary_recursive(vector<int> &x, int n, int i)
 
 // Variante para generar solo cadenas terminadas en 0.
 // Fija el ultimo valor a 0 cuando la recursion llega a la penultima posicion.
-void generate_binary_pairs_recursive(vector<int> &x, int n, int i)
+void generate_binary_pairs_recursive(vector<int> &x, const int n, const int i)
 {
     if (i == n - 1)
     {
@@ -56,7 +56,7 @@ void generate_binary_pairs_recursive(vector<int> &x, int n, int i)
 }
 
 // Variante menos eficiente: genera todas las cadenas y filtra las que acaban en 0.
-void generate_binary_pairs_recursive_bad(vector<int> &x, int n, int i)
+void generate_binary_pairs_recursive_bad(vector<int> &x, const int n, const int i)
 {
     if (i == n)
     {
@@ -77,7 +77,7 @@ void generate_binary_pairs_recursive_bad(vector<int> &x, int n, int i)
 
 // Genera numeros de longitud n en la base indicada.
 // En cada posicion se prueban todos los digitos validos [0, base).
-void generate_numbers_recursive(vector<int> &x, int n, int i, int base)
+void generate_numbers_recursive(vector<int> &x, const int n, const int i, const int base)
 {
     if (i == n)
     {
@@ -117,7 +117,7 @@ void write_subset(const vector<int> &values, const vector<int> &selected)
 
 // Genera el conjunto potencia de values usando un vector de decision binario.
 // selected[i] = 0 significa "no incluir" y selected[i] = 1 significa "incluir".
-void generate_subsets_recursive(const vector<int> &values, vector<int> &selected, int i)
+void generate_subsets_recursive(const vector<int> &values, vector<int> &selected, const int i)
 {
     if (i == static_cast<int>(values.size()))
     {
