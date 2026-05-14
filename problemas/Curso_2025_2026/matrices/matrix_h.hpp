@@ -50,13 +50,11 @@ namespace AyED
         void Gauss_Jordan(void);
 
         bool is_symmetric(void) const;
-        bool is_symmetric_recursive(size_t i, size_t j) const;
 
-        bool is_diagonal(void) const;
-        bool is_diagonal_recursive(size_t i, size_t j) const;
+        bool is_symmetric_recursive_1(size_t i, size_t j) const;
+        bool is_symmetric_recursive_2(size_t i, size_t j) const;
+        bool is_symmetric_recursive_3(size_t i, size_t j) const;
 
-        bool is_triangular_inf(void) const;
-        bool is_triangular_inf_recursive(size_t i, size_t j) const;
 
     private:
         size_t pos_(const size_t i, const size_t j) const;

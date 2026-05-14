@@ -306,81 +306,61 @@ namespace AyED
         return true;
     }
 
-    bool matrix_h::is_symmetric_recursive(size_t i, size_t j) const
+    // Recorre toda la matriz
+    bool matrix_h::is_symmetric_recursive_1(size_t i, size_t j) const
     {
-        assert(get_m() == get_n());
-        assert(i >= 1 && i <= get_m());
-        assert(j >= 1 && j <= get_n());
+        std::cout << "i: " << i << ", j: " << j << std::endl;
 
-        if (i == get_m())
+        if (i == get_m() + 1)
             return true;
 
-        if (j == get_n())
-            return is_symmetric_recursive(i + 1, i + 2);
+        if (j == get_n() + 1)
+            return is_symmetric_recursive_1(i + 1, 1);
+
+        std::cout << "Comparando at(" << i << ", " << j << ") = " << at(i, j) << " con at(" << j << ", " << i << ") = " << at(j, i) << std::endl;
 
         if (at(i, j) != at(j, i))
             return false;
 
-        return is_symmetric_recursive(i, j + 1);
+        return is_symmetric_recursive_1(i, j + 1);
     }
 
-    bool matrix_h::is_diagonal(void) const
+    // Recorre la matriz triangular superior (incluyendo la diagonal)
+    bool matrix_h::is_symmetric_recursive_2(size_t i, size_t j) const
     {
-        assert(get_m() == get_n());
+        std::cout << "i: " << i << ", j: " << j << std::endl;
 
-        for (size_t i{1}; i <= get_m(); i++)
-            for (size_t j{1}; j <= get_n(); j++)
-                if (i != j && at(i, j) != 0)
-                    return false;
-
-        return true;
-    }
-
-    bool matrix_h::is_diagonal_recursive(size_t i, size_t j) const
-    {
-        assert(get_m() == get_n());
-        assert(i >= 1 && i <= get_m());
-        assert(j >= 1 && j <= get_n());
-
-        if (i == get_m())
+        if (i == get_m() + 1)
             return true;
 
-        if (j == get_n())
-            return is_diagonal_recursive(i + 1, i + 2);
+        if (j == get_n() + 1)
+            return is_symmetric_recursive_2(i + 1, i + 1);
 
-        if (i != j && at(i, j) != 0)
+        std::cout << "Comparando at(" << i << ", " << j << ") = " << at(i, j) << " con at(" << j << ", " << i << ") = " << at(j, i) << std::endl;
+
+        if (at(i, j) != at(j, i))
             return false;
 
-        return is_diagonal_recursive(i, j + 1);
+        return is_symmetric_recursive_2(i, j + 1);
     }
 
-    bool matrix_h::is_triangular_inf(void) const
+     // Recorre la matriz triangular superior (no incluyendo la diagonal)
+    bool matrix_h::is_symmetric_recursive_3(size_t i, size_t j) const
     {
-        assert(get_m() == get_n());
+        std::cout << "i: " << i << ", j: " << j << std::endl;
 
-        for (size_t i{1}; i <= get_m(); i++)
-            for (size_t j{i + 1}; j <= get_n(); j++)
-                if (at(i, j) != 0)
-                    return false;
-
-        return true;
-    }
-
-    bool matrix_h::is_triangular_inf_recursive(size_t i, size_t j) const
-    {
-        assert(get_m() == get_n());
-        assert(i >= 1 && i <= get_m());
-        assert(j >= 1 && j <= get_n());
-
-        if (i == get_m())
+        if (i == get_m() + 1)
             return true;
 
-        if (j == get_n())
-            return is_triangular_inf_recursive(i + 1, i + 2);
+        if (j == get_n() + 1)
+            return is_symmetric_recursive_3(i + 1, i + 2);
 
-        if (i < j && at(i, j) != 0)
+        std::cout << "Comparando at(" << i << ", " << j << ") = " << at(i, j) << " con at(" << j << ", " << i << ") = " << at(j, i) << std::endl;
+
+        if (at(i, j) != at(j, i))
             return false;
 
-        return is_triangular_inf_recursive(i, j + 1);
+        return is_symmetric_recursive_3(i, j + 1);
     }
+
 }

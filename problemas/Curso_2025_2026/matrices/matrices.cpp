@@ -7,7 +7,9 @@ int main(void)
 {
     AyED::matrix_h A(5, 5);
 
-    A.init_random(1);
+    for (size_t i{1}; i <= A.get_m(); i++)
+        for (size_t j{1}; j <= A.get_n(); j++)
+            A.at(i, j) = 1;
 
     A.write(std::cout);
     std::cout << std::endl;
@@ -58,6 +60,18 @@ int main(void)
     std::cout << "G = E x F" << std::endl;
     G.write(std::cout);
     std::cout << std::endl;
+
+    std::cout << "-----------------------------" << std::endl;
+
+    A.is_symmetric_recursive_1(1, 1) ? std::cout << "A es simétrica" << std::endl : std::cout << "A no es simétrica" << std::endl;
+
+    std::cout << "-----------------------------" << std::endl;
+
+    A.is_symmetric_recursive_2(1, 1) ? std::cout << "A es simétrica" << std::endl : std::cout << "A no es simétrica" << std::endl;
+
+    std::cout << "-----------------------------" << std::endl;
+
+    A.is_symmetric_recursive_3(1, 2) ? std::cout << "A es simétrica" << std::endl : std::cout << "A no es simétrica" << std::endl;
 
     return 0;
 }
