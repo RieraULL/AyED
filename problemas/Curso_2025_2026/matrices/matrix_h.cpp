@@ -293,4 +293,64 @@ namespace AyED
                     at(i, j) += A.at(i, k) * B.at(k, j);
             }
     }
+
+    bool matrix_h::is_symmetric(void) const
+    {
+        assert(get_m() == get_n());
+
+        for (size_t i{1}; i <= get_m(); i++)
+            for (size_t j{i + 1}; j <= get_n(); j++)
+                if (at(i, j) != at(j, i))
+                    return false;
+
+        return true;
+    }
+
+    bool matrix_h::is_symmetric_recursive(size_t i, size_t j) const
+    {
+        assert(get_m() == get_n());
+        assert(i >= 1 && i <= get_m());
+        assert(j >= 1 && j <= get_n());
+
+        if (i == get_m())
+            return true;
+
+        if (j == get_n())
+            return is_symmetric_recursive(i + 1, i + 2);
+
+        if (at(i, j) != at(j, i))
+            return false;
+
+        return is_symmetric_recursive(i, j + 1);
+    }
+
+    bool matrix_h::is_diagonal(void) const
+    {
+        assert(get_m() == get_n());
+
+        for (size_t i{1}; i <= get_m(); i++)
+            for (size_t j{1}; j <= get_n(); j++)
+                if (i != j && at(i, j) != 0)
+                    return false;
+
+        return true;
+    }
+
+    bool matrix_h::is_diagonal_recursive(size_t i, size_t j) const
+    {
+        assert(get_m() == get_n());
+        assert(i >= 1 && i <= get_m());
+        assert(j >= 1 && j <= get_n());
+
+        if (i == get_m())
+            return true;
+
+        if (j == get_n())
+            return is_diagonal_recursive(i + 1, i + 2);
+
+        if (i != j && at(i, j) != 0)
+            return false;
+
+        return is_diagonal_recursive(i, j + 1);
+    }
 }
